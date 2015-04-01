@@ -1,0 +1,10 @@
+
+// Window settings
+#define RENDER_WIDTH 500
+#define INTERFACE_WIDTH 200
+
+#define DEFAULT_WIDTH (RENDER_WIDTH+INTERFACE_WIDTH)
+#define DEFAULT_HEIGHT 500
+
+// Apparently..?
+#define INTERFACE_HEIGHT (DEFAULT_HEIGHT+1)

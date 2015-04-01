@@ -36,7 +36,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)\glut\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(ProjectDir)\glut\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -60,6 +65,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Window\input.c" />
+    <ClCompile Include="Sources\Window\interface.c" />
+    <ClCompile Include="Sources\Window\interface_init.c" />
+    <ClCompile Include="Sources\Utils\mem.c" />
+    <ClCompile Include="Sources\Utils\render_utils.c" />
+    <ClCompile Include="Sources\Window\scene.c" />
+    <ClCompile Include="Sources\Utils\utils.c" />
+    <ClCompile Include="Sources\Window\window.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Window\input.h" />
+    <ClInclude Include="Sources\Window\interface.h" />
+    <ClInclude Include="Sources\Utils\mem.h" />
+    <ClInclude Include="Sources\Utils\mem_libs.h" />
+    <ClInclude Include="Sources\Window\public.h" />
+    <ClInclude Include="Sources\Utils\render_utils.h" />
+    <ClInclude Include="Sources\Window\scene.h" />
+    <ClInclude Include="Sources\Utils\utils.h" />
+    <ClInclude Include="Sources\Window\window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
