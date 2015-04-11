@@ -5,6 +5,8 @@
 #include "input.h"
 #include "../Utils/utils.h"
 
+#include "../Engine/engine_wrapper.h"
+
 /*
 scene.c
 
@@ -19,10 +21,9 @@ float camAngle[3] = {DEFAULT_CAMERA_ANGLE};
 // Scene data
 
 
-
 void initScene()
 {
-
+	initEngine();
 }
 
 void updateScene(float deltaTime)
@@ -34,5 +35,5 @@ void updateScene(float deltaTime)
 
 void drawScene()
 {
-	
+	runEngine();
 }

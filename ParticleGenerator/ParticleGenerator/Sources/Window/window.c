@@ -131,7 +131,7 @@ int main(int argc, char **argv)
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
 	glutInitWindowSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	glutInitWindowPosition(screenX/2-DEFAULT_WIDTH/2, screenY/2-DEFAULT_HEIGHT/2);
-	window = glutCreateWindow("Boids");
+	window = glutCreateWindow("Particles");
 
 	initRendering();
 

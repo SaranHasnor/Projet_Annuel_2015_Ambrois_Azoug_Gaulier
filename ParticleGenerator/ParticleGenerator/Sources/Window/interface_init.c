@@ -19,13 +19,12 @@ interface_init.c
 
 void createInterface(int window)
 {
-
 	initInterface(window);
 	
-	// Menu 0: Boid list and management buttons
+	// Menu 0: Main menu
 	newMenu(0, 0, NULL, NULL);
 	
 	newLabel(newString("Default"), 0, 5, 18);
 	
-	newButton(newString("Exit"), 0, 10, 470, 180, 20, quit);
+	newButton(newString("Exit"), 0, 10, DEFAULT_HEIGHT - 30, 180, 20, quit);
 }

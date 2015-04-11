@@ -65,6 +65,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Engine\Engine.cpp" />
+    <ClCompile Include="Sources\Data Models\BaseParticle.cpp" />
+    <ClCompile Include="Sources\Engine\engine_wrapper.cpp" />
+    <ClCompile Include="Sources\Engine\Parsing\Parser.cpp" />
+    <ClCompile Include="Sources\Engine\Rendering\Renderer.cpp" />
     <ClCompile Include="Sources\Window\input.c" />
     <ClCompile Include="Sources\Window\interface.c" />
     <ClCompile Include="Sources\Window\interface_init.c" />
@@ -75,6 +80,11 @@
     <ClCompile Include="Sources\Window\window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Engine\Engine.h" />
+    <ClInclude Include="Sources\Data Models\BaseParticle.h" />
+    <ClInclude Include="Sources\Engine\engine_wrapper.h" />
+    <ClInclude Include="Sources\Engine\Parsing\Parser.h" />
+    <ClInclude Include="Sources\Engine\Rendering\Renderer.h" />
     <ClInclude Include="Sources\Window\input.h" />
     <ClInclude Include="Sources\Window\interface.h" />
     <ClInclude Include="Sources\Utils\mem.h" />
