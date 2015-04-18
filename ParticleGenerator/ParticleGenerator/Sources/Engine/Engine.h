@@ -3,6 +3,7 @@
 class Renderer;
 class Parser;
 class BaseParticle;
+class Shader;
 
 #include <list>
 
@@ -19,5 +20,9 @@ private:
 	Parser* _parser;
 
 	std::list<BaseParticle*>* _particles;
+	std::list<Shader*>* _shaders;
+
+	std::string _defaultFragShader();
+	std::string _defaultVertShader();
 };
 

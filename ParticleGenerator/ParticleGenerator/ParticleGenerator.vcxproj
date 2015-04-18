@@ -65,6 +65,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Data Models\ParticleState.cpp" />
+    <ClCompile Include="Sources\Data Models\Shader.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
     <ClCompile Include="Sources\Data Models\BaseParticle.cpp" />
     <ClCompile Include="Sources\Engine\engine_wrapper.cpp" />
@@ -80,6 +82,8 @@
     <ClCompile Include="Sources\Window\window.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Data Models\ParticleState.h" />
+    <ClInclude Include="Sources\Data Models\Shader.h" />
     <ClInclude Include="Sources\Engine\Engine.h" />
     <ClInclude Include="Sources\Data Models\BaseParticle.h" />
     <ClInclude Include="Sources\Engine\engine_wrapper.h" />
