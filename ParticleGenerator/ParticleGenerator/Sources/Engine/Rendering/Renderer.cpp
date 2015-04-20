@@ -18,9 +18,9 @@ Renderer::~Renderer(void)
 
 void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 {
-	for (auto & particle : *particles)
+	for (std::list<BaseParticle*>::const_iterator iterator = particles->begin(); iterator != particles->end(); ++iterator)
 	{
-		glUseProgram(particle->shader->program);
+		glUseProgram((*iterator)->shader->program);
 		// TODO: Draw particle
 
 	}
