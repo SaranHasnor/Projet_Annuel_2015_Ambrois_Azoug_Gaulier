@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{946B2739-B475-4638-9B7B-008CC6FB1E3F}</ProjectGuid>
+    <RootNamespace>ParticleGenerator</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\include;$(ProjectDir)\..\ParticleGenerator\Libraries\glut\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LibraryPath>$(ProjectDir)\Libraries\glew-1.12.0\lib\Release\$(Platform);$(ProjectDir)\Libraries\glut\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <IncludePath>$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\include;$(ProjectDir)\..\ParticleGenerator\Libraries\glut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(ProjectDir)\Libraries\glew-1.12.0\lib\$(Configuration)\$(Platform);$(ProjectDir)\Libraries\glut\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\lib\Release\Win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleState.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Shader.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Engine\Engine.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\mem.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\mem_libs.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\render_utils.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\utils.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Window\input.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Window\interface.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Window\public.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Window\scene.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Window\window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleState.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Shader.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Engine\Engine.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Engine\Rendering\Renderer.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\mem.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\render_utils.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\utils.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Window\input.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Window\interface.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Window\interface_init.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Window\scene.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Window\window.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

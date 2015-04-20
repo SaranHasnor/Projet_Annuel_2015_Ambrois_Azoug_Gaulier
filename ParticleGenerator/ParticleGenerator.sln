@@ -1,7 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParticleGenerator", "ParticleGenerator\ParticleGenerator.vcxproj", "{3EC2B71A-E2B4-4798-8362-2C41511C483D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParticleGenerator2013", "ParticleGenerator2013\ParticleGenerator2013.vcxproj", "{946B2739-B475-4638-9B7B-008CC6FB1E3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +17,10 @@ Global
 		{3EC2B71A-E2B4-4798-8362-2C41511C483D}.Debug|Win32.Build.0 = Debug|Win32
 		{3EC2B71A-E2B4-4798-8362-2C41511C483D}.Release|Win32.ActiveCfg = Release|Win32
 		{3EC2B71A-E2B4-4798-8362-2C41511C483D}.Release|Win32.Build.0 = Release|Win32
+		{946B2739-B475-4638-9B7B-008CC6FB1E3F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{946B2739-B475-4638-9B7B-008CC6FB1E3F}.Debug|Win32.Build.0 = Debug|Win32
+		{946B2739-B475-4638-9B7B-008CC6FB1E3F}.Release|Win32.ActiveCfg = Release|Win32
+		{946B2739-B475-4638-9B7B-008CC6FB1E3F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
