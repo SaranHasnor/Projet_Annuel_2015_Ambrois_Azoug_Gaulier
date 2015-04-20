@@ -1,5 +1,6 @@
 #include "public.h"
 #include "window.h"
+#include <GL/glew.h>
 #include <GL/glut.h>
 #include "scene.h"
 #include "input.h"
@@ -132,6 +133,9 @@ int main(int argc, char **argv)
 	glutInitWindowSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 	glutInitWindowPosition(screenX/2-DEFAULT_WIDTH/2, screenY/2-DEFAULT_HEIGHT/2);
 	window = glutCreateWindow("Particles");
+
+	// Initializing GLEW
+	glewInit();
 
 	initRendering();
 
