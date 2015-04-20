@@ -18,11 +18,10 @@ Renderer::~Renderer(void)
 
 void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 {
-	for (int i = 0; i < particles->size(); i++)
+	for (auto & particle : *particles)
 	{
-		BaseParticle *particle;// = particles[i];
 		glUseProgram(particle->shader->program);
-
 		// TODO: Draw particle
+
 	}
 }
