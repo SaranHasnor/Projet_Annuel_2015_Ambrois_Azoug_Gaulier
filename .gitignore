@@ -22,6 +22,9 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Track all library files
+!ParticleGenerator/ParticleGenerator/Libraries/glew-1.12.0/lib/Release
+
 # Visual Studo 2015 cache/options directory
 .vs/
 
