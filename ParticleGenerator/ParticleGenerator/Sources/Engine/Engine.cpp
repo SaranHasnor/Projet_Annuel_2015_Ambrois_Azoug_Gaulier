@@ -90,7 +90,8 @@ void printLog(GLuint obj)
 
 void Engine::_createProgramForShader(Shader *shader)
 {
-	const char *vShaderText = _defaultVertShader().c_str();
+	std::string shaderText = _defaultVertShader();
+	const char *vShaderText = shaderText.c_str();
 	GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(vShader, 1, &vShaderText, NULL);
 	glCompileShader(vShader);
