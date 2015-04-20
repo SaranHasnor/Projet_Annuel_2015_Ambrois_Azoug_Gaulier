@@ -24,5 +24,7 @@ private:
 
 	std::string _defaultFragShader();
 	std::string _defaultVertShader();
+
+	void _createProgramForShader(Shader *shader);
 };
 
