@@ -15,6 +15,8 @@ public:
 
 	void run();
 
+	BaseParticle *particleNamed(std::string name);
+
 private:
 	Renderer* _renderer;
 	Parser* _parser;

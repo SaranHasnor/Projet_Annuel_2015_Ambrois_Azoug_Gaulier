@@ -24,7 +24,7 @@ public:
 	unsigned int	collisionFlags;				// Physical layers the particle can collide with
 	std::string		impactParticle;				// Name of the particle to create on death
 
-	unsigned long	spawnTime;					// Time at which the particle was created (in milliseconds)
+	unsigned long	spawnTime;					// Time after which the particle should appear after being created (in milliseconds)
 	unsigned long	lifeTime;					// Duration of the particle (in milliseconds)
 
 	std::string		shaderName;					// Name of the shader used to render the particle
