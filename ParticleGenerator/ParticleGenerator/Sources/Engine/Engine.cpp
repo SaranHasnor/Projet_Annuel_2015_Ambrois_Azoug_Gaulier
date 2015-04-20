@@ -8,6 +8,8 @@
 
 #include <GL/glew.h>
 
+#include <fstream>
+
 Engine::Engine(void)
 {
 	_renderer = new Renderer();
@@ -43,13 +45,20 @@ void Engine::run()
 std::string Engine::_defaultFragShader()
 {
 	// TODO: Parse Shaders/default_fs.glsl
-	return std::string("");
+	std::ifstream ifs("../../Shaders/default_fs.glsl");
+	std::string content((std::istreambuf_iterator<char>(ifs)),
+						(std::istreambuf_iterator<char>()));
+
+	return content;
 }
 
 
 std::string Engine::_defaultVertShader()
 {
 	// TODO: Parse Shaders/default_vs.glsl
+	std::ifstream ifs("../../Shaders/default_vs.glsl");
+	std::string content((std::istreambuf_iterator<char>(ifs)),
+		(std::istreambuf_iterator<char>()));
 	return std::string("");
 }
 
