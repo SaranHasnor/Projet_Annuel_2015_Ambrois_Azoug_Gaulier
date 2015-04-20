@@ -45,21 +45,24 @@ void Engine::run()
 std::string Engine::_defaultFragShader()
 {
 	// TODO: Parse Shaders/default_fs.glsl
-	std::ifstream ifs("../../Shaders/default_fs.glsl");
-	std::string content((std::istreambuf_iterator<char>(ifs)),
-						(std::istreambuf_iterator<char>()));
-
-	return content;
+	std::ifstream ifs("../ParticleGenerator/Shaders/default_fs.glsl");
+	if (ifs)
+		return std::string((std::istreambuf_iterator<char>(ifs)),
+		(std::istreambuf_iterator<char>()));
+	else
+		return std::string("");
 }
 
 
 std::string Engine::_defaultVertShader()
 {
 	// TODO: Parse Shaders/default_vs.glsl
-	std::ifstream ifs("../../Shaders/default_vs.glsl");
-	std::string content((std::istreambuf_iterator<char>(ifs)),
-		(std::istreambuf_iterator<char>()));
-	return std::string("");
+	std::ifstream ifs("../ParticleGenerator/Shaders/default_vs.glsl");
+	if (ifs)
+		return std::string((std::istreambuf_iterator<char>(ifs)),
+			(std::istreambuf_iterator<char>()));
+	else
+		return std::string("");
 }
 
 void printLog(GLuint obj)
