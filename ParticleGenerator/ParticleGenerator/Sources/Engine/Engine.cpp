@@ -40,6 +40,13 @@ void Engine::run()
 }
 
 
+BaseParticle* Engine::particleNamed(std::string name)
+{
+	// TODO: Return the first particle of _particles with a matching name
+	return NULL;
+}
+
+
 std::string Engine::_defaultFragShader()
 {
 	// TODO: Parse Shaders/default_fs.glsl
