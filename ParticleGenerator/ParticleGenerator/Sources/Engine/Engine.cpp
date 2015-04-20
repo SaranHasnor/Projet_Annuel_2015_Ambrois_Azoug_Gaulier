@@ -14,8 +14,6 @@ Engine::Engine(void)
 {
 	_renderer = new Renderer();
 	_parser = new Parser();
-
-	_particles = _parser->parseFile(std::string());
 	
 	_shaders = new std::list<Shader*>();
 
@@ -28,6 +26,10 @@ Engine::Engine(void)
 	_shaders->push_back(defaultShader);
 
 	_createProgramForShader(defaultShader);
+
+	_particles = _parser->parseFile(std::string());
+
+	_particles->front()->shader = defaultShader;
 }
 
 
@@ -116,5 +118,5 @@ void Engine::_createProgramForShader(Shader *shader)
 	glLinkProgram(prog);
 	printLog(prog);
 
-	// TODO: Store prog
+	shader->program = prog;
 }

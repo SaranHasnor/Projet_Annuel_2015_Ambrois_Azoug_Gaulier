@@ -3,6 +3,7 @@
 #include <string>
 
 class ParticleState;
+class Shader;
 
 class BaseParticle
 {
@@ -28,6 +29,7 @@ public:
 	unsigned long	lifeTime;					// Duration of the particle (in milliseconds)
 
 	std::string		shaderName;					// Name of the shader used to render the particle
+	Shader*			shader;						// Shader used to render the particle (run-time variable)
 	
 	ParticleState	&defaultState;				// Extra graphical data
 	ParticleState	&transState;				// Graphical data to use when the particle dies

@@ -12,5 +12,6 @@ public:
 
 
 	std::string			shaderText;
+	unsigned int		program;
 };
 
