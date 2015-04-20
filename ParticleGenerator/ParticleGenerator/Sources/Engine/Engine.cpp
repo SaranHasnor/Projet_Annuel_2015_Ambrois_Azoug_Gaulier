@@ -8,6 +8,8 @@
 
 #include <GL/glew.h>
 
+#include <fstream>
+
 Engine::Engine(void)
 {
 	_renderer = new Renderer();
@@ -50,14 +52,24 @@ BaseParticle* Engine::particleNamed(std::string name)
 std::string Engine::_defaultFragShader()
 {
 	// TODO: Parse Shaders/default_fs.glsl
-	return std::string("");
+	std::ifstream ifs("../ParticleGenerator/Shaders/default_fs.glsl");
+	if (ifs)
+		return std::string((std::istreambuf_iterator<char>(ifs)),
+		(std::istreambuf_iterator<char>()));
+	else
+		return std::string("");
 }
 
 
 std::string Engine::_defaultVertShader()
 {
 	// TODO: Parse Shaders/default_vs.glsl
-	return std::string("");
+	std::ifstream ifs("../ParticleGenerator/Shaders/default_vs.glsl");
+	if (ifs)
+		return std::string((std::istreambuf_iterator<char>(ifs)),
+			(std::istreambuf_iterator<char>()));
+	else
+		return std::string("");
 }
 
 void printLog(GLuint obj)
