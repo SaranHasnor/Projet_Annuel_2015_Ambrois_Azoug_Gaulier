@@ -1,7 +1,9 @@
 #include "engine_wrapper.h"
+
 #include "Engine.h"
-#include "../Data Models/BaseParticle.h"
-#include "../Data Models/ParticleState.h"
+
+#include <Data Models/BaseParticle.h>
+#include <Data Models/ParticleState.h>
 
 static Engine* _staticEngine;
 

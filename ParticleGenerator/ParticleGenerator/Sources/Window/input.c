@@ -2,7 +2,7 @@
 #include <GL\glut.h>
 #include "scene.h"
 #include "input.h"
-#include "../Utils/utils.h"
+#include <Utils/utils.h>
 
 /*
 input.c

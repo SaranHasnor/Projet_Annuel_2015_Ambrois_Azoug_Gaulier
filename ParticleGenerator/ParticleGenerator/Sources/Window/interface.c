@@ -2,7 +2,7 @@
 #include <windows.h>
 #include "interface.h"
 #include "window.h"
-#include "../Utils/utils.h"
+#include <Utils/utils.h>
 
 /*
 interface.c

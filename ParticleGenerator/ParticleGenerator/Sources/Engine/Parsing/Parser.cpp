@@ -1,5 +1,6 @@
 #include "Parser.h"
-#include "../../Data Models/BaseParticle.h"
+
+#include <Data Models/BaseParticle.h>
 
 
 Parser::Parser(void)

@@ -1,11 +1,11 @@
 #include "public.h"
 #include <GL/glut.h>
 #include "scene.h"
-#include "../Utils/render_utils.h"
+#include <Utils/render_utils.h>
 #include "input.h"
-#include "../Utils/utils.h"
+#include <Utils/utils.h>
 
-#include "../Engine/engine_wrapper.h"
+#include <Engine/engine_wrapper.h>
 
 /*
 scene.c

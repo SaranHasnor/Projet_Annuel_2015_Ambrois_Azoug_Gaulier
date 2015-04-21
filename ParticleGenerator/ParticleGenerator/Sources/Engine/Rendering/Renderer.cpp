@@ -1,7 +1,7 @@
 #include "Renderer.h"
 
-#include "../../Data Models/BaseParticle.h"
-#include "../../Data Models/Shader.h"
+#include <Data Models/BaseParticle.h>
+#include <Data Models/Shader.h>
 
 #include <GL/glew.h>
 #include <GL/glut.h>

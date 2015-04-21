@@ -3,8 +3,8 @@
 #include "Rendering/Renderer.h"
 #include "Parsing/Parser.h"
 
-#include "../Data Models/BaseParticle.h"
-#include "../Data Models/Shader.h"
+#include <Data Models/BaseParticle.h>
+#include <Data Models/Shader.h>
 
 #include <GL/glew.h>
 
