@@ -63,6 +63,9 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\utils.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Texture.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Window\window.c">
@@ -108,6 +111,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Texture.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -78,6 +78,7 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleState.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Shader.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Texture.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\Engine.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Shader.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Texture.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\Engine.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.cpp" />
