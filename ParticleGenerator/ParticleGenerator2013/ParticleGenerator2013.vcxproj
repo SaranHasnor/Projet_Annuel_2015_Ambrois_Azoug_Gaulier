@@ -39,7 +39,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\..\ParticleGenerator\Sources;$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\include;$(ProjectDir)\..\ParticleGenerator\Libraries\glut\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)\..\ParticleGenerator\Libraries\stb;$(ProjectDir)\..\ParticleGenerator\Sources;$(ProjectDir)\..\ParticleGenerator\Libraries\glew-1.12.0\include;$(ProjectDir)\..\ParticleGenerator\Libraries\glut\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LibraryPath>$(ProjectDir)\Libraries\glew-1.12.0\lib\Release\$(Platform);$(ProjectDir)\Libraries\glut\lib;$(LibraryPath)</LibraryPath>
