@@ -86,6 +86,7 @@
     <ClCompile Include="Sources\Window\scene.c" />
     <ClCompile Include="Sources\Utils\utils.c" />
     <ClCompile Include="Sources\Window\window.c" />
+    <ClCompile Include="Sources\Data Models\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Data Models\ParticleState.h" />
@@ -104,6 +105,7 @@
     <ClInclude Include="Sources\Window\scene.h" />
     <ClInclude Include="Sources\Utils\utils.h" />
     <ClInclude Include="Sources\Window\window.h" />
+    <ClInclude Include="Sources\Data Models\Texture.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
