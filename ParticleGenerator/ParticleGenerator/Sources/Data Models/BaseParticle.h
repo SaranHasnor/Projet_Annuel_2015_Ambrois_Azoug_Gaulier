@@ -4,6 +4,7 @@
 
 class ParticleState;
 class Shader;
+class Texture;
 
 class BaseParticle
 {
@@ -30,8 +31,11 @@ public:
 
 	std::string		shaderName;					// Name of the shader used to render the particle
 	Shader*			shader;						// Shader used to render the particle (run-time variable)
+
+	std::string		texturePath;				// Path to the texture used for this particle
+	Texture*		texture;					// OpenGL texture to use (run-time variable)
 	
-	ParticleState	&defaultState;				// Extra graphical data
-	ParticleState	&transState;				// Graphical data to use when the particle dies
+	ParticleState&	defaultState;				// Extra graphical data
+	ParticleState&	transState;					// Graphical data to use when the particle dies
 };
 

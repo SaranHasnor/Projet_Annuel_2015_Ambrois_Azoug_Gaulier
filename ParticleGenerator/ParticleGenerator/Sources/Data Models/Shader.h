@@ -11,7 +11,7 @@ public:
 	std::string			name;			// Name of the shader
 
 
-	std::string			shaderText;
-	unsigned int		program;
+	std::string			shaderText;		// Shader content
+	unsigned int		program;		// OpenGL ID of the program
 };
 
