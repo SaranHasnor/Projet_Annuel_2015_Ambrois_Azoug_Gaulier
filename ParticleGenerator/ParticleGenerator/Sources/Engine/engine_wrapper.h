@@ -22,7 +22,8 @@ typedef enum {
 } particle_attr_t;
 
 void initEngine();
-void runEngine();
+void updateEngine(float deltaTime);
+void renderEngine();
 void *particleAttribute(char *particleName, particle_attr_t attribute);
 
 #ifdef __cplusplus

@@ -12,9 +12,14 @@ extern "C" void initEngine()
 	_staticEngine = new Engine();
 }
 
-extern "C" void runEngine()
+extern "C" void updateEngine(float deltaTime)
 {
-	_staticEngine->run();
+	_staticEngine->update(deltaTime);
+}
+
+extern "C" void renderEngine()
+{
+	_staticEngine->render();
 }
 
 extern "C" void *particleAttribute(char *particleName, particle_attr_t attribute)

@@ -1,4 +1,4 @@
-#include "public.h"
+#include <Utils/public.h>
 #include <GL/glut.h>
 #include "scene.h"
 #include <Utils/render_utils.h>
@@ -28,12 +28,12 @@ void initScene()
 
 void updateScene(float deltaTime)
 {
-
+	updateEngine(deltaTime);
 	
 	glutPostRedisplay();
 }
 
 void drawScene()
 {
-	runEngine();
+	renderEngine();
 }

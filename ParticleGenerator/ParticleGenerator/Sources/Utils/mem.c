@@ -1,4 +1,4 @@
-#include <Window\public.h>
+#include "public.h"
 #include "mem_libs.h"
 
 /*

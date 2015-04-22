@@ -39,7 +39,13 @@ Engine::~Engine(void)
 }
 
 
-void Engine::run()
+void Engine::update(float deltaTime)
+{
+	
+}
+
+
+void Engine::render()
 {
 	_renderer->renderParticles(_particles);
 }
@@ -48,12 +54,30 @@ void Engine::run()
 void Engine::_processParticle(BaseParticle *particle)
 {
 	particle->shader = shaderNamed(particle->shaderName);
-
-	// Load the associated texture
 	
 	particle->texture = new Texture(particle->texturePath);
 
-	// TODO: send particle->texture->textureID to the shader
+	glEnable(GL_TEXTURE_2D);
+	glGenTextures(1, &particle->texture->textureID);
+	glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
+	glBindTexture(GL_TEXTURE_RECTANGLE, particle->texture->textureID);
+	glTexImage2D(GL_TEXTURE_RECTANGLE,
+			0,
+			GL_RGBA,
+			particle->texture->width,
+			particle->texture->height,
+			0,
+			GL_RGBA,
+			GL_FLOAT,
+			particle->texture->data);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+	// Send the texture to the shader
+	int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
+	glUniform1i(shaderTextureKey, particle->texture->textureID);
 }
 
 
@@ -81,7 +105,6 @@ Shader* Engine::shaderNamed(std::string name)
 
 std::string Engine::_defaultFragShader()
 {
-	// TODO: Parse Shaders/default_fs.glsl
 	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_fs.glsl");
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),
@@ -93,7 +116,6 @@ std::string Engine::_defaultFragShader()
 
 std::string Engine::_defaultVertShader()
 {
-	// TODO: Parse Shaders/default_vs.glsl
 	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_vs.glsl");
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),

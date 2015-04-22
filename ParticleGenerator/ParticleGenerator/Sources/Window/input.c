@@ -1,5 +1,5 @@
-#include "public.h"
-#include <GL\glut.h>
+#include <Utils/public.h>
+#include <GL/glut.h>
 #include "scene.h"
 #include "input.h"
 #include <Utils/utils.h>

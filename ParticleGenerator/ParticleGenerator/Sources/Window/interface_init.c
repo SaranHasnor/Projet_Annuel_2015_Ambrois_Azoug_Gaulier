@@ -1,8 +1,8 @@
-#include "public.h"
-#include <Utils\mem_libs.h>
+#include <Utils/public.h>
+#include <Utils/mem_libs.h>
 #include "interface.h"
 #include "scene.h"
-#include <Utils\utils.h>
+#include <Utils/utils.h>
 #include "window.h"
 
 /*

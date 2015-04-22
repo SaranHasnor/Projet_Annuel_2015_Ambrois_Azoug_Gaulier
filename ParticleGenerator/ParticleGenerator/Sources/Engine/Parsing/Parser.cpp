@@ -21,7 +21,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 	BaseParticle *tempParticle = new BaseParticle();
 
 	tempParticle->shaderName = std::string("Default");
-	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/flare_white.jpg");
+	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
 
 	std::list<BaseParticle*> *tempList = new std::list<BaseParticle*>;
 	tempList->push_back(tempParticle);

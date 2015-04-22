@@ -1,7 +1,7 @@
 #ifndef INTERFACE_H_DEFINED
 #define INTERFACE_H_DEFINED
 
-#include "public.h"
+#include <Utils/public.h>
 
 typedef enum {
 	FIELDTYPE_TEXT,

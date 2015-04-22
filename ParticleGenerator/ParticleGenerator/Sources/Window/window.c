@@ -1,4 +1,4 @@
-#include "public.h"
+#include <Utils/public.h>
 #include "window.h"
 #include <GL/glew.h>
 #include <GL/glut.h>

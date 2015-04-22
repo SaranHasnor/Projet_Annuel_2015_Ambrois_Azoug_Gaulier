@@ -36,24 +36,19 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)\Sources;$(ProjectDir)\Libraries\glew-1.12.0\include;$(ProjectDir)\Libraries\glut\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(ProjectDir)\Libraries\glew-1.12.0\lib\Release\$(Platform);$(ProjectDir)\Libraries\glut\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)\Sources;$(ProjectDir)\Libraries\glew-1.12.0\include;$(ProjectDir)\Libraries\glut\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(ProjectDir)\Libraries\glew-1.12.0\lib\$(Configuration)\$(Platform);$(ProjectDir)\Libraries\glut\lib;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Sources;$(ProjectDir)\Libraries\glew-1.12.0\include;$(ProjectDir)\Libraries\glut\include;$(ProjectDir)\Libraries\stb</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Libraries\glew-1.12.0\lib\Release\$(Platform);$(ProjectDir)\Libraries\glut\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -62,12 +57,14 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Sources;$(ProjectDir)\Libraries\glew-1.12.0\include;$(ProjectDir)\Libraries\glut\include;$(ProjectDir)\Libraries\stb</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>glew32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)\Libraries\glew-1.12.0\lib\$(Configuration)\$(Platform);$(ProjectDir)\Libraries\glut\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -100,7 +97,7 @@
     <ClInclude Include="Sources\Window\interface.h" />
     <ClInclude Include="Sources\Utils\mem.h" />
     <ClInclude Include="Sources\Utils\mem_libs.h" />
-    <ClInclude Include="Sources\Window\public.h" />
+    <ClInclude Include="Sources\Utils\public.h" />
     <ClInclude Include="Sources\Utils\render_utils.h" />
     <ClInclude Include="Sources\Window\scene.h" />
     <ClInclude Include="Sources\Utils\utils.h" />
