@@ -5,7 +5,7 @@
 class Texture
 {
 public:
-	Texture(void);
+	Texture(std::string path);
 	~Texture(void);
 
 	std::string			path;			// Path to the file containing this texture

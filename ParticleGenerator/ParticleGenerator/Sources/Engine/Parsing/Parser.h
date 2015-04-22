@@ -11,6 +11,6 @@ public:
 	Parser(void);
 	~Parser(void);
 
-	std::list<BaseParticle*>* parseFile( std::string filePath);
+	std::list<BaseParticle*>* parseParticlesInFile(std::string filePath);
 };
 

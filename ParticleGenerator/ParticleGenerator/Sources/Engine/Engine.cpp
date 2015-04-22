@@ -5,10 +5,12 @@
 
 #include <Data Models/BaseParticle.h>
 #include <Data Models/Shader.h>
+#include <Data Models/Texture.h>
 
 #include <GL/glew.h>
 
 #include <fstream>
+#include <algorithm>
 
 Engine::Engine(void)
 {
@@ -24,12 +26,11 @@ Engine::Engine(void)
 
 	// First item of the list should always be this one
 	_shaders->push_back(defaultShader);
-
 	_createProgramForShader(defaultShader);
 
-	_particles = _parser->parseFile(std::string());
+	_particles = _parser->parseParticlesInFile(std::string());
 
-	_particles->front()->shader = defaultShader;
+	std::for_each(_particles->begin(), _particles->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
 }
 
 
@@ -44,9 +45,36 @@ void Engine::run()
 }
 
 
+void Engine::_processParticle(BaseParticle *particle)
+{
+	particle->shader = shaderNamed(particle->shaderName);
+
+	// Load the associated texture
+	
+	particle->texture = new Texture(particle->texturePath);
+
+	// TODO: send particle->texture->textureID to the shader
+}
+
+
 BaseParticle* Engine::particleNamed(std::string name)
 {
-	// TODO: Return the first particle of _particles with a matching name
+	std::list<BaseParticle*>::iterator particleIterator = std::find_if(_particles->begin(), _particles->end(), [name](BaseParticle* particle){ return particle->name == name; });
+	if (particleIterator != _particles->end())
+	{
+		return *particleIterator;
+	}
+	return NULL;
+}
+
+
+Shader* Engine::shaderNamed(std::string name)
+{
+	std::list<Shader*>::iterator shaderIterator = std::find_if(_shaders->begin(), _shaders->end(), [name](Shader* shader){ return shader->name == name; });
+	if (shaderIterator != _shaders->end())
+	{
+		return *shaderIterator;
+	}
 	return NULL;
 }
 
@@ -54,7 +82,7 @@ BaseParticle* Engine::particleNamed(std::string name)
 std::string Engine::_defaultFragShader()
 {
 	// TODO: Parse Shaders/default_fs.glsl
-	std::ifstream ifs("../ParticleGenerator/Shaders/default_fs.glsl");
+	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_fs.glsl");
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),
 		(std::istreambuf_iterator<char>()));
@@ -66,7 +94,7 @@ std::string Engine::_defaultFragShader()
 std::string Engine::_defaultVertShader()
 {
 	// TODO: Parse Shaders/default_vs.glsl
-	std::ifstream ifs("../ParticleGenerator/Shaders/default_vs.glsl");
+	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_vs.glsl");
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),
 			(std::istreambuf_iterator<char>()));

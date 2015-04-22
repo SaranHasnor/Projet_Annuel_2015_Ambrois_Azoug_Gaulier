@@ -16,6 +16,7 @@ public:
 	void run();
 
 	BaseParticle *particleNamed(std::string name);
+	Shader* Engine::shaderNamed(std::string name);
 
 private:
 	Renderer* _renderer;
@@ -27,6 +28,7 @@ private:
 	std::string _defaultFragShader();
 	std::string _defaultVertShader();
 
+	void _processParticle(BaseParticle *particle);
 	void _createProgramForShader(Shader *shader);
 };
 
