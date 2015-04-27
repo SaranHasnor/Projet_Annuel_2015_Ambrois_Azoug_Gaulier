@@ -8,12 +8,12 @@
 #include <GL/glut.h>
 
 static const float temp[] = {
-	-1.0f, 0.0f, 1.0f,
-	-1.0f, 0.0f, -1.0f,
-	1.0f, 0.0f, -1.0f,
-	-1.0f, 0.0f, 1.0f,
-	1.0f, 0.0f, -1.0f,
-	1.0f, 0.0f, 1.0f
+	-1.0f, 1.0f, 0.0f,
+	-1.0f, -1.0f, 0.0f,
+	1.0f, -1.0f, 0.0f,
+	-1.0f, 1.0f, 0.0f,
+	1.0f, -1.0f, 0.0f,
+	1.0f, 1.0f, 0.0f
 };
 
 GLuint vbo;
@@ -39,9 +39,11 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 	{
 		BaseParticle* particle = *iterator;
 		glUseProgram(particle->shader->program);
+		GLint pos = glGetAttribLocation(particle->shader->program, "pos");
 
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 6, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}

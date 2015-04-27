@@ -77,7 +77,12 @@ void Engine::_processParticle(BaseParticle *particle)
 
 	// Send the texture to the shader
 	int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
-	glUniform1i(shaderTextureKey, particle->texture->textureID);
+	if (shaderTextureKey != -1)
+	{
+		glUniform1i(shaderTextureKey, particle->texture->textureID);
+	}
+
+	GLint pos = glGetAttribLocation(particle->shader->program, "pos");
 }
 
 
@@ -163,8 +168,8 @@ void Engine::_createProgramForShader(Shader *shader)
 	printLog(fShader);
 
 	GLuint prog = glCreateProgram();
-	glAttachShader(prog, fShader);
 	glAttachShader(prog, vShader);
+	glAttachShader(prog, fShader);
 	glLinkProgram(prog);
 	printLog(prog);
 
