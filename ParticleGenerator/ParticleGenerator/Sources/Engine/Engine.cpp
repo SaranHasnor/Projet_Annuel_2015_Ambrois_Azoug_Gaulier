@@ -81,6 +81,10 @@ void Engine::_processParticle(BaseParticle *particle)
 	{
 		glUniform1i(shaderTextureKey, particle->texture->textureID);
 	}
+	else
+	{
+		printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+	}
 }
 
 

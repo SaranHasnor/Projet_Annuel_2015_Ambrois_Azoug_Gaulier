@@ -45,10 +45,25 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 		BaseParticle* particle = *iterator;
 		glUseProgram(particle->shader->program);
 
-		glBindVertexArray(vao);
+		/*glBindVertexArray(vao);
 
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		
-		glDrawArrays(GL_TRIANGLES, 0, 6);
+		glDrawArrays(GL_TRIANGLES, 0, 6);*/
+
+		glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
+		glBindTexture(GL_TEXTURE_RECTANGLE, particle->texture->textureID);
+
+		// Temporaryyyyyyyyyyyyy
+		glBegin(GL_QUADS);
+		glVertex2f(-1.0f, -1.0f);
+		glVertex2f(1.0f, -1.0f);
+		glVertex2f(1.0f, 1.0f);
+		glVertex2f(-1.0f, 1.0f);
+		glEnd();
+
+		//glBindVertexArray(0);
+		//glBindBuffer(0);
 	}
+	glUseProgram(0);
 }
