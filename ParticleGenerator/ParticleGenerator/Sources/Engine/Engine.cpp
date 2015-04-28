@@ -81,8 +81,6 @@ void Engine::_processParticle(BaseParticle *particle)
 	{
 		glUniform1i(shaderTextureKey, particle->texture->textureID);
 	}
-
-	GLint pos = glGetAttribLocation(particle->shader->program, "pos");
 }
 
 

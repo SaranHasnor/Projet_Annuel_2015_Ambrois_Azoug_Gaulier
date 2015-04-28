@@ -147,6 +147,7 @@ int main(int argc, char **argv)
 
 	// Initializing the interface
 	createInterface(window);
+	glutSetWindow(window);
 
 	// Init the scene and start updating it
 	initScene();

@@ -1,7 +1,6 @@
 
 in vec3 pos;
 
-uniform int test;
 /*
 uniform mat4 modelMatrix;
 uniform mat4 viewMatrix;
@@ -12,5 +11,5 @@ void main(void)
 	//gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(pos, 1.0);
 
 	// Temporary
-	gl_Position = vec4(pos, test);
+	gl_Position = vec4(pos, 1.0);
 }

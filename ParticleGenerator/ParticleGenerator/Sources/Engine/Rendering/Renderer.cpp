@@ -16,7 +16,7 @@ static const float temp[] = {
 	1.0f, 1.0f, 0.0f
 };
 
-GLuint vbo;
+GLuint vao, vbo;
 
 Renderer::Renderer(void)
 {
@@ -24,7 +24,12 @@ Renderer::Renderer(void)
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	glBufferData(GL_ARRAY_BUFFER, 2 * 3 * 3 * sizeof(float), temp, GL_STATIC_DRAW);
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	glGenVertexArrays (1, &vao);
+	glBindVertexArray (vao);
+	
+	glVertexAttribPointer(0, 6, GL_FLOAT, GL_FALSE, 0, NULL);
+	glEnableVertexAttribArray(0);
 }
 
 
@@ -39,11 +44,10 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 	{
 		BaseParticle* particle = *iterator;
 		glUseProgram(particle->shader->program);
-		GLint pos = glGetAttribLocation(particle->shader->program, "pos");
+
+		glBindVertexArray(vao);
 
 		glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		glEnableVertexAttribArray(0);
-		glVertexAttribPointer(0, 6, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		
 		glDrawArrays(GL_TRIANGLES, 0, 6);
 	}
