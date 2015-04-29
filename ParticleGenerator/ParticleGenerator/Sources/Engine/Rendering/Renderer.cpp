@@ -54,12 +54,23 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 		glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
 		glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
 
+		// Send the texture to the shader (temporarily kept here, the key should be saved elsewhere)
+		int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
+		if (shaderTextureKey != -1)
+		{
+			glUniform1i(shaderTextureKey, particle->texture->textureID);
+		}
+		else
+		{
+			printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+		}
+
 		// Temporaryyyyyyyyyyyyy
 		glBegin(GL_QUADS);
-		glVertex2f(-1.0f, -1.0f);
-		glVertex2f(1.0f, -1.0f);
-		glVertex2f(1.0f, 1.0f);
-		glVertex2f(-1.0f, 1.0f);
+		glVertex2f(-0.5f, -0.5f);
+		glVertex2f(0.5f, -0.5f);
+		glVertex2f(0.5f, 0.5f);
+		glVertex2f(-0.5f, 0.5f);
 		glEnd();
 
 		//glBindVertexArray(0);

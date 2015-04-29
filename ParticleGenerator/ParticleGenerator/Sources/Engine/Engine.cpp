@@ -74,17 +74,6 @@ void Engine::_processParticle(BaseParticle *particle)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-	// Send the texture to the shader
-	int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
-	if (shaderTextureKey != -1)
-	{
-		glUniform1i(shaderTextureKey, particle->texture->textureID);
-	}
-	else
-	{
-		printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
-	}
 }
 
 
