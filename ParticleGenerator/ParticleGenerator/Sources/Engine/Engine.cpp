@@ -60,8 +60,8 @@ void Engine::_processParticle(BaseParticle *particle)
 	glEnable(GL_TEXTURE_2D);
 	glGenTextures(1, &particle->texture->textureID);
 	glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
-	glBindTexture(GL_TEXTURE_RECTANGLE, particle->texture->textureID);
-	glTexImage2D(GL_TEXTURE_RECTANGLE,
+	glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
+	glTexImage2D(GL_TEXTURE_2D,
 			0,
 			GL_RGBA,
 			particle->texture->width,

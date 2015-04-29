@@ -52,7 +52,7 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 		glDrawArrays(GL_TRIANGLES, 0, 6);*/
 
 		glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
-		glBindTexture(GL_TEXTURE_RECTANGLE, particle->texture->textureID);
+		glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
 
 		// Temporaryyyyyyyyyyyyy
 		glBegin(GL_QUADS);
