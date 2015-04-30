@@ -1,3 +1,4 @@
+#version 330
 
 in vec3 pos;
 in vec2 texpos;

@@ -20,6 +20,11 @@ GLuint vao, vbo;
 
 Renderer::Renderer(void)
 {
+	printf("Version Pilote OpenGL : %s\n", glGetString(GL_VERSION));
+	printf("Type de GPU : %s\n", glGetString(GL_RENDERER));
+	printf("Fabricant : %s\n", glGetString(GL_VENDOR));
+	printf("Version GLSL : %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+
 	glGenBuffers(1, &vbo);
 
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
