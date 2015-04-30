@@ -4,6 +4,8 @@
 #include "window.h"
 #include <Utils/utils.h>
 
+#pragma warning (disable:4244)
+
 /*
 interface.c
 
