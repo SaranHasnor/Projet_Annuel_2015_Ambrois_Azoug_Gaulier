@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleState.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Shader.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Texture.h" />
@@ -95,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Shader.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Texture.cpp" />
