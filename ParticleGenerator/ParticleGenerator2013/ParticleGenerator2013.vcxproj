@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleState.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Shader.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Texture.h" />
