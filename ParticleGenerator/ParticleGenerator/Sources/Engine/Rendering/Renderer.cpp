@@ -63,10 +63,6 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 			{
 				glUniform1i(shaderTextureKey, particle->texture->textureID);
 			}
-			else
-			{
-				printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
-			}
 
 			// Temporaryyyyyyyyyyyyy
 			glBegin(GL_QUADS);

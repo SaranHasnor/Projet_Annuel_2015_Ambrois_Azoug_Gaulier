@@ -1,7 +1,9 @@
 
+in vec2 texCoord;
+
 uniform sampler2D tex;
 
 void main(void)
 {
-	gl_FragColor = texture2D(tex, gl_PointCoord.st);
+	gl_FragColor = texture2D(tex, texCoord);
 }
