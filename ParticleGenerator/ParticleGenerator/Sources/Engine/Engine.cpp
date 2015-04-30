@@ -31,6 +31,12 @@ Engine::Engine(void)
 	_particles = _parser->parseParticlesInFile(std::string());
 
 	std::for_each(_particles->begin(), _particles->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
+
+
+	// TODO: will eventually replace above code ?
+	_emitters = _parser->parseEmittersInFile(std::string());
+
+	std::for_each(_emitters->begin(), _emitters->end(), [this](BaseEmitter *emitter) {this->_processEmitter(emitter); });
 }
 
 
@@ -74,6 +80,11 @@ void Engine::_processParticle(BaseParticle *particle)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+}
+
+void Engine::_processEmitter(BaseEmitter *emitter) 
+{
+
 }
 
 

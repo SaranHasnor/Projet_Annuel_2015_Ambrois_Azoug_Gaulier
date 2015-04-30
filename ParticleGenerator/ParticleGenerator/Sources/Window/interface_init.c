@@ -16,7 +16,7 @@ interface_init.c
 int r = 0, g = 0, b = 0;
 // Alternative, mieux ?
 // int rgb[] = {0, 0, 0};
-char* texture_path = "";
+char* texture_path;
 float particle_speed = 0;
 
 // End of interface variables
@@ -32,6 +32,8 @@ void debug(void)
 
 void createInterface(int window)
 {
+	texture_path = (char*) mem_alloc(255 * sizeof(char));
+
 	int menu_id;
 	int textField_R, textField_G, textField_B, textField_texturePath, slider_particleSpeed;
 	initInterface(window);

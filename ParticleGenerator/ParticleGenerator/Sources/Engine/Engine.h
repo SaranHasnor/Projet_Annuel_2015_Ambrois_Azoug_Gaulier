@@ -3,6 +3,7 @@
 class Renderer;
 class Parser;
 class BaseParticle;
+class BaseEmitter;
 class Shader;
 
 #include <list>
@@ -25,11 +26,13 @@ private:
 
 	std::list<BaseParticle*>* _particles;
 	std::list<Shader*>* _shaders;
+	std::list<BaseEmitter*>* _emitters;
 
 	std::string _defaultFragShader();
 	std::string _defaultVertShader();
 
 	void _processParticle(BaseParticle *particle);
+	void _processEmitter(BaseEmitter *emitter);
 	void _createProgramForShader(Shader *shader);
 };
 
