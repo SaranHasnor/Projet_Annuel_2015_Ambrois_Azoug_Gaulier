@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Shader.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Texture.cpp" />
