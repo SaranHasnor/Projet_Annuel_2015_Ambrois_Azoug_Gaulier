@@ -4,6 +4,7 @@ class Renderer;
 class Parser;
 class BaseParticle;
 class Shader;
+class ParticleEmitter;
 
 #include <list>
 
@@ -23,6 +24,7 @@ private:
 	Renderer* _renderer;
 	Parser* _parser;
 
+	std::list<ParticleEmitter*>* _emitters;
 	std::list<BaseParticle*>* _particles;
 	std::list<Shader*>* _shaders;
 
@@ -30,6 +32,7 @@ private:
 	std::string _defaultVertShader();
 
 	void _processParticle(BaseParticle *particle);
+	void _linkParticle(BaseParticle *particle);
 	void _createProgramForShader(Shader *shader);
 };
 

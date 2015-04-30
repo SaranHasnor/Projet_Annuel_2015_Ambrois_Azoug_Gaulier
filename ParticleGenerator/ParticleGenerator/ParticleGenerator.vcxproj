@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Data Models\ParticleEmitter.cpp" />
     <ClCompile Include="Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="Sources\Data Models\Shader.cpp" />
     <ClCompile Include="Sources\Engine\Engine.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="Sources\Data Models\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Data Models\ParticleEmitter.h" />
     <ClInclude Include="Sources\Data Models\ParticleState.h" />
     <ClInclude Include="Sources\Data Models\Shader.h" />
     <ClInclude Include="Sources\Engine\Engine.h" />

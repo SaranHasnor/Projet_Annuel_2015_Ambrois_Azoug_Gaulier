@@ -10,10 +10,12 @@ class BaseParticle
 {
 
 public:
-	BaseParticle(void);
+	BaseParticle(std::string name);
+	BaseParticle(BaseParticle &copy);
 	~BaseParticle(void);
 
 	std::string		name;						// Name of the particle
+	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model
 
 	float			posX, posY, posZ;			// Position of the particle
 	float			pitch, yaw, roll;			// Rotation of the particle

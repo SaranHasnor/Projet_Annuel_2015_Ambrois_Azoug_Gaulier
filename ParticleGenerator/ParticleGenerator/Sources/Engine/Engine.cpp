@@ -6,8 +6,10 @@
 #include <Data Models/BaseParticle.h>
 #include <Data Models/Shader.h>
 #include <Data Models/Texture.h>
+#include <Data Models/ParticleEmitter.h>
 
 #include <GL/glew.h>
+#include <GL/glut.h>
 
 #include <fstream>
 #include <algorithm>
@@ -29,8 +31,20 @@ Engine::Engine(void)
 	_createProgramForShader(defaultShader);
 
 	_particles = _parser->parseParticlesInFile(std::string());
+	_emitters = new std::list<ParticleEmitter*>();
 
 	std::for_each(_particles->begin(), _particles->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
+
+	// Demo
+	ParticleEmitter *defaultEmitter = new ParticleEmitter();
+	defaultEmitter->particleName = _particles->front()->name;
+	defaultEmitter->posX = defaultEmitter->posY = defaultEmitter->posZ = 0.0f;
+	defaultEmitter->randomFacingDirection = true;
+	defaultEmitter->velX = defaultEmitter->velY = 0.0f;
+	defaultEmitter->velZ = 10.0f;
+	defaultEmitter->lastSpawn = 0;
+	defaultEmitter->spawnInterval = 250;
+	_emitters->push_back(defaultEmitter);
 }
 
 
@@ -41,7 +55,51 @@ Engine::~Engine(void)
 
 void Engine::update(float deltaTime)
 {
-	
+	unsigned int currentTime = (unsigned int)glutGet(GLUT_ELAPSED_TIME);
+	std::list<BaseParticle*> deleteList = std::list<BaseParticle*>();
+
+	// Update particles
+	for (std::list<BaseParticle*>::const_iterator iterator = _particles->begin(); iterator != _particles->end(); ++iterator)
+	{
+		BaseParticle *particle = *iterator;
+
+		if (particle->linked)
+		{
+			if (currentTime < particle->spawnTime + particle->lifeTime)
+			{
+				particle->posX += particle->velX * deltaTime;
+				particle->posY += particle->velY * deltaTime;
+				particle->posZ += particle->velZ * deltaTime;
+			}
+			else
+			{
+				particle->linked = false;
+				deleteList.push_back(particle);
+			}
+		}
+	}
+
+	// Delete particles
+	for (std::list<BaseParticle*>::const_iterator iterator = deleteList.begin(); iterator != deleteList.end(); ++iterator)
+	{
+		BaseParticle *particle = *iterator;
+		_particles->remove(particle);
+		delete particle;
+	}
+
+	// Update emitters
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+	{
+		ParticleEmitter *emitter = *iterator;
+
+		if (currentTime - emitter->lastSpawn >= emitter->spawnInterval)
+		{
+			BaseParticle *newParticle = emitter->spawnParticle(*particleNamed(emitter->particleName));
+			_linkParticle(newParticle);
+			_particles->push_back(newParticle);
+			emitter->lastSpawn = currentTime;
+		}
+	}
 }
 
 
@@ -74,6 +132,12 @@ void Engine::_processParticle(BaseParticle *particle)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+}
+
+void Engine::_linkParticle(BaseParticle *particle)
+{
+	particle->linked = true;
+	particle->spawnTime = (unsigned int)glutGet(GLUT_ELAPSED_TIME);
 }
 
 

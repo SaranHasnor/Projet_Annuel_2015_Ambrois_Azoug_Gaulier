@@ -43,38 +43,42 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 	for (std::list<BaseParticle*>::const_iterator iterator = particles->begin(); iterator != particles->end(); ++iterator)
 	{
 		BaseParticle* particle = *iterator;
-		glUseProgram(particle->shader->program);
 
-		/*glBindVertexArray(vao);
+		if (particle->linked)
+		{
+			glUseProgram(particle->shader->program);
 
-		glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			/*glBindVertexArray(vao);
+
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 		
-		glDrawArrays(GL_TRIANGLES, 0, 6);*/
+			glDrawArrays(GL_TRIANGLES, 0, 6);*/
 
-		glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
-		glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
+			glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
+			glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
 
-		// Send the texture to the shader (temporarily kept here, the key should be saved elsewhere)
-		int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
-		if (shaderTextureKey != -1)
-		{
-			glUniform1i(shaderTextureKey, particle->texture->textureID);
+			// Send the texture to the shader (temporarily kept here, the key should be saved elsewhere)
+			int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
+			if (shaderTextureKey != -1)
+			{
+				glUniform1i(shaderTextureKey, particle->texture->textureID);
+			}
+			else
+			{
+				printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
+			}
+
+			// Temporaryyyyyyyyyyyyy
+			glBegin(GL_QUADS);
+			glVertex2f(-0.5f, -0.5f);
+			glVertex2f(0.5f, -0.5f);
+			glVertex2f(0.5f, 0.5f);
+			glVertex2f(-0.5f, 0.5f);
+			glEnd();
+
+			//glBindVertexArray(0);
+			//glBindBuffer(0);
 		}
-		else
-		{
-			printf("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\n");
-		}
-
-		// Temporaryyyyyyyyyyyyy
-		glBegin(GL_QUADS);
-		glVertex2f(-0.5f, -0.5f);
-		glVertex2f(0.5f, -0.5f);
-		glVertex2f(0.5f, 0.5f);
-		glVertex2f(-0.5f, 0.5f);
-		glEnd();
-
-		//glBindVertexArray(0);
-		//glBindBuffer(0);
 	}
 	glUseProgram(0);
 }
