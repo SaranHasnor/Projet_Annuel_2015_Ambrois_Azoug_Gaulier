@@ -22,7 +22,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 
 	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
 	tempParticle->shaderName = std::string("Default");
-	tempParticle->lifeTime = 100;
+	tempParticle->lifeTime = 250;
 
 	std::list<BaseParticle*> *tempList = new std::list<BaseParticle*>;
 	tempList->push_back(tempParticle);

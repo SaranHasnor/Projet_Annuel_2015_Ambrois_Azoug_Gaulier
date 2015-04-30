@@ -70,9 +70,13 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 
 			// Temporaryyyyyyyyyyyyy
 			glBegin(GL_QUADS);
+			glTexCoord2i(0, 0);
 			glVertex2f(-0.5f, -0.5f);
+			glTexCoord2i(1, 0);
 			glVertex2f(0.5f, -0.5f);
+			glTexCoord2i(1, 1);
 			glVertex2f(0.5f, 0.5f);
+			glTexCoord2i(0, 1);
 			glVertex2f(-0.5f, 0.5f);
 			glEnd();
 
