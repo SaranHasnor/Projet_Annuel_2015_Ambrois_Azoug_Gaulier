@@ -9,21 +9,19 @@
 
 #include <Utils/util_types.h>
 
-static const float temp[] = {
+static const float defaultParticleCoords[] = {
 	-0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
 	-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 	0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-	//-0.5f, 0.5f, 0.0f,
-	//0.5f, -0.5f, 0.0f,
 	0.5f, 0.5f, 0.0f, 1.0f, 1.0f
 };
 
-static const ubyte temp2[] = {
+static const ubyte defaultParticleElements[] = {
 	0, 1, 2,
 	0, 2, 3
 };
 
-GLuint vbo, ebo;
+static GLuint defaultParticleVBO, defaultParticleEBO;
 
 Renderer::Renderer(void)
 {
@@ -32,13 +30,13 @@ Renderer::Renderer(void)
 	printf("Fabricant : %s\n", glGetString(GL_VENDOR));
 	printf("Version GLSL : %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
-	glGenBuffers(1, &vbo);
-	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, 5 * 4 * sizeof(float), temp, GL_STATIC_DRAW);
+	glGenBuffers(1, &defaultParticleVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, defaultParticleVBO);
+	glBufferData(GL_ARRAY_BUFFER, 5 * 4 * sizeof(float), defaultParticleCoords, GL_STATIC_DRAW);
 
-	glGenBuffers(1, &ebo);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(ubyte), temp2, GL_STATIC_DRAW);
+	glGenBuffers(1, &defaultParticleEBO);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, defaultParticleEBO);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(ubyte), defaultParticleElements, GL_STATIC_DRAW);
 }
 
 
@@ -61,8 +59,8 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 			glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
 			glUniform1i(particle->shader->textureLocation, particle->texture->textureID);
 			
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+			glBindBuffer(GL_ARRAY_BUFFER, defaultParticleVBO);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, defaultParticleEBO);
 
 			glVertexAttribPointer(particle->shader->coordsLocation, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), NULL);
 			glEnableVertexAttribArray(particle->shader->coordsLocation);
