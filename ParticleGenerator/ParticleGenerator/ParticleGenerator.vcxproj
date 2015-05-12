@@ -95,6 +95,7 @@
     <ClInclude Include="Sources\Engine\engine_wrapper.h" />
     <ClInclude Include="Sources\Engine\Parsing\Parser.h" />
     <ClInclude Include="Sources\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="Sources\Utils\util_types.h" />
     <ClInclude Include="Sources\Window\input.h" />
     <ClInclude Include="Sources\Window\interface.h" />
     <ClInclude Include="Sources\Utils\mem.h" />

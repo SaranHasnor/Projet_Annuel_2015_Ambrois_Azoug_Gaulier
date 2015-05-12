@@ -4,14 +4,9 @@
 #ifndef _cplusplus
 #include <stdio.h>
 #include <Utils\mem.h>
+#include <Utils\util_types.h>
 #endif
 
 #pragma warning (disable:4996)	// Allow use of deprecated/unsafe functions
-
-typedef unsigned int uint;
-typedef unsigned char uchar;
-
-typedef char byte;
-typedef uchar ubyte;
 
 #endif

@@ -1,8 +1,8 @@
 #version 330
 
-in vec2 texCoord;
-
 uniform sampler2D tex;
+
+varying vec2 texCoord;
 
 void main(void)
 {

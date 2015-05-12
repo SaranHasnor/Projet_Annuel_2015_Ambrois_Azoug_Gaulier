@@ -7,16 +7,23 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
+#include <Utils/util_types.h>
+
 static const float temp[] = {
-	-1.0f, 1.0f, 0.0f,
-	-1.0f, -1.0f, 0.0f,
-	1.0f, -1.0f, 0.0f,
-	-1.0f, 1.0f, 0.0f,
-	1.0f, -1.0f, 0.0f,
-	1.0f, 1.0f, 0.0f
+	-0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
+	-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+	0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+	//-0.5f, 0.5f, 0.0f,
+	//0.5f, -0.5f, 0.0f,
+	0.5f, 0.5f, 0.0f, 1.0f, 1.0f
 };
 
-GLuint vao, vbo;
+static const ubyte temp2[] = {
+	0, 1, 2,
+	0, 2, 3
+};
+
+GLuint vbo, ebo;
 
 Renderer::Renderer(void)
 {
@@ -26,15 +33,12 @@ Renderer::Renderer(void)
 	printf("Version GLSL : %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
 
 	glGenBuffers(1, &vbo);
-
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
-	glBufferData(GL_ARRAY_BUFFER, 2 * 3 * 3 * sizeof(float), temp, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, 5 * 4 * sizeof(float), temp, GL_STATIC_DRAW);
 
-	glGenVertexArrays (1, &vao);
-	glBindVertexArray (vao);
-	
-	glVertexAttribPointer(0, 6, GL_FLOAT, GL_FALSE, 0, NULL);
-	glEnableVertexAttribArray(0);
+	glGenBuffers(1, &ebo);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(ubyte), temp2, GL_STATIC_DRAW);
 }
 
 
@@ -53,36 +57,22 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 		{
 			glUseProgram(particle->shader->program);
 
-			/*glBindVertexArray(vao);
-
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-		
-			glDrawArrays(GL_TRIANGLES, 0, 6);*/
-
 			glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
 			glBindTexture(GL_TEXTURE_2D, particle->texture->textureID);
+			glUniform1i(particle->shader->textureLocation, particle->texture->textureID);
+			
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
 
-			// Send the texture to the shader (temporarily kept here, the key should be saved elsewhere)
-			int shaderTextureKey = glGetUniformLocation(particle->shader->program, "tex");
-			if (shaderTextureKey != -1)
-			{
-				glUniform1i(shaderTextureKey, particle->texture->textureID);
-			}
+			glVertexAttribPointer(particle->shader->coordsLocation, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), NULL);
+			glEnableVertexAttribArray(particle->shader->coordsLocation);
+			glVertexAttribPointer(particle->shader->texCoordsLocation, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+			glEnableVertexAttribArray(particle->shader->texCoordsLocation);
 
-			// Temporaryyyyyyyyyyyyy
-			glBegin(GL_QUADS);
-			glTexCoord2i(0, 0);
-			glVertex2f(-0.5f, -0.5f);
-			glTexCoord2i(1, 0);
-			glVertex2f(0.5f, -0.5f);
-			glTexCoord2i(1, 1);
-			glVertex2f(0.5f, 0.5f);
-			glTexCoord2i(0, 1);
-			glVertex2f(-0.5f, 0.5f);
-			glEnd();
+			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
 
-			//glBindVertexArray(0);
-			//glBindBuffer(0);
+			//glBindBuffer(GL_ARRAY_BUFFER, 0);
+			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 	}
 	glUseProgram(0);

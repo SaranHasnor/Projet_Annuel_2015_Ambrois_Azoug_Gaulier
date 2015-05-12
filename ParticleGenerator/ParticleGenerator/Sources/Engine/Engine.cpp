@@ -229,4 +229,8 @@ void Engine::_createProgramForShader(Shader *shader)
 	printLog(prog);
 
 	shader->program = prog;
+
+	shader->textureLocation = glGetUniformLocation(shader->program, "tex");
+	shader->coordsLocation = glGetAttribLocation(shader->program, "pos");
+	shader->texCoordsLocation = glGetAttribLocation(shader->program, "texpos");
 }

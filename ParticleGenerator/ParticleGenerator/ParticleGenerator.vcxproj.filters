@@ -122,5 +122,8 @@
     <ClInclude Include="Sources\Data Models\ParticleEmitter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Utils\util_types.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
