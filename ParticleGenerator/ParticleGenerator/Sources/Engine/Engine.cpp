@@ -70,6 +70,34 @@ void Engine::update(float deltaTime)
 				particle->posX += particle->velX * deltaTime;
 				particle->posY += particle->velY * deltaTime;
 				particle->posZ += particle->velZ * deltaTime;
+
+				// Update the particle's world matrix
+				for (int i = 0; i < 16; i++)
+				{
+					if (i%5 == 0)
+					{
+						particle->modelMatrix[i] = 1.0f;
+					}
+					else if (i%4 == 3)
+					{
+						if (i == 3)
+						{
+							particle->modelMatrix[i] = particle->posX;
+						}
+						else if (i == 7)
+						{
+							particle->modelMatrix[i] = particle->posZ;
+						}
+						else if (i == 11)
+						{
+							particle->modelMatrix[i] = particle->posZ;
+						}
+					}
+					else
+					{
+						particle->modelMatrix[i] = 0;
+					}
+				}
 			}
 			else
 			{
@@ -233,4 +261,8 @@ void Engine::_createProgramForShader(Shader *shader)
 	shader->textureLocation = glGetUniformLocation(shader->program, "tex");
 	shader->coordsLocation = glGetAttribLocation(shader->program, "pos");
 	shader->texCoordsLocation = glGetAttribLocation(shader->program, "texpos");
+
+	shader->projMatLocation = glGetUniformLocation(shader->program, "projMatrix");
+	shader->viewMatLocation = glGetUniformLocation(shader->program, "viewMatrix");
+	shader->worldMatLocation = glGetUniformLocation(shader->program, "modelMatrix");
 }

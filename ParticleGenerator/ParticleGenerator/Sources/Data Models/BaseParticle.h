@@ -17,6 +17,8 @@ public:
 	std::string		name;						// Name of the particle
 	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model
 
+	float			modelMatrix[16];			// World matrix
+
 	float			posX, posY, posZ;			// Position of the particle
 	float			pitch, yaw, roll;			// Rotation of the particle
 
