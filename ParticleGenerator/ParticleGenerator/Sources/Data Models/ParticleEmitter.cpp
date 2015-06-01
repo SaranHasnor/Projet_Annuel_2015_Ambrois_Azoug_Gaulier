@@ -2,6 +2,11 @@
 
 #include "BaseParticle.h"
 
+extern "C" {
+#include <Utils\utils.h>
+#include <Utils\vec3D.h>
+}
+
 ParticleEmitter::ParticleEmitter(void)
 {
 }
@@ -15,21 +20,26 @@ ParticleEmitter::~ParticleEmitter(void)
 BaseParticle* ParticleEmitter::spawnParticle(BaseParticle& reference)
 {
 	BaseParticle *particle = new BaseParticle(reference);
+	float axis[3][3];
 
-	particle->posX = this->posX;
-	particle->posY = this->posY;
-	particle->posZ = this->posZ;
+	vectorCopy(particle->geometry.position, this->geometry.position);
 
 	if (this->randomFacingDirection)
-	{ // TODO
-		particle->pitch = 0.0f;
-		particle->yaw = 0.0f;
-		particle->roll = 0.0f;
+	{
+		vectorSet(particle->geometry.angle,
+			randomValueBetween(-90.0f, 90.0f),
+			randomValueBetween(-180.0f, 180.0f),
+			0.0f);
+	}
+	else
+	{
+		vectorCopy(particle->geometry.angle, this->geometry.angle);
 	}
 
-	particle->velX = this->velX;
-	particle->velY = this->velY;
-	particle->velZ = this->velZ;
+	AngleVectors(particle->geometry.angle, axis[0], axis[1], axis[2]);
+
+	vectorCopy(particle->geometry.velocity, this->geometry.velocity);
+	vectorRotate(particle->geometry.velocity, axis);
 
 	return particle;
 }

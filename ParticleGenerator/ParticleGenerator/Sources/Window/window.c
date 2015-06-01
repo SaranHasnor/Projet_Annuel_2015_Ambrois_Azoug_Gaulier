@@ -5,6 +5,7 @@
 #include "scene.h"
 #include "input.h"
 #include <Utils/utils.h>
+#include <Utils/vec3D.h>
 
 /*
 window.c

@@ -1,6 +1,7 @@
 #include "public.h"
 #include <GL/glut.h>
 #include "utils.h"
+#include "vec3D.h"
 
 /*
 render_utils.c

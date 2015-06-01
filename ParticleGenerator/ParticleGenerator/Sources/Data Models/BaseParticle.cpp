@@ -8,8 +8,8 @@ BaseParticle::BaseParticle(std::string name)
 	this->name = name;
 	this->linked = false;
 
-	this->velX = this->velY = this->velZ = 0.0f;
-	this->accelX = this->accelY = this->accelZ = 0.0f;
+	vectorClear(this->geometry.velocity);
+	vectorClear(this->geometry.acceleration);
 
 	this->shader = NULL;
 	this->texture = NULL;
@@ -21,8 +21,8 @@ BaseParticle::BaseParticle(BaseParticle &copy)
 	this->name = copy.name;
 	this->linked = false;
 
-	this->velX = this->velY = this->velZ = 0.0f;
-	this->accelX = this->accelY = this->accelZ = 0.0f;
+	vectorClear(this->geometry.velocity);
+	vectorClear(this->geometry.acceleration);
 
 	this->lifeTime = copy.lifeTime;
 

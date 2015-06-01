@@ -11,6 +11,10 @@
 #include <GL/glew.h>
 #include <GL/glut.h>
 
+extern "C" {
+#include <Utils/render_utils.h>
+}
+
 #include <fstream>
 #include <algorithm>
 
@@ -38,10 +42,11 @@ Engine::Engine(void)
 	// Demo
 	ParticleEmitter *defaultEmitter = new ParticleEmitter();
 	defaultEmitter->particleName = _particles->front()->name;
-	defaultEmitter->posX = defaultEmitter->posY = defaultEmitter->posZ = 0.0f;
+	vectorClear(defaultEmitter->geometry.position);
 	defaultEmitter->randomFacingDirection = true;
-	defaultEmitter->velX = defaultEmitter->velY = 0.0f;
-	defaultEmitter->velZ = 10.0f;
+	vectorSet(defaultEmitter->geometry.position, 0.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.angle, 0.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.velocity, 10.0f, 0.0f, 0.0f);
 	defaultEmitter->lastSpawn = 0;
 	defaultEmitter->spawnInterval = 250;
 	_emitters->push_back(defaultEmitter);
@@ -67,9 +72,7 @@ void Engine::update(float deltaTime)
 		{
 			if (currentTime < particle->spawnTime + particle->lifeTime)
 			{
-				particle->posX += particle->velX * deltaTime;
-				particle->posY += particle->velY * deltaTime;
-				particle->posZ += particle->velZ * deltaTime;
+				vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
 
 				// Update the particle's world matrix
 				for (int i = 0; i < 16; i++)
@@ -82,15 +85,15 @@ void Engine::update(float deltaTime)
 					{
 						if (i == 3)
 						{
-							particle->modelMatrix[i] = particle->posX;
+							particle->modelMatrix[i] = particle->geometry.position[0];
 						}
 						else if (i == 7)
 						{
-							particle->modelMatrix[i] = particle->posZ;
+							particle->modelMatrix[i] = particle->geometry.position[1];
 						}
 						else if (i == 11)
 						{
-							particle->modelMatrix[i] = particle->posZ;
+							particle->modelMatrix[i] = particle->geometry.position[2];
 						}
 					}
 					else
@@ -134,6 +137,19 @@ void Engine::update(float deltaTime)
 void Engine::render()
 {
 	_renderer->renderParticles(_particles);
+
+	// Debug: draw emitters
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+	{
+		ParticleEmitter *emitter = *iterator;
+		glPushMatrix();
+		glTranslatef(emitter->geometry.position[0], emitter->geometry.position[1], emitter->geometry.position[2]);
+		glRotatef(emitter->geometry.angle[0], 1.0f, 0.0f, 0.0f);
+		glRotatef(emitter->geometry.angle[1], 0.0f, 1.0f, 0.0f);
+		glRotatef(emitter->geometry.angle[2], 0.0f, 0.0f, 1.0f);
+		drawAxis();
+		glPopMatrix();
+	}
 }
 
 

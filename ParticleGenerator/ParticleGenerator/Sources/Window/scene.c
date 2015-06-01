@@ -35,7 +35,7 @@ void updateScene(float deltaTime)
 
 void drawScene()
 {
-	drawAxis();
+	//drawAxis();
 
 	renderEngine();
 }

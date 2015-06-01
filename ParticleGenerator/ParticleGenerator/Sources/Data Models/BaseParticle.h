@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "GeometryData.h"
+
 class ParticleState;
 class Shader;
 class Texture;
@@ -17,13 +19,9 @@ public:
 	std::string		name;						// Name of the particle
 	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model
 
-	float			modelMatrix[16];			// World matrix
+	GeometryData	geometry;					// Spatial properties of the emitter
 
-	float			posX, posY, posZ;			// Position of the particle
-	float			pitch, yaw, roll;			// Rotation of the particle
-
-	float			velX, velY, velZ;			// Velocity of the particle
-	float			accelX, accelY, accelZ;		// Acceleration applied to the particle
+	float			modelMatrix[16];			// World matrix deducted from geometry
 
 	bool			useGravity;					// Should the particle be affected by gravity?
 

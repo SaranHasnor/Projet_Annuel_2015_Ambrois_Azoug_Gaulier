@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "GeometryData.h"
+
 class BaseParticle;
 
 class ParticleEmitter
@@ -10,10 +12,9 @@ public:
 	ParticleEmitter(void);
 	~ParticleEmitter(void);
 
-	float			posX, posY, posZ;			// Position of the emitter
+	GeometryData	geometry;					// Spatial properties of the emitter
 
 	std::string		particleName;				// Name of the particle to emit
-	float			velX, velY, velZ;			// Velocity at which to emit the particles
 	bool			randomFacingDirection;		// Gives the particle a random facing direction (temporary)
 
 	unsigned int	spawnInterval;				// Interval at which to spawn particles (in milliseconds)

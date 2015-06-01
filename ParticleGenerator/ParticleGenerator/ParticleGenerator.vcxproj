@@ -68,6 +68,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Data Models\GeometryData.cpp" />
     <ClCompile Include="Sources\Data Models\ParticleEmitter.cpp" />
     <ClCompile Include="Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="Sources\Data Models\Shader.cpp" />
@@ -76,6 +77,7 @@
     <ClCompile Include="Sources\Engine\engine_wrapper.cpp" />
     <ClCompile Include="Sources\Engine\Parsing\Parser.cpp" />
     <ClCompile Include="Sources\Engine\Rendering\Renderer.cpp" />
+    <ClCompile Include="Sources\Utils\vec3D.c" />
     <ClCompile Include="Sources\Window\input.c" />
     <ClCompile Include="Sources\Window\interface.c" />
     <ClCompile Include="Sources\Window\interface_init.c" />
@@ -87,6 +89,7 @@
     <ClCompile Include="Sources\Data Models\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Sources\Data Models\GeometryData.h" />
     <ClInclude Include="Sources\Data Models\ParticleEmitter.h" />
     <ClInclude Include="Sources\Data Models\ParticleState.h" />
     <ClInclude Include="Sources\Data Models\Shader.h" />
@@ -96,6 +99,7 @@
     <ClInclude Include="Sources\Engine\Parsing\Parser.h" />
     <ClInclude Include="Sources\Engine\Rendering\Renderer.h" />
     <ClInclude Include="Sources\Utils\util_types.h" />
+    <ClInclude Include="Sources\Utils\vec3D.h" />
     <ClInclude Include="Sources\Window\input.h" />
     <ClInclude Include="Sources\Window\interface.h" />
     <ClInclude Include="Sources\Utils\mem.h" />
