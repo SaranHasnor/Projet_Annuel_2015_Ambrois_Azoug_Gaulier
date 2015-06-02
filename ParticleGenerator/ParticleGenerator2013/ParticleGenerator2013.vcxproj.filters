@@ -69,6 +69,12 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\GeometryData.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\vec3D.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Window\window.c">
@@ -120,6 +126,12 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\vec3D.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\GeometryData.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
