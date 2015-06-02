@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Data Models\GeometryData.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\ParticleState.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Data Models\Shader.h" />
@@ -88,6 +89,7 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\mem_libs.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\render_utils.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\utils.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\vec3D.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Window\input.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Window\interface.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Window\public.h" />
@@ -96,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\BaseParticle.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Data Models\GeometryData.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleEmitter.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\ParticleState.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Data Models\Shader.cpp" />
@@ -107,6 +110,7 @@
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\mem.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\render_utils.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\utils.c" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\vec3D.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Window\input.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Window\interface.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Window\interface_init.c" />
