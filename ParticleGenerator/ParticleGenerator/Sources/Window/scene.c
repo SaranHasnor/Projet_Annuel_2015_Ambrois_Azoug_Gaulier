@@ -24,11 +24,15 @@ float camAngle[3] = {DEFAULT_CAMERA_ANGLE};
 void initScene()
 {
 	initEngine();
+	scene.running = 1;
 }
 
 void updateScene(float deltaTime)
 {
-	updateEngine(deltaTime);
+	if (scene.running)
+	{
+		updateEngine(deltaTime);
+	}
 	
 	glutPostRedisplay();
 }

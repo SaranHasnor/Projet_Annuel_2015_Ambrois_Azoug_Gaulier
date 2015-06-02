@@ -25,6 +25,8 @@ Engine::Engine(void)
 	
 	_shaders = new std::list<Shader*>();
 
+	this->particleCount = 0;
+
 	Shader *defaultShader = new Shader();
 
 	defaultShader->name = std::string("Default");
@@ -46,9 +48,9 @@ Engine::Engine(void)
 	defaultEmitter->randomFacingDirection = true;
 	vectorSet(defaultEmitter->geometry.position, 0.0f, 0.0f, 0.0f);
 	vectorSet(defaultEmitter->geometry.angle, 0.0f, 0.0f, 0.0f);
-	vectorSet(defaultEmitter->geometry.velocity, 10.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.velocity, 1.0f, 0.0f, 0.0f);
 	defaultEmitter->lastSpawn = 0;
-	defaultEmitter->spawnInterval = 250;
+	defaultEmitter->spawnInterval = 150;
 	_emitters->push_back(defaultEmitter);
 }
 
@@ -116,6 +118,7 @@ void Engine::update(float deltaTime)
 		BaseParticle *particle = *iterator;
 		_particles->remove(particle);
 		delete particle;
+		this->particleCount--;
 	}
 
 	// Update emitters
@@ -124,11 +127,12 @@ void Engine::update(float deltaTime)
 		ParticleEmitter *emitter = *iterator;
 
 		if (currentTime - emitter->lastSpawn >= emitter->spawnInterval)
-		{
+		{ // Time to create a new particle
 			BaseParticle *newParticle = emitter->spawnParticle(*particleNamed(emitter->particleName));
 			_linkParticle(newParticle);
 			_particles->push_back(newParticle);
 			emitter->lastSpawn = currentTime;
+			this->particleCount++;
 		}
 	}
 }
@@ -207,9 +211,16 @@ Shader* Engine::shaderNamed(std::string name)
 }
 
 
+ParticleEmitter* Engine::emitterWithID(int emitterID)
+{
+	return _emitters->front()+emitterID;
+}
+
+
 std::string Engine::_defaultFragShader()
 {
-	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_fs.glsl");
+	//std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_fs.glsl");
+	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/sample_intensityalpha_fs.glsl"); // TEMP
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),
 		(std::istreambuf_iterator<char>()));

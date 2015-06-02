@@ -4,6 +4,7 @@
 #include "scene.h"
 #include <Utils/utils.h>
 #include "window.h"
+#include <Engine/engine_wrapper.h>
 
 /*
 interface_init.c
@@ -14,63 +15,209 @@ interface_init.c
 // Interface variables
 
 int r = 0, g = 0, b = 0;
-// Alternative, mieux ?
-// int rgb[] = {0, 0, 0};
 char* texture_path;
 float particle_speed = 0;
 
 // End of interface variables
 
-void debug(void)
+// Interface functions
+
+// Navigation
+
+void toMain(void)
 {
-	printf("--------- Debug ---------\n");
-	printf("R - G - B : %d - %d - %d\n", r, g, b);
-	printf("Texture path : %s\n", texture_path);
-	printf("Particle speed : %f\n", particle_speed);
-	printf("------- Fin Debug -------\n");
+	setMenu(0);
 }
+
+void toEmitterPicker(void)
+{
+	setMenu(1);
+}
+
+void toEmitterEditor(void)
+{
+	setMenu(2);
+}
+
+void toParticlePicker(void)
+{
+	setMenu(3);
+}
+
+void toParticleEditor(void)
+{
+	setMenu(4);
+}
+
+void toShaderPicker(void)
+{
+	setMenu(5);
+}
+
+void toShaderEditor(void)
+{
+	setMenu(6);
+}
+
+// Actions
+
+void addEmitter(void)
+{
+
+}
+
+void editEmitter(void)
+{
+	// TODO: Update the data we use
+	toEmitterEditor();
+}
+
+void delEmitter(void)
+{
+
+}
+
+void addParticle(void)
+{
+
+}
+
+void editParticle(void)
+{
+	// TODO: Update the data we use
+	toParticleEditor();
+}
+
+void delParticle(void)
+{
+
+}
+
+void addShader(void)
+{
+
+}
+
+void editShader(void)
+{
+	// TODO: Update the data we use
+	toShaderEditor();
+}
+
+void delShader(void)
+{
+
+}
+
+// End of interface functions
 
 void createInterface(int window)
 {
-	int menu_id;
-	int textField_R, textField_G, textField_B, textField_texturePath, slider_particleSpeed;
+	int curMenu, curObj;
 	initInterface(window);
 
 	texture_path = (char*)mem_alloc(255 * sizeof(char));
 	texture_path[0] = '\0';
 	
 	// Menu 0: Main menu
-	menu_id = newMenu(0, 0, NULL, NULL);
+	curMenu = newMenu(0, 0, NULL, NULL);
 	
-	// Color picking
-	newLabel(newString("Color : "), menu_id, 5, 18);
+	newLabel(newString("Main menu"), curMenu, 5, 18);
 
-	// Red
-	newLabel(newString("R"), menu_id, 5, 42);
-	textField_R = newTextField(menu_id, 20, 28, 40, 20, FIELDTYPE_INT);
-	setTextFieldValue(menu_id, textField_R, 0, 255, &r, 1);
+	newLabel(newString("Particles:"), curMenu, 5, 40);
+	curObj = newTextField(curMenu, 10, 55, 180, 20, FIELDTYPE_INT);
+	//setTextFieldValue(0, 2, 0, 0, scene.particleCount, 0);
 
-	// Green
-	newLabel(newString("G"), menu_id, 70, 42);
-	textField_G = newTextField(menu_id, 85, 28, 40, 20, FIELDTYPE_INT);
-	setTextFieldValue(menu_id, textField_G, 0, 255, &g, 1);
+	newLabel(newString("Simulation running:"), curMenu, 10, 100);
+	curObj = newCheckBox(curMenu, 170, 90, 15);
+	setCheckBoxValue(curMenu, curObj, &scene.running);
 
-	// Blue
-	newLabel(newString("B"), menu_id, 135, 42);
-	textField_B = newTextField(menu_id, 150, 28, 40, 20, FIELDTYPE_INT);
-	setTextFieldValue(menu_id, textField_B, 0, 255, &b, 1);
+	newButton(newString("Edit emitters"), curMenu, 10, 140, 180, 100, toEmitterPicker);
 
-	// Texture path
-	newLabel(newString("Texture path : "), menu_id, 5, 72);
-	textField_texturePath = newTextField(menu_id, 5, 82, 190, 20, FIELDTYPE_TEXT);
-	setTextFieldValue(menu_id, textField_texturePath, 0, 0, texture_path, 1);
 
-	// Particle speed
-	newLabel(newString("Particle speed : "), menu_id, 5, 122);
-	slider_particleSpeed = newSlider(menu_id, 5, 138, 190);
-	setSliderValue(menu_id, slider_particleSpeed, 0, 255, &particle_speed);
+
+	newButton(newString("Exit"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, quit);
+
+	// Menu 1: Emitter picker
+	curMenu = newMenu(INTERFACE_WIDTH, 0, NULL, NULL);
+
+	// Title
+	newLabel(newString("Emitters"), curMenu, 5, 18);
+
+	// List
+	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+
+	// List buttons
+	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addEmitter);
+	newButton(newString("Edit"), curMenu, 72, 370, 56, 30, editEmitter);
+	newButton(newString("Delete"), curMenu, 135, 370, 55, 30, delEmitter);
+
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toMain);
+
+	// Menu 2: Emitter editor
+	curMenu = newMenu(2 * INTERFACE_WIDTH, 0, NULL, NULL);
+
+	newLabel(newString("Emitter settings"), curMenu, 5, 18);
 	
-	newButton(newString("Debug"), menu_id, 10, DEFAULT_HEIGHT - 60, 180, 20, debug);
+	// TODO:
+	// Position
+	// Angle (or random)
+	// Particle
+	// Velocity
+	// Spawn interval
 
-	newButton(newString("Exit"), menu_id, 10, DEFAULT_HEIGHT - 30, 180, 20, quit);
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterPicker);
+
+	// Menu 3: Particle picker
+	curMenu = newMenu(3 * INTERFACE_WIDTH, 0, NULL, NULL);
+
+	// Title
+	newLabel(newString("Particles"), curMenu, 5, 18);
+
+	// List
+	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+
+	// List buttons
+	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addParticle);
+	newButton(newString("Edit"), curMenu, 72, 370, 56, 30, editParticle);
+	newButton(newString("Delete"), curMenu, 135, 370, 55, 30, delParticle);
+
+	newButton(newString("Pick"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterEditor);
+
+	// Menu 4: Particle editor
+	curMenu = newMenu(4 * INTERFACE_WIDTH, 0, NULL, NULL);
+
+	newLabel(newString("Particle settings"), curMenu, 5, 18);
+
+	// TODO:
+	// Name
+	// Position
+	// Velocity
+	// Lifetime
+	// Shader
+	
+	// Menu 5: Shader picker
+	curMenu = newMenu(5 * INTERFACE_WIDTH, 0, NULL, NULL);
+
+	// Title
+	newLabel(newString("Shader"), curMenu, 5, 18);
+
+	// List
+	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+
+	// List buttons
+	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addShader);
+	newButton(newString("Edit"), curMenu, 72, 370, 56, 30, editShader);
+	newButton(newString("Delete"), curMenu, 135, 370, 55, 30, delShader);
+
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toParticleEditor);
+
+	// Menu 6: Shader editor
+	curMenu = newMenu(6 * INTERFACE_WIDTH, 0, NULL, NULL);
+
+	newLabel(newString("Shader compiler"), curMenu, 5, 18);
+
+	// TODO: Shader text field
+
+	newButton(newString("Compile & Save"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toShaderPicker);
 }

@@ -70,9 +70,6 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 			glUniformMatrix4fv(particle->shader->worldMatLocation, 1, GL_TRUE, particle->modelMatrix);
 
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
-
-			//glBindBuffer(GL_ARRAY_BUFFER, 0);
-			//glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 		}
 	}
 	glUseProgram(0);

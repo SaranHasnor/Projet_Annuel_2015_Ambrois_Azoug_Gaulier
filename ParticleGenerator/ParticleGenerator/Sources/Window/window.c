@@ -26,6 +26,11 @@ void initRendering()
 	glEnable(GL_NORMALIZE);
 	glShadeModel(GL_SMOOTH);
 	glPointSize(1.0f);
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
+	glDepthMask(GL_FALSE);
 }
 
 void reshape(int w, int h)

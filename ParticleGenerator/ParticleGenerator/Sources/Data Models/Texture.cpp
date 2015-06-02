@@ -9,7 +9,7 @@ Texture::Texture(std::string path)
 
 	this->data = stbi_loadf(path.c_str(), &this->width, &this->height, NULL, 4);
 
-	this->textureID = 0; // TEMP
+	this->textureID = 0;
 }
 
 

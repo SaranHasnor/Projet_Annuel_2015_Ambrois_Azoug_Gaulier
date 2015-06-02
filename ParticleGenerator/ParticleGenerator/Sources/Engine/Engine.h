@@ -19,6 +19,9 @@ public:
 
 	BaseParticle* particleNamed(std::string name);
 	Shader* Engine::shaderNamed(std::string name);
+	ParticleEmitter* emitterWithID(int emitterID);
+
+	int	particleCount;
 
 private:
 	Renderer* _renderer;
