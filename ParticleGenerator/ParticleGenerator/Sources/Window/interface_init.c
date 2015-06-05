@@ -14,13 +14,57 @@ interface_init.c
 
 // Interface variables
 
-int r = 0, g = 0, b = 0;
-char* texture_path;
-float particle_speed = 0;
+int emitterPickerMenu, emitterPickerList;
+int particlePickerMenu, particlePickerList;
+int shaderPickerMenu, shaderPickerList;
 
 // End of interface variables
 
 // Interface functions
+
+// Data
+
+void updateEmitterPicker()
+{
+	int i;
+	int count = getEmitterCount();
+
+	saveListSelectedIndex(emitterPickerMenu, emitterPickerList);
+
+	clearList(emitterPickerMenu, emitterPickerList);
+
+	for (i = 0; i < count; i++)
+	{
+		addListEntry(emitterPickerMenu, emitterPickerList, NULL);
+	}
+
+	loadListSelectedIndex(emitterPickerMenu, emitterPickerList);
+}
+
+void updateEmitterEditor()
+{
+	
+}
+
+void updateParticlePicker()
+{
+	
+}
+
+void updateParticleEditor()
+{
+	
+}
+
+void updateShaderPicker()
+{
+	
+}
+
+void updateShaderEditor()
+{
+	
+}
 
 // Navigation
 
@@ -31,6 +75,7 @@ void toMain(void)
 
 void toEmitterPicker(void)
 {
+	updateEmitterPicker();
 	setMenu(1);
 }
 
@@ -41,6 +86,7 @@ void toEmitterEditor(void)
 
 void toParticlePicker(void)
 {
+	updateParticlePicker();
 	setMenu(3);
 }
 
@@ -51,6 +97,7 @@ void toParticleEditor(void)
 
 void toShaderPicker(void)
 {
+	updateShaderPicker();
 	setMenu(5);
 }
 
@@ -68,7 +115,7 @@ void addEmitter(void)
 
 void editEmitter(void)
 {
-	// TODO: Update the data we use
+	updateEmitterEditor();
 	toEmitterEditor();
 }
 
@@ -84,7 +131,7 @@ void addParticle(void)
 
 void editParticle(void)
 {
-	// TODO: Update the data we use
+	updateParticleEditor();
 	toParticleEditor();
 }
 
@@ -100,7 +147,7 @@ void addShader(void)
 
 void editShader(void)
 {
-	// TODO: Update the data we use
+	updateShaderEditor();
 	toShaderEditor();
 }
 
@@ -115,9 +162,6 @@ void createInterface(int window)
 {
 	int curMenu, curObj;
 	initInterface(window);
-
-	texture_path = (char*)mem_alloc(255 * sizeof(char));
-	texture_path[0] = '\0';
 	
 	// Menu 0: Main menu
 	curMenu = newMenu(0, 0, NULL, NULL);
@@ -146,6 +190,9 @@ void createInterface(int window)
 
 	// List
 	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+
+	emitterPickerMenu = curMenu;
+	emitterPickerList = curObj;
 
 	// List buttons
 	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addEmitter);
@@ -177,6 +224,9 @@ void createInterface(int window)
 	// List
 	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
 
+	particlePickerMenu = curMenu;
+	particlePickerList = curObj;
+
 	// List buttons
 	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addParticle);
 	newButton(newString("Edit"), curMenu, 72, 370, 56, 30, editParticle);
@@ -204,6 +254,9 @@ void createInterface(int window)
 
 	// List
 	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+
+	shaderPickerMenu = curMenu;
+	shaderPickerList = curObj;
 
 	// List buttons
 	newButton(newString("Add"), curMenu, 10, 370, 55, 30, addShader);

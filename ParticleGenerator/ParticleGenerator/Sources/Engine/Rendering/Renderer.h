@@ -10,6 +10,6 @@ public:
 	Renderer(void);
 	~Renderer(void);
 
-	void renderParticles(std::list<BaseParticle*> *particles);
+	void renderParticles(std::list<BaseParticle*> *particles, float viewMatrix[16]);
 };
 

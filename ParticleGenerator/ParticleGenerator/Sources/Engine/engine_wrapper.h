@@ -4,7 +4,7 @@ extern "C" {
 
 void initEngine();
 void updateEngine(float deltaTime);
-void renderEngine();
+void renderEngine(float viewMatrix[16]);
 
 typedef enum {
 	PART_ATTR_NAME,
@@ -42,6 +42,11 @@ typedef enum {
 
 void *particleAttribute(char *particleName, particle_attr_t attribute);
 void *emitterAttribute(int emitterID, emitter_attr_t attribute);
+
+int getActiveParticleCount();
+int getParticleModelCount();
+int getEmitterCount();
+int getShaderCount();
 
 #ifdef __cplusplus
 }

@@ -6,6 +6,7 @@
 #include "input.h"
 #include <Utils/utils.h>
 #include <Utils/vec3D.h>
+#include <Utils/mat4.h>
 
 /*
 window.c
@@ -17,6 +18,7 @@ window.c
 extern void createInterface(int window);	// from interface_init.c
 
 int window;
+float projMatrix[16];
 
 void initRendering()
 {
@@ -31,6 +33,14 @@ void initRendering()
 	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
 	glDepthMask(GL_FALSE);
+}
+
+void setPerspective(float fov, float width, float height, float near, float far)
+{
+	float aspect = width / height;
+
+	mat_perspective(projMatrix, fov, width, height, near, far);
+	gluPerspective(fov, aspect, near, far);
 }
 
 void reshape(int w, int h)
@@ -62,7 +72,7 @@ void reshape(int w, int h)
 	glViewport(0, 0,(GLsizei) w - INTERFACE_WIDTH, (GLsizei) h);
     glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(60.0, ((GLfloat)w-INTERFACE_WIDTH) / (GLfloat)h, 1.0, 200.0);
+	setPerspective(60.0f, (GLfloat)w, (GLfloat)h, 1.0f, 200.0f);
 }
 
 void display(void)

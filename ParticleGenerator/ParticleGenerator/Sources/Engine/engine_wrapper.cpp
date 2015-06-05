@@ -18,9 +18,9 @@ extern "C" void updateEngine(float deltaTime)
 	_staticEngine->update(deltaTime);
 }
 
-extern "C" void renderEngine()
+extern "C" void renderEngine(float viewMatrix[16])
 {
-	_staticEngine->render();
+	_staticEngine->render(viewMatrix);
 }
 
 extern "C" void *particleAttribute(char *particleName, particle_attr_t attribute)
@@ -110,3 +110,24 @@ extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
 		return NULL;
 	}
 }
+
+extern "C" int getActiveParticleCount()
+{
+	return _staticEngine->getActiveParticleCount();
+}
+
+extern "C" int getParticleModelCount()
+{
+	return _staticEngine->getParticleModelCount();
+}
+
+extern "C" int getEmitterCount()
+{
+	return _staticEngine->getEmitterCount();
+}
+
+extern "C" int getShaderCount()
+{
+	return _staticEngine->getShaderCount();
+}
+

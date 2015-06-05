@@ -45,7 +45,7 @@ Renderer::~Renderer(void)
 }
 
 
-void Renderer::renderParticles(std::list<BaseParticle*>* particles)
+void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMatrix[16])
 {
 	for (std::list<BaseParticle*>::const_iterator iterator = particles->begin(); iterator != particles->end(); ++iterator)
 	{
@@ -68,6 +68,7 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles)
 			glEnableVertexAttribArray(particle->shader->texCoordsLocation);
 
 			glUniformMatrix4fv(particle->shader->worldMatLocation, 1, GL_TRUE, particle->modelMatrix);
+			glUniformMatrix4fv(particle->shader->viewMatLocation, 1, GL_TRUE, viewMatrix);
 
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
 		}

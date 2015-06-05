@@ -17,7 +17,6 @@ public:
 	int					coordsLocation;		// GLSL Attrib location
 	int					texCoordsLocation;	// GLSL Attrib location
 	
-	int					projMatLocation;	// GLSL Uniform location
 	int					viewMatLocation;	// GLSL Uniform location
 	int					worldMatLocation;	// GLSL Uniform location
 };

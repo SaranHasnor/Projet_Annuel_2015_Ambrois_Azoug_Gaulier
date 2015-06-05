@@ -4,6 +4,7 @@
 #include <Utils/render_utils.h>
 #include "input.h"
 #include <Utils/utils.h>
+#include <Utils/mat4.h>
 
 #include <Engine/engine_wrapper.h>
 
@@ -37,9 +38,19 @@ void updateScene(float deltaTime)
 	glutPostRedisplay();
 }
 
+extern float projMatrix[16];
+
 void drawScene()
 {
-	//drawAxis();
+	float viewMatrix[16], tempMatrix[16];
+	mat_identity(viewMatrix);
+	if (0)
+	{ // FIXME
+		viewMatrix[14] = -15.0f;
 
-	renderEngine();
+		mat_multiply(tempMatrix, viewMatrix, projMatrix);
+
+		renderEngine(tempMatrix);
+	}
+	renderEngine(viewMatrix);
 }
