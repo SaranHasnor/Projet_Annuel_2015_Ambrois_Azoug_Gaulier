@@ -55,12 +55,14 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 		if (particle->linked)
 		{
 			ParticleState *particleState;
+			bool tempState = false;
 			
 			if (particle->defaultState)
 			{
 				if (particle->transState)
 				{
 					particleState = particle->defaultState->Lerp(*particle->transState, (float)(currentTime - particle->spawnTime) / (float)particle->lifeTime);
+					tempState = true;
 				}
 				else
 				{
@@ -68,8 +70,9 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 				}
 			}
 			else
-			{
+			{ // Shouldn't happen pleaaaase
 				particleState = new ParticleState();
+				tempState = true;
 			}
 
 			glUseProgram(particle->shader->program);
@@ -94,7 +97,10 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
 
-			delete particleState;
+			if (tempState)
+			{
+				delete particleState;
+			}
 		}
 	}
 	glUseProgram(0);

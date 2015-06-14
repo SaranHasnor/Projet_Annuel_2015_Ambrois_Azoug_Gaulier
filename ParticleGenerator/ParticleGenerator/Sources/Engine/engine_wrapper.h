@@ -52,6 +52,9 @@ void *emitterAttribute(int emitterID, emitter_attr_t attribute);
 const char *shaderName(int shaderID);
 const char *shaderText(int shaderID);
 
+short particleHasTransition(int particleID);
+void toggleParticleTransition(int particleID);
+
 int getActiveParticleCount();
 int getParticleModelCount();
 int getEmitterCount();

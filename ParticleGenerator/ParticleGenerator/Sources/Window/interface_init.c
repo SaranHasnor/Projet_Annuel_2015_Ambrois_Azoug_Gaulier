@@ -18,6 +18,24 @@ int emitterPickerMenu, emitterPickerList;
 int particlePickerMenu, particlePickerList;
 int shaderPickerMenu, shaderPickerList;
 
+int emitterEditorMenu;
+int emitterEditor_posX, emitterEditor_posY, emitterEditor_posZ;
+int emitterEditor_randomAngle;
+int emitterEditor_pitch, emitterEditor_yaw, emitterEditor_roll;
+int emitterEditor_velX, emitterEditor_velY, emitterEditor_velZ;
+int emitterEditor_particleName;
+int emitterEditor_spawnInterval;
+
+int particleEditorMenu;
+int particleEditor_particleName;
+int particleEditor_red, particleEditor_green, particleEditor_blue, particleEditor_alpha, particleEditor_scale;
+int particleEditor_lifetime;
+int particleEditor_red2, particleEditor_green2, particleEditor_blue2, particleEditor_alpha2, particleEditor_scale2;
+int particleEditor_shaderName;
+int particleEditor_texturePath;
+
+int shaderEditorMenu;
+
 // End of interface variables
 
 // Interface functions
@@ -43,7 +61,25 @@ void updateEmitterPicker()
 
 void updateEmitterEditor()
 {
-	
+	uint emitterID = getListSelectedIndex(emitterPickerMenu, emitterPickerList);
+
+	setTextFieldValue(emitterEditorMenu, emitterEditor_posX, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_POS_X), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_posY, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_POS_Y), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_posZ, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_POS_Z), 1);
+
+	setCheckBoxValue(emitterEditorMenu, emitterEditor_randomAngle, (short*)emitterAttribute(emitterID, EMIT_ATTR_RANDOM_DIR));
+
+	setTextFieldValue(emitterEditorMenu, emitterEditor_pitch, -360.0f, 360.0f, emitterAttribute(emitterID, EMIT_ATTR_PITCH), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_yaw, -360.0f, 360.0f, emitterAttribute(emitterID, EMIT_ATTR_YAW), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_roll, -360.0f, 360.0f, emitterAttribute(emitterID, EMIT_ATTR_ROLL), 1);
+
+	setTextFieldValue(emitterEditorMenu, emitterEditor_velX, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_VEL_X), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_velY, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_VEL_Y), 1);
+	setTextFieldValue(emitterEditorMenu, emitterEditor_velZ, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_VEL_Z), 1);
+
+	setTextFieldValue(emitterEditorMenu, emitterEditor_particleName, 0.0f, 0.0f, emitterAttribute(emitterID, EMIT_ATTR_PARTICLE_NAME), 0);
+
+	setTextFieldValue(emitterEditorMenu, emitterEditor_spawnInterval, 0.0f, 60000, emitterAttribute(emitterID, EMIT_ATTR_SPAWN_INTERVAL), 1);
 }
 
 void updateParticlePicker()
@@ -65,7 +101,45 @@ void updateParticlePicker()
 
 void updateParticleEditor()
 {
-	
+	uint particleID = getListSelectedIndex(particlePickerMenu, particlePickerList);
+
+	setTextFieldValue(particleEditorMenu, particleEditor_particleName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_NAME), 0);
+
+	setTextFieldValue(particleEditorMenu, particleEditor_red, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_RED), 1);
+	setTextFieldValue(particleEditorMenu, particleEditor_green, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_GREEN), 1);
+	setTextFieldValue(particleEditorMenu, particleEditor_blue, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_BLUE), 1);
+	setTextFieldValue(particleEditorMenu, particleEditor_alpha, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_ALPHA), 1);
+	setTextFieldValue(particleEditorMenu, particleEditor_scale, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_SCALE), 1);
+
+	setTextFieldValue(particleEditorMenu, particleEditor_lifetime, 0.0f, 60000.0f, particleAttribute(particleID, PART_ATTR_LIFETIME), 1);
+
+	if (particleHasTransition(particleID))
+	{
+		setTextFieldValue(particleEditorMenu, particleEditor_red2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_RED), 1);
+		setTextFieldValue(particleEditorMenu, particleEditor_green2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_GREEN), 1);
+		setTextFieldValue(particleEditorMenu, particleEditor_blue2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_BLUE), 1);
+		setTextFieldValue(particleEditorMenu, particleEditor_alpha2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_ALPHA), 1);
+		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_SCALE), 1);
+	}
+	else
+	{
+		setTextFieldValue(particleEditorMenu, particleEditor_red2, 0.0f, 1.0f, NULL, 0);
+		setTextFieldValue(particleEditorMenu, particleEditor_green2, 0.0f, 1.0f, NULL, 0);
+		setTextFieldValue(particleEditorMenu, particleEditor_blue2, 0.0f, 1.0f, NULL, 0);
+		setTextFieldValue(particleEditorMenu, particleEditor_alpha2, 0.0f, 1.0f, NULL, 0);
+		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 1.0f, NULL, 0);
+	}
+
+	setTextFieldValue(particleEditorMenu, particleEditor_shaderName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_SHADER), 0);
+	setTextFieldValue(particleEditorMenu, particleEditor_texturePath, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_TEXTURE), 0);
+}
+
+void particleTransitionButton(void)
+{
+	uint particleID = getListSelectedIndex(particlePickerMenu, particlePickerList);
+
+	toggleParticleTransition(particleID);
+	updateParticleEditor();
 }
 
 void updateShaderPicker()
@@ -229,44 +303,46 @@ void createInterface(int window)
 	// Menu 2: Emitter editor
 	curMenu = newMenu(2 * INTERFACE_WIDTH, 0, NULL, NULL);
 
+	emitterEditorMenu = curMenu;
+
 	newLabel(newString("Emitter settings"), curMenu, 5, 18);
 
 	baseY = 50;
 	newLabel(newString("Position"), curMenu, 70, baseY);
 	newLabel(newString("X"), curMenu, 10, baseY+24);
-	newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_posX = newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Y"), curMenu, 10, baseY+49);
-	newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_posY = newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Z"), curMenu, 10, baseY+74);
-	newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_posZ = newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
 
 	baseY = 170;
 	newLabel(newString("Angle"), curMenu, 30, baseY);
 	newLabel(newString("Random?"), curMenu, 110, baseY);
-	newCheckBox(curMenu, 170, baseY-12, 15);
+	emitterEditor_randomAngle = newCheckBox(curMenu, 170, baseY-12, 15);
 	newLabel(newString("Pitch"), curMenu, 10, baseY+24);
-	newTextField(curMenu, 60, baseY+10, 130, 20, FIELDTYPE_FLOAT);
+	emitterEditor_pitch = newTextField(curMenu, 60, baseY+10, 130, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Yaw"), curMenu, 10, baseY+49);
-	newTextField(curMenu, 60, baseY+35, 130, 20, FIELDTYPE_FLOAT);
+	emitterEditor_yaw = newTextField(curMenu, 60, baseY+35, 130, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Roll"), curMenu, 10, baseY+74);
-	newTextField(curMenu, 60, baseY+60, 130, 20, FIELDTYPE_FLOAT);
+	emitterEditor_roll = newTextField(curMenu, 60, baseY+60, 130, 20, FIELDTYPE_FLOAT);
 
 	baseY = 290;
 	newLabel(newString("Particle velocity"), curMenu, 30, baseY);
 	newLabel(newString("X"), curMenu, 10, baseY+24);
-	newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_velX = newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Y"), curMenu, 10, baseY+49);
-	newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_velY = newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Z"), curMenu, 10, baseY+74);
-	newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
+	emitterEditor_velZ = newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
 
 	baseY = 410;
 	newLabel(newString("Particle to spawn"), curMenu, 30, baseY);
-	newLabel(newString("Default"), curMenu, 10, baseY+30);
+	emitterEditor_particleName = newTextField(curMenu, 10, baseY+15, 110, 20, FIELDTYPE_TEXT);
 	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toParticlePicker);
 
 	newLabel(newString("Spawn interval (ms)"), curMenu, 30, baseY+70);
-	newTextField(curMenu, 10, baseY+75, 180, 20, FIELDTYPE_INT);
+	emitterEditor_spawnInterval = newTextField(curMenu, 10, baseY+75, 180, 20, FIELDTYPE_INT);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterPicker);
 
@@ -292,53 +368,55 @@ void createInterface(int window)
 	// Menu 4: Particle editor
 	curMenu = newMenu(4 * INTERFACE_WIDTH, 0, NULL, NULL);
 
+	particleEditorMenu = curMenu;
+
 	newLabel(newString("Particle settings"), curMenu, 5, 18);
 
 	baseY = 50;
 	newLabel(newString("Particle name"), curMenu, 30, baseY);
-	newTextField(curMenu, 10, baseY + 5, 180, 30, FIELDTYPE_TEXT);
+	particleEditor_particleName = newTextField(curMenu, 10, baseY + 5, 180, 30, FIELDTYPE_TEXT);
 
 	baseY = 110;
 	newLabel(newString("Display options"), curMenu, 30, baseY);
 	
 	newLabel(newString("Red"), curMenu, 10, baseY+24);
-	newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_red = newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Green"), curMenu, 10, baseY+49);
-	newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_green = newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Blue"), curMenu, 10, baseY+74);
-	newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_blue = newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Alpha"), curMenu, 10, baseY+99);
-	newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_alpha = newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Scale"), curMenu, 10, baseY+124);
-	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_scale = newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
 
 	baseY = 260;
 	newLabel(newString("Display time (ms)"), curMenu, 30, baseY);
-	newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_INT);
+	particleEditor_lifetime = newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_INT);
 
 	baseY = 310;
-	newLabel(newString("Enable transition?"), curMenu, 10, baseY);
-	newCheckBox(curMenu, 165, baseY-12, 15);
+	newLabel(newString("Transition"), curMenu, 10, baseY);
+	newButton(newString("Toggle"), curMenu, 100, baseY-14, 90, 20, particleTransitionButton);
 	
 	newLabel(newString("Red"), curMenu, 10, baseY+24);
-	newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_red2 = newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Green"), curMenu, 10, baseY+49);
-	newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_green2 = newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Blue"), curMenu, 10, baseY+74);
-	newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_blue2 = newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Alpha"), curMenu, 10, baseY+99);
-	newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_alpha2 = newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
 	newLabel(newString("Scale"), curMenu, 10, baseY+124);
-	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
+	particleEditor_scale2 = newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
 
 	baseY = 460;
 	newLabel(newString("Shader"), curMenu, 30, baseY);
-	newLabel(newString("Default"), curMenu, 10, baseY+30);
+	particleEditor_shaderName = newTextField(curMenu, 10, baseY+15, 110, 20, FIELDTYPE_TEXT);
 	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toShaderPicker);
 
 	baseY = 520;
 	newLabel(newString("Texture path"), curMenu, 30, baseY);
-	newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_TEXT);
+	particleEditor_texturePath = newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_TEXT);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toParticlePicker);
 	

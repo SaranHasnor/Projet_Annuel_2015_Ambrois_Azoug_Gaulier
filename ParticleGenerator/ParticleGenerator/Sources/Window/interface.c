@@ -1315,7 +1315,7 @@ void interfaceKeyboard(unsigned char key, int x, int y)
 					}
 				}
 
-				if (pos >= 4)
+				if (pos >= 5)
 				{
 					return;
 				}

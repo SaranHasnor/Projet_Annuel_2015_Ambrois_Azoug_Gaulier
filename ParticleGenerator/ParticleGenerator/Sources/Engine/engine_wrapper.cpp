@@ -6,6 +6,7 @@
 #include <Data Models/ParticleState.h>
 #include <Data Models/ParticleEmitter.h>
 #include <Data Models/Shader.h>
+#include <Data Models/ParticleState.h>
 
 static Engine* _staticEngine = NULL;
 
@@ -83,6 +84,25 @@ extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 		return (void*)particle->texturePath.c_str();
 	default:
 		return NULL;
+	}
+}
+
+extern "C" short particleHasTransition(int particleID)
+{
+	return _staticEngine->particleWithID(particleID)->transState != NULL;
+}
+
+extern "C" void toggleParticleTransition(int particleID)
+{
+	BaseParticle *particle = _staticEngine->particleWithID(particleID);
+	if (particle->transState != NULL)
+	{
+		delete particle->transState;
+		particle->transState = NULL;
+	}
+	else
+	{
+		particle->transState = new ParticleState();
 	}
 }
 
