@@ -312,11 +312,11 @@ void createInterface(int window)
 	newLabel(newString("Scale"), curMenu, 10, baseY+124);
 	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
 
-	baseY = 270;
+	baseY = 260;
 	newLabel(newString("Display time (ms)"), curMenu, 30, baseY);
 	newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_INT);
 
-	baseY = 330;
+	baseY = 310;
 	newLabel(newString("Enable transition?"), curMenu, 10, baseY);
 	newCheckBox(curMenu, 165, baseY-12, 15);
 	
@@ -331,10 +331,14 @@ void createInterface(int window)
 	newLabel(newString("Scale"), curMenu, 10, baseY+124);
 	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
 
-	baseY = 500;
+	baseY = 460;
 	newLabel(newString("Shader"), curMenu, 30, baseY);
 	newLabel(newString("Default"), curMenu, 10, baseY+30);
 	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toShaderPicker);
+
+	baseY = 520;
+	newLabel(newString("Texture path"), curMenu, 30, baseY);
+	newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_TEXT);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toParticlePicker);
 	

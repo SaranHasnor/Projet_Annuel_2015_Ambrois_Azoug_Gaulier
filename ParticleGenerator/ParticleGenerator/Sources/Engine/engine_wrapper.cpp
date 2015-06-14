@@ -77,6 +77,10 @@ extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 		return (void*)&particle->transState->alpha;
 	case PART_ATTR_END_SCALE:
 		return (void*)&particle->transState->scale;
+	case PART_ATTR_SHADER:
+		return (void*)particle->shaderName.c_str();
+	case PART_ATTR_TEXTURE:
+		return (void*)particle->texturePath.c_str();
 	default:
 		return NULL;
 	}
