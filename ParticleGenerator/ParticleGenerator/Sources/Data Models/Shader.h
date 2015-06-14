@@ -19,5 +19,7 @@ public:
 	
 	int					viewMatLocation;	// GLSL Uniform location
 	int					worldMatLocation;	// GLSL Uniform location
+
+	int					customRGBALocation;	// GLSL Uniform location
 };
 

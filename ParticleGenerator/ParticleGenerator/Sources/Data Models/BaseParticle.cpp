@@ -3,7 +3,6 @@
 #include "ParticleState.h"
 
 BaseParticle::BaseParticle(std::string name)
-	: defaultState(ParticleState()) , transState(ParticleState())
 {
 	this->name = name;
 	this->linked = false;
@@ -13,6 +12,9 @@ BaseParticle::BaseParticle(std::string name)
 
 	this->shader = NULL;
 	this->texture = NULL;
+
+	this->defaultState = NULL;
+	this->transState = NULL;
 }
 
 BaseParticle::BaseParticle(BaseParticle &copy)

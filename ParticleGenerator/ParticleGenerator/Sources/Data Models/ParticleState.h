@@ -11,6 +11,6 @@ public:
 	float			lightIntensity;				// Intensity of the light emitted by this particle (uses RGB)
 	float			scale;						// Scale of the particle (applied to the shader)
 
-	ParticleState&	Lerp(ParticleState& target, float percentage);
+	ParticleState*	Lerp(ParticleState& target, float percentage);
 };
 

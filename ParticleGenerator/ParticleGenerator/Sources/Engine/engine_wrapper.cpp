@@ -5,6 +5,7 @@
 #include <Data Models/BaseParticle.h>
 #include <Data Models/ParticleState.h>
 #include <Data Models/ParticleEmitter.h>
+#include <Data Models/Shader.h>
 
 static Engine* _staticEngine = NULL;
 
@@ -23,9 +24,9 @@ extern "C" void renderEngine(float viewMatrix[16])
 	_staticEngine->render(viewMatrix);
 }
 
-extern "C" void *particleAttribute(char *particleName, particle_attr_t attribute)
+extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 {
-	BaseParticle *particle = _staticEngine->particleNamed(std::string(particleName));
+	BaseParticle *particle = _staticEngine->particleWithID(particleID);
 
 	if (!particle)
 	{
@@ -57,15 +58,25 @@ extern "C" void *particleAttribute(char *particleName, particle_attr_t attribute
 	case PART_ATTR_LIFETIME:
 		return (void*)&particle->lifeTime;
 	case PART_ATTR_START_RED:
-		return (void*)&particle->defaultState.red;
+		return (void*)&particle->defaultState->red;
 	case PART_ATTR_START_GREEN:
-		return (void*)&particle->defaultState.green;
+		return (void*)&particle->defaultState->green;
 	case PART_ATTR_START_BLUE:
-		return (void*)&particle->defaultState.blue;
+		return (void*)&particle->defaultState->blue;
 	case PART_ATTR_START_ALPHA:
-		return (void*)&particle->defaultState.alpha;
+		return (void*)&particle->defaultState->alpha;
 	case PART_ATTR_START_SCALE:
-		return (void*)&particle->defaultState.scale;
+		return (void*)&particle->defaultState->scale;
+	case PART_ATTR_END_RED:
+		return (void*)&particle->transState->red;
+	case PART_ATTR_END_GREEN:
+		return (void*)&particle->transState->green;
+	case PART_ATTR_END_BLUE:
+		return (void*)&particle->transState->blue;
+	case PART_ATTR_END_ALPHA:
+		return (void*)&particle->transState->alpha;
+	case PART_ATTR_END_SCALE:
+		return (void*)&particle->transState->scale;
 	default:
 		return NULL;
 	}
@@ -111,6 +122,16 @@ extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
 	}
 }
 
+extern "C" const char *shaderName(int shaderID)
+{
+	return _staticEngine->shaderWithID(shaderID)->name.c_str();
+}
+
+extern "C" const char *shaderText(int shaderID)
+{
+	return _staticEngine->shaderWithID(shaderID)->shaderText.c_str();
+}
+
 extern "C" int getActiveParticleCount()
 {
 	return _staticEngine->getActiveParticleCount();
@@ -130,4 +151,3 @@ extern "C" int getShaderCount()
 {
 	return _staticEngine->getShaderCount();
 }
-

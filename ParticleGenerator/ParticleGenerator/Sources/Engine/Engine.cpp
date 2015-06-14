@@ -27,6 +27,8 @@ Engine::Engine(void)
 
 	_particleCount = 0;
 
+	_currentTime = 0;
+
 	Shader *defaultShader = new Shader();
 
 	defaultShader->name = std::string("Default");
@@ -63,7 +65,7 @@ Engine::~Engine(void)
 
 void Engine::update(float deltaTime)
 {
-	unsigned int currentTime = (unsigned int)glutGet(GLUT_ELAPSED_TIME);
+	_currentTime += (unsigned long)(deltaTime * 1000);
 	std::list<BaseParticle*> deleteList = std::list<BaseParticle*>();
 
 	// Update particles
@@ -73,7 +75,7 @@ void Engine::update(float deltaTime)
 
 		if (particle->linked)
 		{
-			if (currentTime < particle->spawnTime + particle->lifeTime)
+			if (_currentTime < particle->spawnTime + particle->lifeTime)
 			{
 				vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
 
@@ -127,12 +129,12 @@ void Engine::update(float deltaTime)
 	{
 		ParticleEmitter *emitter = *iterator;
 
-		if (currentTime - emitter->lastSpawn >= emitter->spawnInterval)
+		if (_currentTime - emitter->lastSpawn >= emitter->spawnInterval)
 		{ // Time to create a new particle
 			BaseParticle *newParticle = emitter->spawnParticle(*particleNamed(emitter->particleName));
 			_linkParticle(newParticle);
 			_activeParticles->push_back(newParticle);
-			emitter->lastSpawn = currentTime;
+			emitter->lastSpawn = _currentTime;
 			_particleCount++;
 		}
 	}
@@ -141,7 +143,7 @@ void Engine::update(float deltaTime)
 
 void Engine::render(float viewMatrix[16])
 {
-	_renderer->renderParticles(_activeParticles, viewMatrix);
+	_renderer->renderParticles(_activeParticles, viewMatrix, _currentTime);
 
 	// Debug: draw emitters
 	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
@@ -186,7 +188,7 @@ void Engine::_processParticle(BaseParticle *particle)
 void Engine::_linkParticle(BaseParticle *particle)
 {
 	particle->linked = true;
-	particle->spawnTime = (unsigned int)glutGet(GLUT_ELAPSED_TIME);
+	particle->spawnTime = _currentTime;
 }
 
 
@@ -198,6 +200,11 @@ BaseParticle* Engine::particleNamed(std::string name)
 		return *particleIterator;
 	}
 	return NULL;
+}
+
+BaseParticle* Engine::particleWithID(int particleID)
+{
+	return _particleModels->front()+particleID;
 }
 
 
@@ -316,4 +323,6 @@ void Engine::_createProgramForShader(Shader *shader)
 
 	shader->viewMatLocation = glGetUniformLocation(shader->program, "viewMatrix");
 	shader->worldMatLocation = glGetUniformLocation(shader->program, "modelMatrix");
+
+	shader->customRGBALocation = glGetUniformLocation(shader->program, "customColor");
 }

@@ -48,7 +48,19 @@ void updateEmitterEditor()
 
 void updateParticlePicker()
 {
-	
+	int i;
+	int count = getParticleModelCount();
+
+	saveListSelectedIndex(particlePickerMenu, particlePickerList);
+
+	clearList(particlePickerMenu, particlePickerList);
+
+	for (i = 0; i < count; i++)
+	{
+		addListEntry(particlePickerMenu, particlePickerList, (char*)particleAttribute(i, PART_ATTR_NAME));
+	}
+
+	loadListSelectedIndex(particlePickerMenu, particlePickerList);
 }
 
 void updateParticleEditor()
@@ -58,7 +70,19 @@ void updateParticleEditor()
 
 void updateShaderPicker()
 {
-	
+	int i;
+	int count = getShaderCount();
+
+	saveListSelectedIndex(shaderPickerMenu, shaderPickerList);
+
+	clearList(shaderPickerMenu, shaderPickerList);
+
+	for (i = 0; i < count; i++)
+	{
+		addListEntry(shaderPickerMenu, shaderPickerList, shaderName(i));
+	}
+
+	loadListSelectedIndex(shaderPickerMenu, shaderPickerList);
 }
 
 void updateShaderEditor()
@@ -161,6 +185,7 @@ void delShader(void)
 void createInterface(int window)
 {
 	int curMenu, curObj;
+	int baseY;
 	initInterface(window);
 	
 	// Menu 0: Main menu
@@ -205,13 +230,43 @@ void createInterface(int window)
 	curMenu = newMenu(2 * INTERFACE_WIDTH, 0, NULL, NULL);
 
 	newLabel(newString("Emitter settings"), curMenu, 5, 18);
-	
-	// TODO:
-	// Position
-	// Angle (or random)
-	// Particle
-	// Velocity
-	// Spawn interval
+
+	baseY = 50;
+	newLabel(newString("Position"), curMenu, 70, baseY);
+	newLabel(newString("X"), curMenu, 10, baseY+24);
+	newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Y"), curMenu, 10, baseY+49);
+	newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Z"), curMenu, 10, baseY+74);
+	newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
+
+	baseY = 170;
+	newLabel(newString("Angle"), curMenu, 30, baseY);
+	newLabel(newString("Random?"), curMenu, 110, baseY);
+	newCheckBox(curMenu, 170, baseY-12, 15);
+	newLabel(newString("Pitch"), curMenu, 10, baseY+24);
+	newTextField(curMenu, 60, baseY+10, 130, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Yaw"), curMenu, 10, baseY+49);
+	newTextField(curMenu, 60, baseY+35, 130, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Roll"), curMenu, 10, baseY+74);
+	newTextField(curMenu, 60, baseY+60, 130, 20, FIELDTYPE_FLOAT);
+
+	baseY = 290;
+	newLabel(newString("Particle velocity"), curMenu, 30, baseY);
+	newLabel(newString("X"), curMenu, 10, baseY+24);
+	newTextField(curMenu, 25, baseY+10, 165, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Y"), curMenu, 10, baseY+49);
+	newTextField(curMenu, 25, baseY+35, 165, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Z"), curMenu, 10, baseY+74);
+	newTextField(curMenu, 25, baseY+60, 165, 20, FIELDTYPE_FLOAT);
+
+	baseY = 410;
+	newLabel(newString("Particle to spawn"), curMenu, 30, baseY);
+	newLabel(newString("Default"), curMenu, 10, baseY+30);
+	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toParticlePicker);
+
+	newLabel(newString("Spawn interval (ms)"), curMenu, 30, baseY+70);
+	newTextField(curMenu, 10, baseY+75, 180, 20, FIELDTYPE_INT);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterPicker);
 
@@ -239,12 +294,49 @@ void createInterface(int window)
 
 	newLabel(newString("Particle settings"), curMenu, 5, 18);
 
-	// TODO:
-	// Name
-	// Position
-	// Velocity
-	// Lifetime
-	// Shader
+	baseY = 50;
+	newLabel(newString("Particle name"), curMenu, 30, baseY);
+	newTextField(curMenu, 10, baseY + 5, 180, 30, FIELDTYPE_TEXT);
+
+	baseY = 110;
+	newLabel(newString("Display options"), curMenu, 30, baseY);
+	
+	newLabel(newString("Red"), curMenu, 10, baseY+24);
+	newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Green"), curMenu, 10, baseY+49);
+	newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Blue"), curMenu, 10, baseY+74);
+	newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Alpha"), curMenu, 10, baseY+99);
+	newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Scale"), curMenu, 10, baseY+124);
+	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
+
+	baseY = 270;
+	newLabel(newString("Display time (ms)"), curMenu, 30, baseY);
+	newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_INT);
+
+	baseY = 330;
+	newLabel(newString("Enable transition?"), curMenu, 10, baseY);
+	newCheckBox(curMenu, 165, baseY-12, 15);
+	
+	newLabel(newString("Red"), curMenu, 10, baseY+24);
+	newTextField(curMenu, 55, baseY+10, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Green"), curMenu, 10, baseY+49);
+	newTextField(curMenu, 55, baseY+35, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Blue"), curMenu, 10, baseY+74);
+	newTextField(curMenu, 55, baseY+60, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Alpha"), curMenu, 10, baseY+99);
+	newTextField(curMenu, 55, baseY+85, 135, 20, FIELDTYPE_FLOAT);
+	newLabel(newString("Scale"), curMenu, 10, baseY+124);
+	newTextField(curMenu, 55, baseY+110, 135, 20, FIELDTYPE_FLOAT);
+
+	baseY = 500;
+	newLabel(newString("Shader"), curMenu, 30, baseY);
+	newLabel(newString("Default"), curMenu, 10, baseY+30);
+	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toShaderPicker);
+
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toParticlePicker);
 	
 	// Menu 5: Shader picker
 	curMenu = newMenu(5 * INTERFACE_WIDTH, 0, NULL, NULL);
@@ -271,6 +363,7 @@ void createInterface(int window)
 	newLabel(newString("Shader compiler"), curMenu, 5, 18);
 
 	// TODO: Shader text field
+	newLabel(newString("Achetez le DLC sur Steam\npour seulement 50 euros!"), curMenu, 5, 200);
 
 	newButton(newString("Compile & Save"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toShaderPicker);
 }

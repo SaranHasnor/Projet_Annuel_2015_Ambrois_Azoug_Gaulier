@@ -3,6 +3,7 @@
 #include <Data Models/BaseParticle.h>
 #include <Data Models/Shader.h>
 #include <Data Models/Texture.h>
+#include <Data Models/ParticleState.h>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -45,7 +46,7 @@ Renderer::~Renderer(void)
 }
 
 
-void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMatrix[16])
+void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMatrix[16], unsigned long currentTime)
 {
 	for (std::list<BaseParticle*>::const_iterator iterator = particles->begin(); iterator != particles->end(); ++iterator)
 	{
@@ -53,6 +54,24 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 
 		if (particle->linked)
 		{
+			ParticleState *particleState;
+			
+			if (particle->defaultState)
+			{
+				if (particle->transState)
+				{
+					particleState = particle->defaultState->Lerp(*particle->transState, (float)(currentTime - particle->spawnTime) / (float)particle->lifeTime);
+				}
+				else
+				{
+					particleState = particle->defaultState;
+				}
+			}
+			else
+			{
+				particleState = new ParticleState();
+			}
+
 			glUseProgram(particle->shader->program);
 
 			glActiveTexture(GL_TEXTURE0 + particle->texture->textureID);
@@ -70,7 +89,12 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 			glUniformMatrix4fv(particle->shader->worldMatLocation, 1, GL_TRUE, particle->modelMatrix);
 			glUniformMatrix4fv(particle->shader->viewMatLocation, 1, GL_TRUE, viewMatrix);
 
+			glUniform4f(particle->shader->customRGBALocation, particleState->red, particleState->green, particleState->blue, particleState->alpha);
+			// TODO: Scale
+
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
+
+			delete particleState;
 		}
 	}
 	glUseProgram(0);

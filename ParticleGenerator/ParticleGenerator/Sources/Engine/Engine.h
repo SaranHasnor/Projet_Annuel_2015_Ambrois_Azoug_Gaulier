@@ -18,6 +18,7 @@ public:
 	void render(float viewMatrix[16]);	// Render function, should be called from an OpenGL rendering context
 
 	BaseParticle* particleNamed(std::string name);
+	BaseParticle* particleWithID(int particleID);
 	Shader* shaderNamed(std::string name);
 	Shader* shaderWithID(int shaderID);
 	ParticleEmitter* emitterWithID(int emitterID);
@@ -40,6 +41,8 @@ private:
 	std::string _defaultVertShader();
 
 	int _particleCount;
+
+	unsigned long _currentTime;
 
 	void _processParticle(BaseParticle *particle);
 	void _linkParticle(BaseParticle *particle);

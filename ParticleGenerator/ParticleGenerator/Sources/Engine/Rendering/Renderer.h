@@ -10,6 +10,6 @@ public:
 	Renderer(void);
 	~Renderer(void);
 
-	void renderParticles(std::list<BaseParticle*> *particles, float viewMatrix[16]);
+	void renderParticles(std::list<BaseParticle*>* particles, float viewMatrix[16], unsigned long currentTime);
 };
 

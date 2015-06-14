@@ -22,7 +22,12 @@ typedef enum {
 	PART_ATTR_START_GREEN,
 	PART_ATTR_START_BLUE,
 	PART_ATTR_START_ALPHA,
-	PART_ATTR_START_SCALE
+	PART_ATTR_START_SCALE,
+	PART_ATTR_END_RED,
+	PART_ATTR_END_GREEN,
+	PART_ATTR_END_BLUE,
+	PART_ATTR_END_ALPHA,
+	PART_ATTR_END_SCALE
 } particle_attr_t;
 
 typedef enum {
@@ -40,8 +45,10 @@ typedef enum {
 	EMIT_ATTR_RANDOM_DIR
 } emitter_attr_t;
 
-void *particleAttribute(char *particleName, particle_attr_t attribute);
+void *particleAttribute(int particleID, particle_attr_t attribute);
 void *emitterAttribute(int emitterID, emitter_attr_t attribute);
+const char *shaderName(int shaderID);
+const char *shaderText(int shaderID);
 
 int getActiveParticleCount();
 int getParticleModelCount();

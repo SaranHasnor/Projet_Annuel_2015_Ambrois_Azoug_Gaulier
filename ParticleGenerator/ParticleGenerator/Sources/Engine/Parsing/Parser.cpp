@@ -3,6 +3,7 @@
 #include <Data Models/BaseParticle.h>
 #include <Data Models/Shader.h>
 #include <Data Models/Texture.h>
+#include <Data Models/ParticleState.h>
 
 
 Parser::Parser(void)
@@ -23,6 +24,9 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
 	tempParticle->shaderName = std::string("Default");
 	tempParticle->lifeTime = 1000;
+	tempParticle->defaultState = new ParticleState();
+	tempParticle->transState = new ParticleState();
+	tempParticle->transState->alpha = 0.0f;
 
 	std::list<BaseParticle*> *tempList = new std::list<BaseParticle*>;
 	tempList->push_back(tempParticle);
