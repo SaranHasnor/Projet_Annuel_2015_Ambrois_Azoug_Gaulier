@@ -60,6 +60,12 @@ int getParticleModelCount();
 int getEmitterCount();
 int getShaderCount();
 
+void createEmitter();
+void destroyEmitter(int emitterID);
+void setEmitterParticle(int emitterID, int particleID);
+void createParticle();
+void destroyParticle(int particleID);
+
 #ifdef __cplusplus
 }
 #endif

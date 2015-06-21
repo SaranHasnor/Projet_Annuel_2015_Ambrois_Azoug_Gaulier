@@ -6,8 +6,14 @@
 
 Ce projet est un moteur OpenGL permettant d'afficher et modifier des effets de particules.
 
-Dans son état actuel, l'affichage n'est pas fonctionnel. Le rendu des particules n'a pas été terminé, ce qui empêche de constater ce qu'il se passe.
-La scène contient un émetteur de particules qui crée toutes les 0.25 secondes une particule qui dure elle aussi 0.25 secondes, ainsi une particule est affichée en permanence.
-Ces particules apparaissent en position 0,0,0 et avancent de 10 unités par secondes sur l'axe Z.
+L'interface présente à droite permet d'afficher plusieurs émetteurs de particules, de modifier leurs propriétés, les particules qu'ils émettent, etc.
 
-Tous ces paramètres sont réglables depuis le code, et une interface est en cours de réalisation pour permettre de les modifier en temps réel.
+Les paramètres devraient être plutôt clairs et nous avons confiance en l'ergonomie de notre interface, nous vous invitons donc à tester les possibilités par vous même :)
+
+
+Points à améliorer:
+
+- La projection est imparfaite
+- Il n'est pas encore possible de modifier la texture utilisée par les particules ou de renommer les particules
+- La sauvegarde et le chargement de particules ne sont pas encore supportés
+- L'éditeur de shader n'est pas encore fonctionnel

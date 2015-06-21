@@ -28,6 +28,11 @@ public:
 	int getEmitterCount();
 	int getShaderCount();
 
+	void createEmitter();
+	void destroyEmitter(int emitterID);
+	void createParticle();
+	void destroyParticle(int particleID);
+
 private:
 	Renderer* _renderer;
 	Parser* _parser;

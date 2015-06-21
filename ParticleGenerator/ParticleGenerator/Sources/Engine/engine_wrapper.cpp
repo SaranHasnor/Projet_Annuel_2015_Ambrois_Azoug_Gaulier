@@ -118,7 +118,7 @@ extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
 	switch (attribute)
 	{
 	case EMIT_ATTR_PARTICLE_NAME:
-		return (void*)emitter->particleName.c_str();
+		return (void*)emitter->particleModel->name.c_str();
 	case EMIT_ATTR_POS_X:
 		return (void*)&emitter->geometry.position[0];
 	case EMIT_ATTR_POS_Y:
@@ -174,4 +174,29 @@ extern "C" int getEmitterCount()
 extern "C" int getShaderCount()
 {
 	return _staticEngine->getShaderCount();
+}
+
+extern "C" void createEmitter()
+{
+	_staticEngine->createEmitter();
+}
+
+extern "C" void destroyEmitter(int emitterID)
+{
+	_staticEngine->destroyEmitter(emitterID);
+}
+
+extern "C" void setEmitterParticle(int emitterID, int particleID)
+{
+	_staticEngine->emitterWithID(emitterID)->particleModel = _staticEngine->particleWithID(particleID);
+}
+
+extern "C" void createParticle()
+{
+	_staticEngine->createParticle();
+}
+
+extern "C" void destroyParticle(int particleID)
+{
+	_staticEngine->destroyParticle(particleID);
 }

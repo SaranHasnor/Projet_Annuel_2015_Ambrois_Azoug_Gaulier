@@ -4,6 +4,7 @@
 #include "Parsing/Parser.h"
 
 #include <Data Models/BaseParticle.h>
+#include <Data Models/ParticleState.h>
 #include <Data Models/Shader.h>
 #include <Data Models/Texture.h>
 #include <Data Models/ParticleEmitter.h>
@@ -39,22 +40,15 @@ Engine::Engine(void)
 	_createProgramForShader(defaultShader);
 
 	_emitters = new std::list<ParticleEmitter*>();
-	_particleModels = _parser->parseParticlesInFile(std::string());
-	_activeParticles = new std::list<BaseParticle*>();
-
+	
+	_particleModels = new std::list<BaseParticle*>(); //_parser->parseParticlesInFile(std::string());
 	std::for_each(_particleModels->begin(), _particleModels->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
 
+	_activeParticles = new std::list<BaseParticle*>();
+
 	// Demo
-	ParticleEmitter *defaultEmitter = new ParticleEmitter();
-	defaultEmitter->particleName = _particleModels->front()->name;
-	vectorClear(defaultEmitter->geometry.position);
-	defaultEmitter->randomFacingDirection = true;
-	vectorSet(defaultEmitter->geometry.position, 0.0f, 0.0f, 0.0f);
-	vectorSet(defaultEmitter->geometry.angle, 0.0f, 0.0f, 0.0f);
-	vectorSet(defaultEmitter->geometry.velocity, 1.0f, 0.0f, 0.0f);
-	defaultEmitter->lastSpawn = 0;
-	defaultEmitter->spawnInterval = 150;
-	_emitters->push_back(defaultEmitter);
+	createParticle();
+	createEmitter();
 }
 
 
@@ -78,34 +72,6 @@ void Engine::update(float deltaTime)
 			if (_currentTime < particle->spawnTime + particle->lifeTime)
 			{
 				vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
-
-				// Update the particle's world matrix
-				for (int i = 0; i < 16; i++)
-				{
-					if (i%5 == 0)
-					{
-						particle->modelMatrix[i] = 1.0f;
-					}
-					else if (i%4 == 3)
-					{
-						if (i == 3)
-						{
-							particle->modelMatrix[i] = particle->geometry.position[0];
-						}
-						else if (i == 7)
-						{
-							particle->modelMatrix[i] = particle->geometry.position[1];
-						}
-						else if (i == 11)
-						{
-							particle->modelMatrix[i] = particle->geometry.position[2];
-						}
-					}
-					else
-					{
-						particle->modelMatrix[i] = 0;
-					}
-				}
 			}
 			else
 			{
@@ -131,7 +97,7 @@ void Engine::update(float deltaTime)
 
 		if (_currentTime - emitter->lastSpawn >= emitter->spawnInterval)
 		{ // Time to create a new particle
-			BaseParticle *newParticle = emitter->spawnParticle(*particleNamed(emitter->particleName));
+			BaseParticle *newParticle = emitter->spawnParticle(*emitter->particleModel);
 			_linkParticle(newParticle);
 			_activeParticles->push_back(newParticle);
 			emitter->lastSpawn = _currentTime;
@@ -159,6 +125,73 @@ void Engine::render(float viewMatrix[16])
 	}
 }
 
+void Engine::createEmitter()
+{
+	ParticleEmitter *defaultEmitter = new ParticleEmitter();
+
+	defaultEmitter->particleModel = _particleModels->front();
+	vectorClear(defaultEmitter->geometry.position);
+	defaultEmitter->randomFacingDirection = true;
+	vectorSet(defaultEmitter->geometry.position, 0.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.angle, 0.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.velocity, 1.0f, 0.0f, 0.0f);
+	defaultEmitter->lastSpawn = 0;
+	defaultEmitter->spawnInterval = 150;
+
+	_emitters->push_back(defaultEmitter);
+}
+
+void Engine::destroyEmitter(int emitterID)
+{
+	ParticleEmitter *emitter = emitterWithID(emitterID);
+	_emitters->remove(emitter);
+	delete emitter;
+}
+
+void Engine::createParticle()
+{
+	BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
+
+	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
+	tempParticle->shaderName = std::string("Default");
+	tempParticle->lifeTime = 1000;
+	tempParticle->defaultState = new ParticleState();
+	tempParticle->transState = new ParticleState();
+	tempParticle->transState->alpha = 0.0f;
+
+	_processParticle(tempParticle);
+
+	_particleModels->push_back(tempParticle);
+}
+
+void Engine::destroyParticle(int particleID)
+{
+	BaseParticle *particle = particleWithID(particleID);
+	_particleModels->remove(particle);
+
+	// Find the emitters that used it and update them
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+	{
+		ParticleEmitter *emitter = *iterator;
+
+		if (emitter->particleModel == particle)
+		{
+			emitter->particleModel = _particleModels->front();
+		}
+	}
+
+	if (particle->defaultState)
+	{
+		delete particle->defaultState;
+	}
+	
+	if (particle->transState)
+	{
+		delete particle->transState;
+	}
+
+	delete particle;
+}
 
 void Engine::_processParticle(BaseParticle *particle)
 {
@@ -191,7 +224,6 @@ void Engine::_linkParticle(BaseParticle *particle)
 	particle->spawnTime = _currentTime;
 }
 
-
 BaseParticle* Engine::particleNamed(std::string name)
 {
 	std::list<BaseParticle*>::iterator particleIterator = std::find_if(_particleModels->begin(), _particleModels->end(), [name](BaseParticle* particle){ return particle->name == name; });
@@ -204,7 +236,9 @@ BaseParticle* Engine::particleNamed(std::string name)
 
 BaseParticle* Engine::particleWithID(int particleID)
 {
-	return _particleModels->front()+particleID;
+	std::list<BaseParticle*>::iterator iter = _particleModels->begin();
+	std::advance(iter, particleID);
+	return *iter;
 }
 
 
@@ -220,13 +254,17 @@ Shader* Engine::shaderNamed(std::string name)
 
 Shader* Engine::shaderWithID(int shaderID)
 {
-	return _shaders->front()+shaderID;
+	std::list<Shader*>::iterator iter = _shaders->begin();
+	std::advance(iter, shaderID);
+	return *iter;
 }
 
 
 ParticleEmitter* Engine::emitterWithID(int emitterID)
 {
-	return _emitters->front()+emitterID;
+	std::list<ParticleEmitter*>::iterator iter = _emitters->begin();
+	std::advance(iter, emitterID);
+	return *iter;
 }
 
 int Engine::getParticleModelCount()
@@ -321,8 +359,10 @@ void Engine::_createProgramForShader(Shader *shader)
 	shader->coordsLocation = glGetAttribLocation(shader->program, "pos");
 	shader->texCoordsLocation = glGetAttribLocation(shader->program, "texpos");
 
+	shader->positionLocation = glGetUniformLocation(shader->program, "particlePos");
+	shader->angleLocation = glGetUniformLocation(shader->program, "particleAngle");
+
 	shader->viewMatLocation = glGetUniformLocation(shader->program, "viewMatrix");
-	shader->worldMatLocation = glGetUniformLocation(shader->program, "modelMatrix");
 
 	shader->customRGBALocation = glGetUniformLocation(shader->program, "customColor");
 }

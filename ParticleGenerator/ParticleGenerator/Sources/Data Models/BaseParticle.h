@@ -21,8 +21,6 @@ public:
 
 	GeometryData	geometry;					// Spatial properties of the emitter
 
-	float			modelMatrix[16];			// World matrix deducted from geometry
-
 	bool			useGravity;					// Should the particle be affected by gravity?
 
 	unsigned int	collisionFlags;				// Physical layers the particle can collide with
