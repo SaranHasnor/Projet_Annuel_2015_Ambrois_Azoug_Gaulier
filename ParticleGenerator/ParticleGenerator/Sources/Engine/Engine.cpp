@@ -143,7 +143,9 @@ void Engine::createEmitter()
 
 void Engine::destroyEmitter(int emitterID)
 {
-	_emitters->remove(_emitters->front()+emitterID);
+	ParticleEmitter *emitter = emitterWithID(emitterID);
+	_emitters->remove(emitter);
+	delete emitter;
 }
 
 void Engine::createParticle()
@@ -164,10 +166,32 @@ void Engine::createParticle()
 
 void Engine::destroyParticle(int particleID)
 {
-	_particleModels->remove(_particleModels->front()+particleID);
+	BaseParticle *particle = particleWithID(particleID);
+	_particleModels->remove(particle);
+
+	// Find the emitters that used it and update them
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+	{
+		ParticleEmitter *emitter = *iterator;
+
+		if (emitter->particleModel == particle)
+		{
+			emitter->particleModel = _particleModels->front();
+		}
+	}
+
+	if (particle->defaultState)
+	{
+		delete particle->defaultState;
+	}
+	
+	if (particle->transState)
+	{
+		delete particle->transState;
+	}
+
+	delete particle;
 }
-
-
 
 void Engine::_processParticle(BaseParticle *particle)
 {
@@ -199,7 +223,6 @@ void Engine::_linkParticle(BaseParticle *particle)
 	particle->linked = true;
 	particle->spawnTime = _currentTime;
 }
-
 
 BaseParticle* Engine::particleNamed(std::string name)
 {

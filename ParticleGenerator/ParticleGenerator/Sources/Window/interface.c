@@ -1357,9 +1357,6 @@ void reshapeInterface(int w, int h)
 
 void initInterface(int window)
 {
-	//clipboard = (keyFrame_t*)mem_alloc(sizeof(keyFrame_t));
-	//clipboard->name = NULL;
-
 	renameString = NULL;
 
 	_interface.menus = NULL;

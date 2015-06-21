@@ -248,7 +248,9 @@ void delParticle(void)
 	if (id != 0)
 	{
 		destroyParticle(id);
+		updateEmitterEditor();
 		updateParticlePicker();
+		updateParticleEditor();
 	}
 }
 
