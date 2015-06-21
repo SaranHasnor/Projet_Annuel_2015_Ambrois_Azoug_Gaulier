@@ -208,7 +208,8 @@ void toShaderEditor(void)
 
 void addEmitter(void)
 {
-
+	createEmitter();
+	updateEmitterPicker();
 }
 
 void editEmitter(void)
@@ -219,12 +220,20 @@ void editEmitter(void)
 
 void delEmitter(void)
 {
+	destroyEmitter(getListSelectedIndex(emitterPickerMenu, emitterPickerList));
+	updateEmitterPicker();
+}
 
+void setSelectedParticle(uint particleID)
+{
+	setEmitterParticle(getListSelectedIndex(emitterPickerMenu, emitterPickerList), particleID);
+	updateEmitterEditor();
 }
 
 void addParticle(void)
 {
-
+	createParticle();
+	updateParticlePicker();
 }
 
 void editParticle(void)
@@ -235,12 +244,18 @@ void editParticle(void)
 
 void delParticle(void)
 {
-
+	uint id = getListSelectedIndex(particlePickerMenu, particlePickerList);
+	if (id != 0)
+	{
+		destroyParticle(id);
+		updateParticlePicker();
+	}
 }
 
 void addShader(void)
 {
-
+	// TODO
+	updateShaderPicker();
 }
 
 void editShader(void)
@@ -251,7 +266,8 @@ void editShader(void)
 
 void delShader(void)
 {
-
+	// TODO
+	updateShaderPicker();
 }
 
 // End of interface functions
@@ -353,7 +369,7 @@ void createInterface(int window)
 	newLabel(newString("Particles"), curMenu, 5, 18);
 
 	// List
-	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+	curObj = newList(curMenu, 10, 25, 180, 330, setSelectedParticle);
 
 	particlePickerMenu = curMenu;
 	particlePickerList = curObj;

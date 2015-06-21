@@ -89,7 +89,9 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 			glVertexAttribPointer(particle->shader->texCoordsLocation, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 			glEnableVertexAttribArray(particle->shader->texCoordsLocation);
 
-			glUniformMatrix4fv(particle->shader->worldMatLocation, 1, GL_TRUE, particle->modelMatrix);
+			glUniform3fv(particle->shader->positionLocation, 1, particle->geometry.position);
+			glUniform1f(particle->shader->angleLocation, 0.0f); // TODO
+
 			glUniformMatrix4fv(particle->shader->viewMatLocation, 1, GL_TRUE, viewMatrix);
 
 			glUniform4f(particle->shader->customRGBALocation, particleState->red, particleState->green, particleState->blue, particleState->alpha);

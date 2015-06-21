@@ -12,21 +12,24 @@ void mat_perspective(float mat[16], float fov, float width, float height, float 
 	float xmin = -xymax;
 	float depth = far - near;
 	float q = -(far + near) / depth;
-	float qn = -2.0f * near / depth;
+	//float qn = -2.0f * near / depth;
+	float qn = -2.0f * far * near / depth;
 	float w, h;
 
 	width = xymax - xmin;
 	height = xymax - ymin;
 
-	w = (2.0f * near / width) / depth;
-	h = 2.0f * near / height;
+	//w = (2.0f * near / width) / depth;
+	w = near / xymax;
+	//h = 2.0f * near / height;
+	h = near / xymax;
 
 	memset(mat, 0, sizeof(float) * 16);
 	mat[0] = w;
 	mat[5] = h;
 	mat[10] = q;
-	mat[11] = -1.0f;
-	mat[14] = qn;
+	mat[11] = qn;
+	mat[14] = -1.0f;
 }
 
 void mat_identity(float mat[16])

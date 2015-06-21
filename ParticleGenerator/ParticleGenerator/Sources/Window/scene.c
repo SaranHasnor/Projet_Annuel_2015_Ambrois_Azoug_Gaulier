@@ -4,6 +4,7 @@
 #include <Utils/render_utils.h>
 #include "input.h"
 #include <Utils/utils.h>
+#include <Utils/vec3D.h>
 #include <Utils/mat4.h>
 
 #include <Engine/engine_wrapper.h>
@@ -42,15 +43,27 @@ extern float projMatrix[16];
 
 void drawScene()
 {
-	float viewMatrix[16], tempMatrix[16];
-	mat_identity(viewMatrix);
-	if (0)
-	{ // FIXME
-		viewMatrix[14] = -15.0f;
+	int i;
+	float viewMatrix[16];
+	float viewProjMatrix[16];
+	float fwd[3], right[3], up[3];
 
-		mat_multiply(tempMatrix, viewMatrix, projMatrix);
+	AngleVectors(camAngle, fwd, right, up);
 
-		renderEngine(tempMatrix);
+	for (i = 0; i < 3; i++)
+	{
+		viewMatrix[4*i+0] = right[i];
+		viewMatrix[4*i+1] = up[i];
+		viewMatrix[4*i+2] = fwd[i];
+		viewMatrix[4*i+3] = 0.0f;
 	}
-	renderEngine(viewMatrix);
+
+	viewMatrix[4*i+0] = -vectorDot(right, camPos);
+	viewMatrix[4*i+1] = -vectorDot(up, camPos);
+	viewMatrix[4*i+2] = vectorDot(fwd, camPos);
+	viewMatrix[4*i+3] = 1.0f;
+
+	mat_multiply(viewProjMatrix, projMatrix, viewMatrix);
+
+	renderEngine(viewProjMatrix);
 }

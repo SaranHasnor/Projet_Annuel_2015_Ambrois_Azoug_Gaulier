@@ -14,7 +14,7 @@ public:
 
 	GeometryData	geometry;					// Spatial properties of the emitter
 
-	std::string		particleName;				// Name of the particle to emit
+	BaseParticle	*particleModel;				// Model of the particle to emit
 	bool			randomFacingDirection;		// Gives the particle a random facing direction (temporary)
 
 	unsigned int	spawnInterval;				// Interval at which to spawn particles (in milliseconds)
