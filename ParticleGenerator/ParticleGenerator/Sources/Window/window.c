@@ -79,6 +79,8 @@ void display(void)
 {
 	float forward[3], right[3], camLookPos[3];
 
+	glDepthMask(GL_TRUE);
+
 	// Frame initialization
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
 	glMatrixMode(GL_MODELVIEW);
@@ -93,6 +95,8 @@ void display(void)
 	gluLookAt((double)camPos[0], (double)camPos[1], (double)camPos[2],
 		(double)camLookPos[0], (double)camLookPos[1], (double)camLookPos[2],
 		(double)axis[2][0], (double)axis[2][1], (double)axis[2][2]);
+
+	glDepthMask(GL_FALSE);
 
 	// Draw the scene
 	drawScene();
