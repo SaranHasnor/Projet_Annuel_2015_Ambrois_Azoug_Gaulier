@@ -151,9 +151,9 @@ extern "C" const char *shaderName(int shaderID)
 	return _staticEngine->shaderWithID(shaderID)->name.c_str();
 }
 
-extern "C" const char *shaderText(int shaderID)
+extern "C" const char *shaderPath(int shaderID)
 {
-	return _staticEngine->shaderWithID(shaderID)->shaderText.c_str();
+	return _staticEngine->shaderWithID(shaderID)->path.c_str();
 }
 
 extern "C" int getActiveParticleCount()
@@ -199,4 +199,27 @@ extern "C" void createParticle()
 extern "C" void destroyParticle(int particleID)
 {
 	_staticEngine->destroyParticle(particleID);
+}
+
+extern "C" void setParticleShader(int particleID, int shaderID)
+{
+	Shader *shader = _staticEngine->shaderWithID(shaderID);
+	BaseParticle *particle = _staticEngine->particleWithID(particleID);
+	particle->shaderName = shader->name;
+	particle->shader = shader;
+}
+
+extern "C" void createShader()
+{
+	_staticEngine->createShader();
+}
+
+extern "C" void destroyShader(int shaderID)
+{
+	_staticEngine->destroyShader(shaderID);
+}
+
+extern "C" void reloadShader(int shaderID)
+{
+	_staticEngine->shaderWithID(shaderID)->compiled = false;
 }
