@@ -117,19 +117,19 @@ void keyboard(unsigned char key, int x, int y)
 			break;
 		case 'Z':
 		case 'z':
-			moveDir[0] = 1.0f;
+			moveDir[1] = 1.0f;
 			break;
 		case 'Q':
 		case 'q':
-			moveDir[1] = -1.0f;
+			moveDir[0] = -1.0f;
 			break;
 		case 'S':
 		case 's':
-			moveDir[0] = -1.0f;
+			moveDir[1] = -1.0f;
 			break;
 		case 'D':
 		case 'd':
-			moveDir[1] = 1.0f;
+			moveDir[0] = 1.0f;
 			break;
 		case ' ':
 			moveDir[2] = 1.0f;

@@ -5,7 +5,7 @@
 BaseParticle::BaseParticle(std::string name)
 {
 	this->name = name;
-	this->linked = false;
+	this->processed = false;
 
 	vectorClear(this->geometry.velocity);
 	vectorClear(this->geometry.acceleration);
@@ -21,7 +21,7 @@ BaseParticle::BaseParticle(BaseParticle &copy)
 	: defaultState(copy.defaultState) , transState(copy.transState)
 {
 	this->name = copy.name;
-	this->linked = false;
+	this->processed = copy.processed;
 
 	vectorClear(this->geometry.velocity);
 	vectorClear(this->geometry.acceleration);

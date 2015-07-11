@@ -17,7 +17,7 @@ extern float camAngle[3];
 
 void initScene();
 void updateScene(float deltaTime);
-void drawScene();
+void drawScene(float viewProjMatrix[16]);
 
 
 #endif

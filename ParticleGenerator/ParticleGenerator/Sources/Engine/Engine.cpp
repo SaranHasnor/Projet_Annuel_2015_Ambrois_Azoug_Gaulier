@@ -42,7 +42,7 @@ Engine::Engine(void)
 	_emitters = new std::list<ParticleEmitter*>();
 	
 	_particleModels = new std::list<BaseParticle*>(); //_parser->parseParticlesInFile(std::string());
-	std::for_each(_particleModels->begin(), _particleModels->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
+	//std::for_each(_particleModels->begin(), _particleModels->end(), [this](BaseParticle *particle){ this->_processParticle(particle); });
 
 	_activeParticles = new std::list<BaseParticle*>();
 
@@ -62,22 +62,29 @@ void Engine::update(float deltaTime)
 	_currentTime += (unsigned long)(deltaTime * 1000);
 	std::list<BaseParticle*> deleteList = std::list<BaseParticle*>();
 
+	// Process new models
+	for (std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator)
+	{
+		BaseParticle *particle = *iterator;
+		
+		if (!particle->processed)
+		{
+			_processParticle(particle);
+		}
+	}
+
 	// Update particles
 	for (std::list<BaseParticle*>::const_iterator iterator = _activeParticles->begin(); iterator != _activeParticles->end(); ++iterator)
 	{
 		BaseParticle *particle = *iterator;
 
-		if (particle->linked)
+		if (_currentTime < particle->spawnTime + particle->lifeTime)
 		{
-			if (_currentTime < particle->spawnTime + particle->lifeTime)
-			{
-				vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
-			}
-			else
-			{
-				particle->linked = false;
-				deleteList.push_back(particle);
-			}
+			vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
+		}
+		else
+		{
+			deleteList.push_back(particle);
 		}
 	}
 
@@ -98,7 +105,7 @@ void Engine::update(float deltaTime)
 		if (_currentTime - emitter->lastSpawn >= emitter->spawnInterval)
 		{ // Time to create a new particle
 			BaseParticle *newParticle = emitter->spawnParticle(*emitter->particleModel);
-			_linkParticle(newParticle);
+			newParticle->spawnTime = _currentTime;
 			_activeParticles->push_back(newParticle);
 			emitter->lastSpawn = _currentTime;
 			_particleCount++;
@@ -159,8 +166,6 @@ void Engine::createParticle()
 	tempParticle->transState = new ParticleState();
 	tempParticle->transState->alpha = 0.0f;
 
-	_processParticle(tempParticle);
-
 	_particleModels->push_back(tempParticle);
 }
 
@@ -216,12 +221,8 @@ void Engine::_processParticle(BaseParticle *particle)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-}
 
-void Engine::_linkParticle(BaseParticle *particle)
-{
-	particle->linked = true;
-	particle->spawnTime = _currentTime;
+	particle->processed = true;
 }
 
 BaseParticle* Engine::particleNamed(std::string name)

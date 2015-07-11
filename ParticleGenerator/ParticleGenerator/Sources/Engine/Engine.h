@@ -50,7 +50,6 @@ private:
 	unsigned long _currentTime;
 
 	void _processParticle(BaseParticle *particle);
-	void _linkParticle(BaseParticle *particle);
 	void _createProgramForShader(Shader *shader);
 };
 
