@@ -6,6 +6,7 @@
 #include <Data Models/ParticleState.h>
 
 #include <fstream>
+#include <sstream>
 
 
 Parser::Parser(void)
@@ -21,6 +22,7 @@ Parser::~Parser(void)
 std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 {
 	std::ifstream ifs(filePath, std::ifstream::in);
+	std::list< BaseParticle* >* tempList = new std::list< BaseParticle* >;
 
 	if (!ifs.good())
 		return nullptr;
@@ -33,15 +35,64 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 		{
 			ifs >> line;
 		} while (line.find('{') != std::string::npos);
-		if (std::getline(ifs, line, ':'))
+
+		//New Particle to parse
+		ifs >> line;
+		if (line != "name")
+			return nullptr; //Name is the first field of the particle
+		ifs >> line >> line;
+		if (line.at(line.size() - 1) == ',')
+			line.erase(line.end() - 1);
+		tempParticle = new BaseParticle(line);//Remove the ','
+
+		do
 		{
-			if (line.find("name"))
+			ifs >> line;
+			if (line == "gravity")
+			{
+				ifs >> line >> line; 
+				if (line.at(line.size() - 1) == ',')
+					line.erase(line.end() - 1);
+				tempParticle->useGravity = (line == "false" ? false : true);
+			}
+			else if (line == "lifetime")
+			{
+				int lifetime;
+				ifs >> line >> line;
+				if (line.at(line.size() - 1) == ',')
+					line.erase(line.end() - 1);
+				std::stringstream ss(line);
+				ss >> tempParticle->lifeTime;
+			}
+			else if (line == "shader")
+			{
+				ifs >> line >> line;
+				if (line.at(line.size() - 1) == ',')
+					line.erase(line.end() - 1);
+				tempParticle->shaderName = line;
+			}
+			else if (line == "texture")
+			{
+				ifs >> line >> line;
+				if (line.at(line.size() - 1) == ',')
+					line.erase(line.end() - 1);
+				tempParticle->texturePath = line;
+			}
+			else if (line == "defaultState")
+			{
+				std::getline(ifs, line, '}');
+				ifs >> line >> line;
+				if (line.at(line.size() - 1) == ',')
+					line.erase(line.end() - 1);
+				tempParticle->shaderName = line;
+			}
+			else if (line == "transState")
 			{
 
-				tempParticle = new BaseParticle();
 			}
-		}
+		} while (line != "}");
 
+		tempList->push_back(tempParticle);
 	}
 
 
@@ -55,7 +106,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 	tempParticle->transState = new ParticleState();
 	tempParticle->transState->alpha = 0.0f;
 
-	std::list<BaseParticle*> *tempList = new std::list<BaseParticle*>;
+	std::list< BaseParticle* >* tempList = new std::list< BaseParticle* >;
 	tempList->push_back(tempParticle);
 	return tempList;
 }
