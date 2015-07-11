@@ -35,6 +35,8 @@ int particleEditor_shaderName;
 int particleEditor_texturePath;
 
 int shaderEditorMenu;
+int shaderEditor_shaderName;
+int shaderEditor_shaderPath;
 
 // End of interface variables
 
@@ -161,7 +163,11 @@ void updateShaderPicker()
 
 void updateShaderEditor()
 {
-	
+	uint shaderID = getListSelectedIndex(shaderPickerMenu, shaderPickerList);
+
+	setTextFieldValue(shaderEditorMenu, shaderEditor_shaderName, 0.0f, 0.0f, shaderName(shaderID), 0);
+
+	setTextFieldValue(shaderEditorMenu, shaderEditor_shaderPath, 0.0f, 0.0f, shaderPath(shaderID), 0);
 }
 
 // Navigation
@@ -254,22 +260,44 @@ void delParticle(void)
 	}
 }
 
+void setSelectedShader(uint shaderID)
+{
+	setParticleShader(getListSelectedIndex(particlePickerMenu, particlePickerList), shaderID);
+	updateParticleEditor();
+}
+
 void addShader(void)
 {
-	// TODO
+	createShader();
 	updateShaderPicker();
 }
 
 void editShader(void)
 {
-	updateShaderEditor();
-	toShaderEditor();
+	uint id = getListSelectedIndex(shaderPickerMenu, shaderPickerList);
+	if (id != 0)
+	{
+		updateShaderEditor();
+		toShaderEditor();
+	}
 }
 
 void delShader(void)
 {
-	// TODO
-	updateShaderPicker();
+	uint id = getListSelectedIndex(shaderPickerMenu, shaderPickerList);
+	if (id != 0)
+	{
+		destroyShader(id);
+		updateShaderPicker();
+		updateShaderEditor();
+		updateParticleEditor();
+	}
+}
+
+void loadShader(void)
+{
+	uint id = getListSelectedIndex(shaderPickerMenu, shaderPickerList);
+	reloadShader(id);
 }
 
 // End of interface functions
@@ -381,7 +409,7 @@ void createInterface(int window)
 	newButton(newString("Edit"), curMenu, 72, 370, 56, 30, editParticle);
 	newButton(newString("Delete"), curMenu, 135, 370, 55, 30, delParticle);
 
-	newButton(newString("Pick"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterEditor);
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterEditor);
 
 	// Menu 4: Particle editor
 	curMenu = newMenu(4 * INTERFACE_WIDTH, 0, NULL, NULL);
@@ -445,7 +473,7 @@ void createInterface(int window)
 	newLabel(newString("Shader"), curMenu, 5, 18);
 
 	// List
-	curObj = newList(curMenu, 10, 25, 180, 330, NULL);
+	curObj = newList(curMenu, 10, 25, 180, 330, setSelectedShader);
 
 	shaderPickerMenu = curMenu;
 	shaderPickerList = curObj;
@@ -459,11 +487,19 @@ void createInterface(int window)
 
 	// Menu 6: Shader editor
 	curMenu = newMenu(6 * INTERFACE_WIDTH, 0, NULL, NULL);
+	shaderEditorMenu = curMenu;
 
 	newLabel(newString("Shader compiler"), curMenu, 5, 18);
 
-	// TODO: Shader text field
-	newLabel(newString("Achetez le DLC sur Steam\npour seulement 50 euros!"), curMenu, 5, 200);
+	baseY = 75;
+	newLabel(newString("Shader name"), curMenu, 30, baseY);
+	shaderEditor_shaderName = newTextField(curMenu, 10, baseY + 5, 180, 30, FIELDTYPE_TEXT);
 
-	newButton(newString("Compile & Save"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toShaderPicker);
+	baseY = 150;
+	newLabel(newString("Shader path"), curMenu, 30, baseY);
+	shaderEditor_shaderPath = newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_TEXT);
+
+	newButton(newString("Load"), curMenu, 30, baseY + 50, 140, 20, loadShader);
+
+	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toShaderPicker);
 }

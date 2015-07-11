@@ -31,13 +31,10 @@ Engine::Engine(void)
 	_currentTime = 0;
 
 	Shader *defaultShader = new Shader();
-
-	defaultShader->name = std::string("Default");
-	defaultShader->shaderText = _defaultFragShader();
+	//defaultShader->loadFile();
 
 	// First item of the list should always be this one
 	_shaders->push_back(defaultShader);
-	_createProgramForShader(defaultShader);
 
 	_emitters = new std::list<ParticleEmitter*>();
 	
@@ -61,6 +58,17 @@ void Engine::update(float deltaTime)
 {
 	_currentTime += (unsigned long)(deltaTime * 1000);
 	std::list<BaseParticle*> deleteList = std::list<BaseParticle*>();
+
+	// Compile new shaders
+	for (std::list<Shader*>::const_iterator iterator = _shaders->begin(); iterator != _shaders->end(); ++iterator)
+	{
+		Shader *shader = *iterator;
+		
+		if (!shader->compiled)
+		{
+			shader->loadFile();
+		}
+	}
 
 	// Process new models
 	for (std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator)
@@ -225,6 +233,33 @@ void Engine::_processParticle(BaseParticle *particle)
 	particle->processed = true;
 }
 
+void Engine::createShader()
+{
+	Shader *shader = new Shader();
+	_shaders->push_back(shader);
+}
+
+void Engine::destroyShader(int shaderID)
+{
+	Shader *shader = shaderWithID(shaderID);
+	_shaders->remove(shader);
+
+	// Find the particles that used it and update them
+	for (std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator)
+	{
+		BaseParticle *emitter = *iterator;
+
+		if (emitter->shader == shader)
+		{
+			emitter->shader = _shaders->front();
+		}
+	}
+
+	glDeleteProgram(shader->program);
+
+	delete shader;
+}
+
 BaseParticle* Engine::particleNamed(std::string name)
 {
 	std::list<BaseParticle*>::iterator particleIterator = std::find_if(_particleModels->begin(), _particleModels->end(), [name](BaseParticle* particle){ return particle->name == name; });
@@ -286,84 +321,4 @@ int Engine::getEmitterCount()
 int Engine::getShaderCount()
 {
 	return _shaders->size();
-}
-
-std::string Engine::_defaultFragShader()
-{
-	//std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_fs.glsl");
-	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/sample_intensityalpha_fs.glsl"); // TEMP
-	if (ifs)
-		return std::string((std::istreambuf_iterator<char>(ifs)),
-		(std::istreambuf_iterator<char>()));
-	else
-		return std::string("");
-}
-
-
-std::string Engine::_defaultVertShader()
-{
-	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_vs.glsl");
-	if (ifs)
-		return std::string((std::istreambuf_iterator<char>(ifs)),
-			(std::istreambuf_iterator<char>()));
-	else
-		return std::string("");
-}
-
-void printLog(GLuint obj)
-{
-	int infologLength = 0;
-	int maxLength;
-  
-	if(glIsShader(obj))
-		glGetShaderiv(obj,GL_INFO_LOG_LENGTH,&maxLength);
-	else
-		glGetProgramiv(obj,GL_INFO_LOG_LENGTH,&maxLength);
-  
-	char *infoLog = new char[maxLength];
-  
-	if (glIsShader(obj))
-		glGetShaderInfoLog(obj, maxLength, &infologLength, infoLog);
-	else
-		glGetProgramInfoLog(obj, maxLength, &infologLength, infoLog);
-  
-	if (infologLength > 0)
-		printf("%s\n",infoLog);
-  
-	delete infoLog;
-}
-
-void Engine::_createProgramForShader(Shader *shader)
-{
-	std::string shaderText = _defaultVertShader();
-	const char *vShaderText = shaderText.c_str();
-	GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(vShader, 1, &vShaderText, NULL);
-	glCompileShader(vShader);
-	printLog(vShader);
-
-	const char *fShaderText = shader->shaderText.c_str();
-	GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(fShader, 1, &fShaderText, NULL);
-	glCompileShader(fShader);
-	printLog(fShader);
-
-	GLuint prog = glCreateProgram();
-	glAttachShader(prog, vShader);
-	glAttachShader(prog, fShader);
-	glLinkProgram(prog);
-	printLog(prog);
-
-	shader->program = prog;
-
-	shader->textureLocation = glGetUniformLocation(shader->program, "tex");
-	shader->coordsLocation = glGetAttribLocation(shader->program, "pos");
-	shader->texCoordsLocation = glGetAttribLocation(shader->program, "texpos");
-
-	shader->positionLocation = glGetUniformLocation(shader->program, "particlePos");
-	shader->angleLocation = glGetUniformLocation(shader->program, "particleAngle");
-
-	shader->viewMatLocation = glGetUniformLocation(shader->program, "viewMatrix");
-
-	shader->customRGBALocation = glGetUniformLocation(shader->program, "customColor");
 }

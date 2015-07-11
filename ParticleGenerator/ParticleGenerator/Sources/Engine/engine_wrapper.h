@@ -50,7 +50,7 @@ typedef enum {
 void *particleAttribute(int particleID, particle_attr_t attribute);
 void *emitterAttribute(int emitterID, emitter_attr_t attribute);
 const char *shaderName(int shaderID);
-const char *shaderText(int shaderID);
+const char *shaderPath(int shaderID);
 
 short particleHasTransition(int particleID);
 void toggleParticleTransition(int particleID);
@@ -65,6 +65,10 @@ void destroyEmitter(int emitterID);
 void setEmitterParticle(int emitterID, int particleID);
 void createParticle();
 void destroyParticle(int particleID);
+void setParticleShader(int particleID, int shaderID);
+void createShader();
+void destroyShader(int shaderID);
+void reloadShader(int shaderID);
 
 #ifdef __cplusplus
 }
