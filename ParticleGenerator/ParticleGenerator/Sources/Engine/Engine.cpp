@@ -162,6 +162,9 @@ void Engine::createParticle()
 	_processParticle(tempParticle);
 
 	_particleModels->push_back(tempParticle);
+
+	//TEMP
+	_parser->saveParticle(*tempParticle);
 }
 
 void Engine::destroyParticle(int particleID)

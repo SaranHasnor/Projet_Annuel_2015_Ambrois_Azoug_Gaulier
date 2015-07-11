@@ -27,9 +27,9 @@ BaseParticle* ParticleEmitter::spawnParticle(BaseParticle& reference)
 	if (this->randomFacingDirection)
 	{
 		vectorSet(particle->geometry.angle,
-			randomValueBetween(-90.0f, 90.0f),
-			randomValueBetween(-180.0f, 180.0f),
-			0.0f);
+					randomValueBetween(-180.0f, 180.0f),
+					randomValueBetween(-180.0f, 180.0f),
+					randomValueBetween(-180.0f, 180.0f));
 	}
 	else
 	{
