@@ -32,6 +32,8 @@ public:
 	void destroyEmitter(int emitterID);
 	void createParticle();
 	void destroyParticle(int particleID);
+	void createShader();
+	void destroyShader(int shaderID);
 
 private:
 	Renderer* _renderer;
@@ -42,15 +44,11 @@ private:
 	std::list<BaseParticle*>* _activeParticles;
 	std::list<Shader*>* _shaders;
 
-	std::string _defaultFragShader();
-	std::string _defaultVertShader();
-
 	int _particleCount;
 
 	unsigned long _currentTime;
 
 	void _processParticle(BaseParticle *particle);
-	void _linkParticle(BaseParticle *particle);
 	void _createProgramForShader(Shader *shader);
 };
 

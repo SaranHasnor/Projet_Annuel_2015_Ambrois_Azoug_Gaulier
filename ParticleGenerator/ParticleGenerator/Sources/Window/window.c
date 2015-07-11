@@ -40,7 +40,9 @@ void setPerspective(float fov, float width, float height, float near, float far)
 	float aspect = width / height;
 
 	mat_perspective(projMatrix, fov, width, height, near, far);
-	gluPerspective(fov, aspect, near, far);
+
+	glMatrixMode(GL_PROJECTION);
+	glLoadMatrixf(projMatrix);
 }
 
 void reshape(int w, int h)
@@ -70,36 +72,45 @@ void reshape(int w, int h)
 	}
 
 	glViewport(0, 0,(GLsizei) w - INTERFACE_WIDTH, (GLsizei) h);
-    glMatrixMode(GL_PROJECTION);
-	glLoadIdentity();
 	setPerspective(60.0f, (float)w, (float)h, 1.0f, 200.0f);
 }
 
 void display(void)
 {
-	float forward[3], right[3], camLookPos[3];
+	int i;
+	float viewMatrix[16];
+	float viewProjMatrix[16];
+	float fwd[3], right[3], up[3];
 
 	glDepthMask(GL_TRUE);
 
 	// Frame initialization
 	glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+	
+	// Projection setup
+	AngleVectors(camAngle, fwd, right, up);
+
+	for (i = 0; i < 3; i++)
+	{
+		viewMatrix[4*i+0] = right[i];
+		viewMatrix[4*i+1] = up[i];
+		viewMatrix[4*i+2] = -fwd[i];
+		viewMatrix[4*i+3] = 0.0f;
+	}
+
+	viewMatrix[4*i+0] = -vectorDot(right, camPos);
+	viewMatrix[4*i+1] = -vectorDot(up, camPos);
+	viewMatrix[4*i+2] = vectorDot(fwd, camPos);
+	viewMatrix[4*i+3] = 1.0f;
+
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-
-	// Calculate the camera's facing direction
-	AngleVectors(camAngle, forward, right, NULL);
-	vectorScale(forward, 10, forward);
-	vectorAdd(camLookPos, forward, camPos);
-
-	// Set the camera (I want to put this out of the loop and move/rotate the world instead)
-	gluLookAt((double)camPos[0], (double)camPos[1], (double)camPos[2],
-		(double)camLookPos[0], (double)camLookPos[1], (double)camLookPos[2],
-		(double)axis[2][0], (double)axis[2][1], (double)axis[2][2]);
+	glLoadMatrixf(viewMatrix);
 
 	glDepthMask(GL_FALSE);
 
 	// Draw the scene
-	drawScene();
+	mat_multiply(viewProjMatrix, projMatrix, viewMatrix);
+	drawScene(viewProjMatrix);
 
 	// Frame saving and rendering
 	glutSwapBuffers();
@@ -114,8 +125,8 @@ void updateCamera(float deltaTime)
 
 	// Update the camera position (cheap method because math is hard)
 	vectorScale(movement, moveDir[2], axis[2]);
-	vectorMA(movement, movement, moveDir[0], forward);
-	vectorMA(movement, movement, moveDir[1], right);
+	vectorMA(movement, movement, moveDir[1], forward);
+	vectorMA(movement, movement, moveDir[0], right);
 	
 #if USE_NEW_CAMERA_MOVEMENT
 	vectorScale(movement, deltaTime, movement);
