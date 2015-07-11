@@ -41,29 +41,7 @@ void updateScene(float deltaTime)
 
 extern float projMatrix[16];
 
-void drawScene()
+void drawScene(float viewProjMatrix[16])
 {
-	int i;
-	float viewMatrix[16];
-	float viewProjMatrix[16];
-	float fwd[3], right[3], up[3];
-
-	AngleVectors(camAngle, fwd, right, up);
-
-	for (i = 0; i < 3; i++)
-	{
-		viewMatrix[4*i+0] = right[i];
-		viewMatrix[4*i+1] = up[i];
-		viewMatrix[4*i+2] = fwd[i];
-		viewMatrix[4*i+3] = 0.0f;
-	}
-
-	viewMatrix[4*i+0] = -vectorDot(right, camPos);
-	viewMatrix[4*i+1] = -vectorDot(up, camPos);
-	viewMatrix[4*i+2] = vectorDot(fwd, camPos);
-	viewMatrix[4*i+3] = 1.0f;
-
-	mat_multiply(viewProjMatrix, projMatrix, viewMatrix);
-
 	renderEngine(viewProjMatrix);
 }

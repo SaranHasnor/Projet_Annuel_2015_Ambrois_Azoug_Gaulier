@@ -931,10 +931,11 @@ void drawInterface(void)
 #else
 	glColor3f((float)rand()/(float)RAND_MAX, (float)rand()/(float)RAND_MAX, (float)rand()/(float)RAND_MAX);
 #endif
-	glBegin(GL_POINTS);
-	for (i=0; i<INTERFACE_WIDTH; i++)
-		for (j=0; j<INTERFACE_HEIGHT; j++)
-			glVertex2i(i,j);
+	glBegin(GL_QUADS);
+	glVertex2i(0, 0);
+	glVertex2i(0, INTERFACE_HEIGHT);
+	glVertex2i(INTERFACE_WIDTH, INTERFACE_HEIGHT);
+	glVertex2i(INTERFACE_WIDTH, 0);
 	glEnd();
 
 	for (i=0; i<_interface.nbMenus; i++)
