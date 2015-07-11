@@ -17,7 +17,7 @@ public:
 	~BaseParticle(void);
 
 	std::string		name;						// Name of the particle
-	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model
+	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model (run-time variable)
 
 	GeometryData	geometry;					// Spatial properties of the emitter
 

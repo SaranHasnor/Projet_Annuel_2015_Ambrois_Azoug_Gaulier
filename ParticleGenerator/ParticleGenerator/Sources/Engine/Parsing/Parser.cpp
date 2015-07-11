@@ -5,6 +5,8 @@
 #include <Data Models/Texture.h>
 #include <Data Models/ParticleState.h>
 
+#include <fstream>
+
 
 Parser::Parser(void)
 {
@@ -18,7 +20,32 @@ Parser::~Parser(void)
 
 std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 {
-	// Temporary
+	std::ifstream ifs(filePath, std::ifstream::in);
+
+	if (!ifs.good())
+		return nullptr;
+
+	while (!ifs.eof())
+	{
+		std::string line;
+		BaseParticle* tempParticle = nullptr;
+		do
+		{
+			ifs >> line;
+		} while (line.find('{') != std::string::npos);
+		if (std::getline(ifs, line, ':'))
+		{
+			if (line.find("name"))
+			{
+
+				tempParticle = new BaseParticle();
+			}
+		}
+
+	}
+
+
+
 	BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
 
 	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
