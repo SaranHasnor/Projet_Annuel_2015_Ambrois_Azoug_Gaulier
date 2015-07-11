@@ -52,7 +52,7 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 	{
 		BaseParticle* particle = *iterator;
 
-		if (particle->linked)
+		if (particle->processed)
 		{
 			ParticleState *particleState;
 			bool tempState = false;

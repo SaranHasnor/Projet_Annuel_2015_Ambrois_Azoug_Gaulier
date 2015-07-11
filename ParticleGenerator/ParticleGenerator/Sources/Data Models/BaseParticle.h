@@ -17,7 +17,7 @@ public:
 	~BaseParticle(void);
 
 	std::string		name;						// Name of the particle
-	bool			linked;						// If true, the particle is linked and being used, otherwise it's just a model
+	bool			processed;					// If true, the particle's shader and texture have been loaded
 
 	GeometryData	geometry;					// Spatial properties of the emitter
 
