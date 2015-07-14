@@ -173,7 +173,7 @@ void Engine::createParticle()
 	tempParticle->defaultState = new ParticleState();
 	tempParticle->transState = new ParticleState();
 	tempParticle->transState->alpha = 0.0f;*/
-	_particleModels = _parser->parseParticlesInFile("C:/Users/asusasus/Documents/4A3DJV/Projet Annuel/Documentation/model.txt");
+	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
 	//_particleModels->push_back(tempParticle);
 
 	//TEMP
