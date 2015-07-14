@@ -19,6 +19,70 @@ Parser::~Parser(void)
 {
 }
 
+ParticleState* Parser::parseParticleState(std::ifstream& ifs, std::string& line)
+{
+	ParticleState* tempParticleState = new ParticleState();
+	do
+	{
+		ifs >> line;
+		if (line == "colour")
+		{
+			char chars[] = ":[,";
+			std::getline(ifs, line, ']');
+			for (unsigned int i = 0; i < strlen(chars); ++i)
+				line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
+			std::stringstream ss(line);
+			ss >> tempParticleState->red
+				>> tempParticleState->green
+				>> tempParticleState->blue
+				>> tempParticleState->alpha;
+		}
+		else if (line == "light")
+		{
+			ifs >> line >> line;
+			if (line.at(line.size() - 1) == ',')
+				line.erase(line.end() - 1);
+			std::stringstream ss(line);
+			ss >> tempParticleState->lightIntensity;
+		}
+		else if (line == "scale")
+		{
+			ifs >> line >> line;
+			if (line.at(line.size() - 1) == ',')
+				line.erase(line.end() - 1);
+			std::stringstream ss(line);
+			ss >> tempParticleState->scale;
+		}
+	} while (line != "},");
+	return tempParticleState;
+}
+
+void Parser::parseStringField(std::ifstream& ifs, std::string& line)
+{
+	ifs >> line >> line;
+	if (line.at(line.size() - 1) == ',')
+		line.erase(line.end() - 1);
+}
+
+int Parser::parseIntField(std::ifstream& ifs, std::string& line)
+{
+	int result;
+	ifs >> line >> line;
+	if (line.at(line.size() - 1) == ',')
+		line.erase(line.end() - 1);
+	std::stringstream ss(line);
+	ss >> result;
+	return result;
+}
+
+bool Parser::parseBoolField(std::ifstream& ifs, std::string& line)
+{
+	ifs >> line >> line;
+	if (line.at(line.size() - 1) == ',')
+		line.erase(line.end() - 1);
+	return (line == "false" ? false : true);
+}
+
 
 std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 {
@@ -41,9 +105,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 		ifs >> line;
 		if (line != "name")
 			return nullptr; //Name is the first field of the particle
-		ifs >> line >> line;
-		if (line.at(line.size() - 1) == ',')
-			line.erase(line.end() - 1);
+		parseStringField(ifs, line);
 		tempParticle = new BaseParticle(line);//Remove the ','
 
 		do
@@ -51,107 +113,29 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 			ifs >> line;
 			if (line == "gravity")
 			{
-				ifs >> line >> line; 
-				if (line.at(line.size() - 1) == ',')
-					line.erase(line.end() - 1);
-				tempParticle->useGravity = (line == "false" ? false : true);
+				tempParticle->useGravity = parseBoolField(ifs, line);
 			}
 			else if (line == "lifetime")
 			{
-				int lifetime;
-				ifs >> line >> line;
-				if (line.at(line.size() - 1) == ',')
-					line.erase(line.end() - 1);
-				std::stringstream ss(line);
-				ss >> tempParticle->lifeTime;
+				tempParticle->lifeTime = parseIntField(ifs, line);
 			}
 			else if (line == "shader")
 			{
-				ifs >> line >> line;
-				if (line.at(line.size() - 1) == ',')
-					line.erase(line.end() - 1);
+				parseStringField(ifs, line);
 				tempParticle->shaderName = line;
 			}
 			else if (line == "texture")
 			{
-				ifs >> line >> line;
-				if (line.at(line.size() - 1) == ',')
-					line.erase(line.end() - 1);
+				parseStringField(ifs, line);
 				tempParticle->texturePath = line;
 			}
 			else if (line == "defaultState")
 			{
-				ParticleState* tempParticleState = new ParticleState();
-				ifs >> line >> line >> line;
-				do
-				{
-					if (line == "colour")
-					{
-						char chars[] = ":[,";
-						std::getline(ifs, line, ']');
-						for (unsigned int i = 0; i < strlen(chars); ++i)
-							line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
-						std::stringstream ss(line);
-						ss >> tempParticleState->red
-							>> tempParticleState->green
-							>> tempParticleState->blue
-							>> tempParticleState->alpha;
-					}
-					else if (line == "light")
-					{
-						ifs >> line >> line;
-						if (line.at(line.size() - 1) == ',')
-							line.erase(line.end() - 1);
-						std::stringstream ss(line);
-						ss >> tempParticleState->lightIntensity;
-					}
-					else if (line == "scale")
-					{
-						ifs >> line >> line;
-						if (line.at(line.size() - 1) == ',')
-							line.erase(line.end() - 1);
-						std::stringstream ss(line);
-						ss >> tempParticleState->scale;
-					}
-				} while (line != "},");
-				tempParticle->defaultState = tempParticleState;
+				tempParticle->defaultState = parseParticleState(ifs, line);
 			}
 			else if (line == "transState")
 			{
-				ParticleState* tempParticleState = new ParticleState();
-				ifs >> line >> line >> line;
-				do
-				{
-					if (line == "colour")
-					{
-						char chars[] = ":[,";
-						std::getline(ifs, line, ']');
-						for (unsigned int i = 0; i < strlen(chars); ++i)
-							line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
-						std::stringstream ss(line);
-						ss >> tempParticleState->red
-							>> tempParticleState->green
-							>> tempParticleState->blue
-							>> tempParticleState->alpha;
-					}
-					else if (line == "light")
-					{
-						ifs >> line >> line;
-						if (line.at(line.size() - 1) == ',')
-							line.erase(line.end() - 1);
-						std::stringstream ss(line);
-						ss >> tempParticleState->lightIntensity;
-					}
-					else if (line == "scale")
-					{
-						ifs >> line >> line;
-						if (line.at(line.size() - 1) == ',')
-							line.erase(line.end() - 1);
-						std::stringstream ss(line);
-						ss >> tempParticleState->scale;
-					}
-				} while (line != "},");
-				tempParticle->transState = tempParticleState;
+				tempParticle->transState = parseParticleState(ifs, line);
 			}
 		} while (line != "}");
 
@@ -170,31 +154,25 @@ bool Parser::saveParticle(const BaseParticle& particle) const {
 	}
 	else {
 		particleSaveFile << "{" << std::endl
-			<< "\tname : \"" << particle.name << "\"," << std::endl
-			<< std::endl
-			<< "\tstartPos : [" << particle.geometry.position[0] << ", " << particle.geometry.position[1] << ", " << particle.geometry.position[2] << "]," << std::endl
-			<< "\tstartAngle : [" << particle.geometry.angle[0] << ", " << particle.geometry.angle[1] << ", " << particle.geometry.angle[2] << "]," << std::endl
-			<< "\tvelocitiy : [" << particle.geometry.velocity[0] << ", " << particle.geometry.velocity[1] << ", " << particle.geometry.velocity[2] << "]," << std::endl
-			<< "\trotation : [" << particle.geometry.rotation[0] << ", " << particle.geometry.rotation[1] << ", " << particle.geometry.rotation[2] << "]," << std::endl
-			<< "\tacceleration : [" << particle.geometry.acceleration[0] << ", " << particle.geometry.acceleration[1] << ", " << particle.geometry.acceleration[2] << "]," << std::endl
+			<< "\tname : " << particle.name << "," << std::endl
 			<< std::endl
 			<< "\tgravity : " << (particle.useGravity ? "true" : "false") << "," << std::endl
 			<< std::endl
 			<< "\tlifetime : " << particle.lifeTime << "," << std::endl
 			<< std::endl
-			<< "\tshader : \"" << particle.shaderName << "\"," << std::endl
+			<< "\tshader : " << particle.shaderName << "," << std::endl
 			<< std::endl
-			<< "\ttexture : \"" << particle.texturePath << "\"," << std::endl
+			<< "\ttexture : " << particle.texturePath << "," << std::endl
 			<< std::endl
 			<< "\tdefaultState : {" << std::endl
 			<< "\t\tcolour : [" << particle.defaultState->red << ", " << particle.defaultState->green << ", " << particle.defaultState->blue << ", " << particle.defaultState->alpha << "]," << std::endl
 			<< "\t\tlight : " << particle.defaultState->lightIntensity << "," << std::endl
-			<< "\t\tscale : " << particle.defaultState->scale << "," << std::endl
+			<< "\t\tscale : " << particle.defaultState->scale << std::endl
 			<< "\t}," << std::endl
 			<< "\ttransState : {" << std::endl
 			<< "\t\tcolour : [" << particle.transState->red << ", " << particle.transState->green << ", " << particle.transState->blue << ", " << particle.transState->alpha << "]," << std::endl
 			<< "\t\tlight : " << particle.transState->lightIntensity << "," << std::endl
-			<< "\t\tscale : " << particle.transState->scale << "," << std::endl
+			<< "\t\tscale : " << particle.transState->scale << std::endl
 			<< "\t}," << std::endl
 			<< "}" << std::endl;
 

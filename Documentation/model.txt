@@ -9,7 +9,7 @@
 	
 	shader : SampleShader,
 	
-	texture : Textures/SampleTexture.jpg,
+	texture : Textures/flare_white.jpg,
 	
 	defaultState : {
 		colour : [255, 255, 255, 255],

@@ -165,19 +165,19 @@ void Engine::destroyEmitter(int emitterID)
 
 void Engine::createParticle()
 {
-	BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
+	/*BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
 
 	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
 	tempParticle->shaderName = std::string("Default");
 	tempParticle->lifeTime = 1000;
 	tempParticle->defaultState = new ParticleState();
 	tempParticle->transState = new ParticleState();
-	tempParticle->transState->alpha = 0.0f;
-
-	_particleModels->push_back(tempParticle);
+	tempParticle->transState->alpha = 0.0f;*/
+	_particleModels = _parser->parseParticlesInFile("C:/Users/asusasus/Documents/4A3DJV/Projet Annuel/Documentation/model.txt");
+	//_particleModels->push_back(tempParticle);
 
 	//TEMP
-	_parser->saveParticle(*tempParticle);
+	_parser->saveParticle(*(_particleModels->front()));
 }
 
 void Engine::destroyParticle(int particleID)
