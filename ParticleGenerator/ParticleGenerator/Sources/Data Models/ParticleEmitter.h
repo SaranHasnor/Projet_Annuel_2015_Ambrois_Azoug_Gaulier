@@ -14,6 +14,7 @@ public:
 
 	GeometryData	geometry;					// Spatial properties of the emitter
 
+	std::string		particleName;				// Name of the model particle to emit
 	BaseParticle	*particleModel;				// Model of the particle to emit
 	bool			randomFacingDirection;		// Gives the particle a random facing direction (temporary)
 

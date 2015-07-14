@@ -20,8 +20,10 @@ public:
 	void parseStringField(std::ifstream&, std::string&);
 	int parseIntField(std::ifstream&, std::string&);
 	bool parseBoolField(std::ifstream&, std::string&);
+	float* parseVectorField(std::ifstream&, std::string&);
 
 	std::list<BaseParticle*>* parseParticlesInFile(std::string filePath);
+	std::list<ParticleEmitter*>* Parser::parseEmittersInFile(std::string filePath);
 
 	bool saveParticle(const BaseParticle& particle) const;
 	bool saveParticleEmitter(const ParticleEmitter& particleEmitter) const;

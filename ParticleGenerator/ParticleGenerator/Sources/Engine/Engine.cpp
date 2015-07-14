@@ -142,7 +142,7 @@ void Engine::render(float viewMatrix[16])
 
 void Engine::createEmitter()
 {
-	ParticleEmitter *defaultEmitter = new ParticleEmitter();
+	/*ParticleEmitter *defaultEmitter = new ParticleEmitter();
 
 	defaultEmitter->particleModel = _particleModels->front();
 	vectorClear(defaultEmitter->geometry.position);
@@ -153,7 +153,11 @@ void Engine::createEmitter()
 	defaultEmitter->lastSpawn = 0;
 	defaultEmitter->spawnInterval = 150;
 
-	_emitters->push_back(defaultEmitter);
+	_emitters->push_back(defaultEmitter);*/
+	_emitters = _parser->parseEmittersInFile("../../Documentation/emitterModel.txt");
+	// Link particle to emiter thanks to its name
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+		(*iterator)->particleModel = particleNamed((*iterator)->particleName);
 }
 
 void Engine::destroyEmitter(int emitterID)
@@ -173,8 +177,9 @@ void Engine::createParticle()
 	tempParticle->defaultState = new ParticleState();
 	tempParticle->transState = new ParticleState();
 	tempParticle->transState->alpha = 0.0f;*/
-	_particleModels = _parser->parseParticlesInFile("C:/Users/asusasus/Documents/4A3DJV/Projet Annuel/Documentation/model.txt");
 	//_particleModels->push_back(tempParticle);
+
+	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
 
 	//TEMP
 	_parser->saveParticle(*(_particleModels->front()));

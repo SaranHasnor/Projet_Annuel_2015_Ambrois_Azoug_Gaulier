@@ -4,6 +4,8 @@
 #include <Data Models/Shader.h>
 #include <Data Models/Texture.h>
 #include <Data Models/ParticleState.h>
+#include <Data Models/ParticleEmitter.h>
+
 
 #include <fstream>
 #include <sstream>
@@ -83,6 +85,18 @@ bool Parser::parseBoolField(std::ifstream& ifs, std::string& line)
 	return (line == "false" ? false : true);
 }
 
+float* Parser::parseVectorField(std::ifstream& ifs, std::string& line)
+{
+	float vec[3];
+	char chars[] = ":[,";
+	std::getline(ifs, line, ']');
+	for (unsigned int i = 0; i < strlen(chars); ++i)
+		line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
+	std::stringstream ss(line);
+	ss >> vec[0] >> vec[1] >> vec[2];
+	return vec;
+}
+
 
 std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 {
@@ -144,40 +158,98 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 	return tempList;
 }
 
+std::list<ParticleEmitter*>* Parser::parseEmittersInFile(std::string filePath)
+{
+	std::ifstream ifs(filePath, std::ifstream::in);
+	std::list< ParticleEmitter* >* tempList = new std::list< ParticleEmitter* >;
+
+	if (!ifs.good())
+		return nullptr;
+
+	while (!ifs.eof())
+	{
+		std::string line;
+		ParticleEmitter *tempEmitter = new ParticleEmitter();
+		do
+		{
+			ifs >> line;
+		} while (line.find('{') == std::string::npos);
+		do
+		{
+			ifs >> line;
+			if (line == "model")
+			{
+				parseStringField(ifs, line);
+				tempEmitter->particleName = line;
+			}
+			else if (line == "randomDirection")
+			{
+				tempEmitter->randomFacingDirection = parseBoolField(ifs, line);
+			}
+			else if (line == "position")
+			{
+				float* vec = parseVectorField(ifs, line);
+				vectorSet(tempEmitter->geometry.position, vec[0], vec[1], vec[2]);
+			}
+			else if (line == "angle")
+			{
+				float* vec = parseVectorField(ifs, line);
+				vectorSet(tempEmitter->geometry.angle, vec[0], vec[1], vec[2]);
+			}
+			else if (line == "velocity")
+			{
+				float* vec = parseVectorField(ifs, line);
+				vectorSet(tempEmitter->geometry.velocity, vec[0], vec[1], vec[2]);
+			}
+			else if (line == "acceleration")
+			{
+				float* vec = parseVectorField(ifs, line);
+				vectorSet(tempEmitter->geometry.acceleration, vec[0], vec[1], vec[2]);
+			}
+			else if (line == "spawnInterval")
+			{
+				tempEmitter->spawnInterval = parseIntField(ifs, line);
+			}
+		} while (line != "}");
+
+		tempList->push_back(tempEmitter);
+	}
+	return tempList;
+}
+
+
 bool Parser::saveParticle(const BaseParticle& particle) const {
 	std::string fileName = "particle_" + particle.name + ".save";
 
 	std::ofstream particleSaveFile(fileName, std::ios::out | std::ios::trunc);
 
-	if(!particleSaveFile.good()) {
+	if (!particleSaveFile.good())
 		return false;
-	}
-	else {
-		particleSaveFile << "{" << std::endl
-			<< "\tname : " << particle.name << "," << std::endl
-			<< std::endl
-			<< "\tgravity : " << (particle.useGravity ? "true" : "false") << "," << std::endl
-			<< std::endl
-			<< "\tlifetime : " << particle.lifeTime << "," << std::endl
-			<< std::endl
-			<< "\tshader : " << particle.shaderName << "," << std::endl
-			<< std::endl
-			<< "\ttexture : " << particle.texturePath << "," << std::endl
-			<< std::endl
-			<< "\tdefaultState : {" << std::endl
-			<< "\t\tcolour : [" << particle.defaultState->red << ", " << particle.defaultState->green << ", " << particle.defaultState->blue << ", " << particle.defaultState->alpha << "]," << std::endl
-			<< "\t\tlight : " << particle.defaultState->lightIntensity << "," << std::endl
-			<< "\t\tscale : " << particle.defaultState->scale << std::endl
-			<< "\t}," << std::endl
-			<< "\ttransState : {" << std::endl
-			<< "\t\tcolour : [" << particle.transState->red << ", " << particle.transState->green << ", " << particle.transState->blue << ", " << particle.transState->alpha << "]," << std::endl
-			<< "\t\tlight : " << particle.transState->lightIntensity << "," << std::endl
-			<< "\t\tscale : " << particle.transState->scale << std::endl
-			<< "\t}," << std::endl
-			<< "}" << std::endl;
 
-		particleSaveFile.close();
-	}
+	particleSaveFile << "{" << std::endl
+		<< "\tname : " << particle.name << "," << std::endl
+		<< std::endl
+		<< "\tgravity : " << (particle.useGravity ? "true" : "false") << "," << std::endl
+		<< std::endl
+		<< "\tlifetime : " << particle.lifeTime << "," << std::endl
+		<< std::endl
+		<< "\tshader : " << particle.shaderName << "," << std::endl
+		<< std::endl
+		<< "\ttexture : " << particle.texturePath << "," << std::endl
+		<< std::endl
+		<< "\tdefaultState : {" << std::endl
+		<< "\t\tcolour : [" << particle.defaultState->red << ", " << particle.defaultState->green << ", " << particle.defaultState->blue << ", " << particle.defaultState->alpha << "]," << std::endl
+		<< "\t\tlight : " << particle.defaultState->lightIntensity << "," << std::endl
+		<< "\t\tscale : " << particle.defaultState->scale << std::endl
+		<< "\t}," << std::endl
+		<< "\ttransState : {" << std::endl
+		<< "\t\tcolour : [" << particle.transState->red << ", " << particle.transState->green << ", " << particle.transState->blue << ", " << particle.transState->alpha << "]," << std::endl
+		<< "\t\tlight : " << particle.transState->lightIntensity << "," << std::endl
+		<< "\t\tscale : " << particle.transState->scale << std::endl
+		<< "\t}" << std::endl
+		<< "}" << std::endl;
+
+	particleSaveFile.close();
 
 	return true;
 }
@@ -189,41 +261,23 @@ bool Parser::saveParticleEmitter(const ParticleEmitter& particleEmitter) const
 
 	std::ofstream particleEmitterSaveFile(fileName, std::ios::out | std::ios::trunc);
 
-	if(!particleEmitterSaveFile.good()) {
+	if(!particleEmitterSaveFile.good())
 		return false;
-	}
-	else {
-		//particleEmitterSaveFile << "{" << std::endl
-		//	<< "\tname : \"" << particle.name << "\"," << std::endl
-		//	<< std::endl
-		//	<< "\tstartPos : [" << particle.geometry.position[0] << ", " << particle.geometry.position[1] << ", " << particle.geometry.position[2] << "]," << std::endl
-		//	<< "\tstartAngle : [" << particle.geometry.angle[0] << ", " << particle.geometry.angle[1] << ", " << particle.geometry.angle[2] << "]," << std::endl
-		//	<< "\tvelocitiy : [" << particle.geometry.velocity[0] << ", " << particle.geometry.velocity[1] << ", " << particle.geometry.velocity[2] << "]," << std::endl
-		//	<< "\trotation : [" << particle.geometry.rotation[0] << ", " << particle.geometry.rotation[1] << ", " << particle.geometry.rotation[2] << "]," << std::endl
-		//	<< "\tacceleration : [" << particle.geometry.acceleration[0] << ", " << particle.geometry.acceleration[1] << ", " << particle.geometry.acceleration[2] << "]," << std::endl
-		//	<< std::endl
-		//	<< "\tgravity : " << (particle.useGravity ? "true" : "false") << "," << std::endl
-		//	<< std::endl
-		//	<< "\tlifetime : " << particle.lifeTime << "," << std::endl
-		//	<< std::endl
-		//	<< "\tshader : \"" << particle.shaderName << "\"," << std::endl
-		//	<< std::endl
-		//	<< "\ttexture : \"" << particle.texturePath << "\"," << std::endl
-		//	<< std::endl
-		//	<< "\tdefaultState : {" << std::endl
-		//	<< "\t\tcolour : [" << particle.defaultState->red << ", " << particle.defaultState->green << ", " << particle.defaultState->blue << ", " << particle.defaultState->alpha << "]," << std::endl
-		//	<< "\t\tlight : " << particle.defaultState->lightIntensity << "," << std::endl
-		//	<< "\t\tscale : " << particle.defaultState->scale << "," << std::endl
-		//	<< "\t}," << std::endl
-		//	<< "\ttransState : {" << std::endl
-		//	<< "\t\tcolour : [" << particle.transState->red << ", " << particle.transState->green << ", " << particle.transState->blue << ", " << particle.transState->alpha << "]," << std::endl
-		//	<< "\t\tlight : " << particle.transState->lightIntensity << "," << std::endl
-		//	<< "\t\tscale : " << particle.transState->scale << "," << std::endl
-		//	<< "\t}," << std::endl
-		//	<< "}" << std::endl;
+
+	particleEmitterSaveFile << "{" << std::endl
+		<< "\tmodel : " << particleEmitter.particleName << "," << std::endl
+		<< std::endl
+		<< "\trandomDirection : [" << (particleEmitter.randomFacingDirection ? "true" : "false") << ", " << std::endl
+		<< std::endl
+		<< "\tposition : [" << particleEmitter.geometry.position[0] << ", " << particleEmitter.geometry.position[1] << ", " << particleEmitter.geometry.position[2] << "]," << std::endl
+		<< "\tangle : [" << particleEmitter.geometry.angle[0] << ", " << particleEmitter.geometry.angle[1] << ", " << particleEmitter.geometry.angle[2] << "]," << std::endl
+		<< "\tvelocity : [" << particleEmitter.geometry.velocity[0] << ", " << particleEmitter.geometry.velocity[1] << ", " << particleEmitter.geometry.velocity[2] << "]," << std::endl
+		<< "\tacceleration : [" << particleEmitter.geometry.acceleration[0] << ", " << particleEmitter.geometry.acceleration[1] << ", " << particleEmitter.geometry.acceleration[2] << "]," << std::endl
+		<< std::endl
+		<< "\tspawnInterval" << particleEmitter.spawnInterval << std::endl
+		<< "}";
 
 		particleEmitterSaveFile.close();
-	}
 
 	return true;
 }

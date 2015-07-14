@@ -1,0 +1,17 @@
+// Emitter sample
+
+{
+	model : Sample,
+	
+	randomDirection : true,
+	
+	position : [0, 0, 0],
+	
+	angle : [0, 0, 0],
+	
+	velocity : [0, 0, 0],
+	
+	acceleration : [0, 0, 0],
+	
+	spawnInterval : 150
+}
