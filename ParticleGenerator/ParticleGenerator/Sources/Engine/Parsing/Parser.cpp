@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <sstream>
+#include <algorithm>
 
 
 Parser::Parser(void)
@@ -34,7 +35,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 		do
 		{
 			ifs >> line;
-		} while (line.find('{') != std::string::npos);
+		} while (line.find('{') == std::string::npos);
 
 		//New Particle to parse
 		ifs >> line;
@@ -80,34 +81,82 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 			}
 			else if (line == "defaultState")
 			{
-				std::getline(ifs, line, '}');
-				ifs >> line >> line;
-				if (line.at(line.size() - 1) == ',')
-					line.erase(line.end() - 1);
-				tempParticle->shaderName = line;
+				ParticleState* tempParticleState = new ParticleState();
+				ifs >> line >> line >> line;
+				do
+				{
+					if (line == "colour")
+					{
+						char chars[] = ":[,";
+						std::getline(ifs, line, ']');
+						for (unsigned int i = 0; i < strlen(chars); ++i)
+							line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
+						std::stringstream ss(line);
+						ss >> tempParticleState->red
+							>> tempParticleState->green
+							>> tempParticleState->blue
+							>> tempParticleState->alpha;
+					}
+					else if (line == "light")
+					{
+						ifs >> line >> line;
+						if (line.at(line.size() - 1) == ',')
+							line.erase(line.end() - 1);
+						std::stringstream ss(line);
+						ss >> tempParticleState->lightIntensity;
+					}
+					else if (line == "scale")
+					{
+						ifs >> line >> line;
+						if (line.at(line.size() - 1) == ',')
+							line.erase(line.end() - 1);
+						std::stringstream ss(line);
+						ss >> tempParticleState->scale;
+					}
+				} while (line != "},");
+				tempParticle->defaultState = tempParticleState;
 			}
 			else if (line == "transState")
 			{
-
+				ParticleState* tempParticleState = new ParticleState();
+				ifs >> line >> line >> line;
+				do
+				{
+					if (line == "colour")
+					{
+						char chars[] = ":[,";
+						std::getline(ifs, line, ']');
+						for (unsigned int i = 0; i < strlen(chars); ++i)
+							line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
+						std::stringstream ss(line);
+						ss >> tempParticleState->red
+							>> tempParticleState->green
+							>> tempParticleState->blue
+							>> tempParticleState->alpha;
+					}
+					else if (line == "light")
+					{
+						ifs >> line >> line;
+						if (line.at(line.size() - 1) == ',')
+							line.erase(line.end() - 1);
+						std::stringstream ss(line);
+						ss >> tempParticleState->lightIntensity;
+					}
+					else if (line == "scale")
+					{
+						ifs >> line >> line;
+						if (line.at(line.size() - 1) == ',')
+							line.erase(line.end() - 1);
+						std::stringstream ss(line);
+						ss >> tempParticleState->scale;
+					}
+				} while (line != "},");
+				tempParticle->transState = tempParticleState;
 			}
 		} while (line != "}");
 
 		tempList->push_back(tempParticle);
 	}
-
-
-
-	BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
-
-	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
-	tempParticle->shaderName = std::string("Default");
-	tempParticle->lifeTime = 1000;
-	tempParticle->defaultState = new ParticleState();
-	tempParticle->transState = new ParticleState();
-	tempParticle->transState->alpha = 0.0f;
-
-	std::list< BaseParticle* >* tempList = new std::list< BaseParticle* >;
-	tempList->push_back(tempParticle);
 	return tempList;
 }
 
