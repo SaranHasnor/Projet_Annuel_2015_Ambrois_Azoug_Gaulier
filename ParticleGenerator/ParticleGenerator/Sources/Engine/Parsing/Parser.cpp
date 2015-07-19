@@ -85,16 +85,14 @@ bool Parser::parseBoolField(std::ifstream& ifs, std::string& line)
 	return (line == "false" ? false : true);
 }
 
-float* Parser::parseVectorField(std::ifstream& ifs, std::string& line)
+void Parser::parseVectorField(std::ifstream& ifs, std::string& line, float vec[3])
 {
-	float vec[3];
 	char chars[] = ":[,";
 	std::getline(ifs, line, ']');
 	for (unsigned int i = 0; i < strlen(chars); ++i)
 		line.erase(std::remove(line.begin(), line.end(), chars[i]), line.end());
 	std::stringstream ss(line);
 	ss >> vec[0] >> vec[1] >> vec[2];
-	return vec;
 }
 
 
@@ -207,23 +205,19 @@ std::list<ParticleEmitter*>* Parser::parseEmittersInFile(std::string filePath)
 			}
 			else if (line == "position")
 			{
-				float* vec = parseVectorField(ifs, line);
-				vectorSet(tempEmitter->geometry.position, vec[0], vec[1], vec[2]);
+				parseVectorField(ifs, line, tempEmitter->geometry.position);
 			}
 			else if (line == "angle")
 			{
-				float* vec = parseVectorField(ifs, line);
-				vectorSet(tempEmitter->geometry.angle, vec[0], vec[1], vec[2]);
+				parseVectorField(ifs, line, tempEmitter->geometry.angle);
 			}
 			else if (line == "velocity")
 			{
-				float* vec = parseVectorField(ifs, line);
-				vectorSet(tempEmitter->geometry.velocity, vec[0], vec[1], vec[2]);
+				parseVectorField(ifs, line, tempEmitter->geometry.velocity);
 			}
 			else if (line == "acceleration")
 			{
-				float* vec = parseVectorField(ifs, line);
-				vectorSet(tempEmitter->geometry.acceleration, vec[0], vec[1], vec[2]);
+				parseVectorField(ifs, line, tempEmitter->geometry.acceleration);
 			}
 			else if (line == "spawnInterval")
 			{

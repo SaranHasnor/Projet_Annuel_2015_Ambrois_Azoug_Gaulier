@@ -380,17 +380,23 @@ void Engine::loadSession()
 {
 	_particleModels = _parser->parseParticlesInFile(particleSessionPath);
 
-	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
-		BaseParticle *particle = *iterator;
-		Shader *shader = new Shader(particle->shaderName, particle->shaderPath);
-		_shaders->push_back(shader);
-	}
+	if (_particleModels)
+	{
+		for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+			BaseParticle *particle = *iterator;
+			Shader *shader = new Shader(particle->shaderName, particle->shaderPath);
+			_shaders->push_back(shader);
+		}
 
-	_emitters = _parser->parseEmittersInFile(emitterSessionPath);
+		_emitters = _parser->parseEmittersInFile(emitterSessionPath);
 
-	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
-		ParticleEmitter *particleEmitter = *iterator;
-		particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+		if (_emitters)
+		{
+			for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+				ParticleEmitter *particleEmitter = *iterator;
+				particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+			}
+		}
 	}
 }
 
@@ -403,16 +409,20 @@ void Engine::importEmitters(std::string path)
 {
 	std::list<ParticleEmitter*> *newEmitters = _parser->parseEmittersInFile(path);
 
-	for(std::list<ParticleEmitter*>::iterator iterator = newEmitters->begin(); iterator != newEmitters->end(); ++iterator) {
-		ParticleEmitter *particleEmitter = *iterator;
-		particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
-		if(particleEmitter->particleModel == NULL) {
-			delete particleEmitter;
+	if (newEmitters)
+	{
+		for(std::list<ParticleEmitter*>::iterator iterator = newEmitters->begin(); iterator != newEmitters->end(); ++iterator) {
+			ParticleEmitter *particleEmitter = *iterator;
+			particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+			if(particleEmitter->particleModel == NULL)
+			{
+				delete particleEmitter;
+			}
+			else
+			{
+				_emitters->push_back(particleEmitter);
+			}
 		}
-		else {
-			_emitters->push_back(particleEmitter);
-		}
-
 	}
 }
 
@@ -425,16 +435,19 @@ void Engine::importParticles(std::string path)
 {
 	std::list<BaseParticle*> *newModels = _parser->parseParticlesInFile(path);
 
-	for(std::list<BaseParticle*>::const_iterator iterator = newModels->begin(); iterator != newModels->end(); ++iterator) {
-		BaseParticle *particle = *iterator;
+	if (newModels)
+	{
+		for(std::list<BaseParticle*>::const_iterator iterator = newModels->begin(); iterator != newModels->end(); ++iterator) {
+			BaseParticle *particle = *iterator;
 		
-		Shader *shader = NULL;//shaderNamed(particle->shaderName);
-		if (!shader)
-		{
-			shader = new Shader(particle->shaderName, particle->shaderPath);
-		}
-		_shaders->push_back(shader);
+			Shader *shader = NULL;//shaderNamed(particle->shaderName);
+			if (!shader)
+			{
+				shader = new Shader(particle->shaderName, particle->shaderPath);
+			}
+			_shaders->push_back(shader);
 
-		_particleModels->push_back(particle);
+			_particleModels->push_back(particle);
+		}
 	}
 }

@@ -686,7 +686,7 @@ void setTextFieldCPPString(uint menu, uint id, float min, float max, void *strin
 	field->editable = editable;
 }
 
-void setCheckBoxValue(uint menu, uint id, byte *value)
+void setCheckBoxValue(uint menu, uint id, char *value)
 {
 	checkBox_t *checkBox = _interface.menus[menu].objects[id].object.checkBox;
 	checkBox->value = value;
