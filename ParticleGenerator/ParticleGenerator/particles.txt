@@ -1,7 +1,7 @@
 {
 	name : Default,
 
-	gravity : true,
+	gravity : false,
 
 	lifetime : 1000,
 
@@ -19,5 +19,5 @@
 		colour : [1, 1, 1, 0],
 		light : 0,
 		scale : 1
-	}
+	},
 }

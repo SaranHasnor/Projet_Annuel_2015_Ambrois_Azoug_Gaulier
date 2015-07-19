@@ -30,6 +30,8 @@ Engine::Engine(void)
 
 	_currentTime = 0;
 
+	vectorSet(_gravity, 0.0f, 0.0f, -9.81f);
+
 	Shader *defaultShader = new Shader();
 	//defaultShader->loadFile();
 
@@ -89,6 +91,10 @@ void Engine::update(float deltaTime)
 		if (_currentTime < particle->spawnTime + particle->lifeTime)
 		{
 			vectorMA(particle->geometry.position, particle->geometry.position, deltaTime, particle->geometry.velocity);
+			if (particle->useGravity)
+			{
+				vectorMA(particle->geometry.velocity, particle->geometry.velocity, deltaTime, _gravity);
+			}
 		}
 		else
 		{

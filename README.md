@@ -10,10 +10,10 @@ L'interface présente à droite permet d'afficher plusieurs émetteurs de particule
 
 Les paramètres devraient être plutôt clairs et nous avons confiance en l'ergonomie de notre interface, nous vous invitons donc à tester les possibilités par vous même :)
 
+Les boutons de sauvegarde et chargement du premier menu utilisent des fichiers nommés session_particles.txt et session_emitters.txt; les autres boutons d'import/export peuvent être configurés par l'utilisateur. Les fichiers générés peuvent être édités en dehors du programme jusqu'à un certain degré.
+
 
 Points à améliorer:
 
 - La projection est imparfaite
-- Il n'est pas encore possible de modifier la texture utilisée par les particules ou de renommer les particules
-- La sauvegarde et le chargement de particules ne sont pas encore supportés
-- L'éditeur de shader n'est pas encore fonctionnel
+- Des fichiers modifiés en dehors du programme avec des erreurs peuvent causer l'instabilité du programme au chargement

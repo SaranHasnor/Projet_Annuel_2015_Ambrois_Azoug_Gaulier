@@ -19,7 +19,7 @@ void clearList(uint menu, uint id);
 void setTextFieldValue(uint menu, uint id, float min, float max, void *value, short editable);
 void setTextFieldCPPString(uint menu, uint id, float min, float max, void *string, short editable);
 void setSliderValue(uint menu, uint id, float min, float max, float *value);
-void setCheckBoxValue(uint menu, uint id, short *value);
+void setCheckBoxValue(uint menu, uint id, char *value);
 void setRadioButtonValue(uint menu, uint id, short *value);
 uint getListSelectedIndex(uint menu, uint id);
 void deleteObject(uint menu, uint index);

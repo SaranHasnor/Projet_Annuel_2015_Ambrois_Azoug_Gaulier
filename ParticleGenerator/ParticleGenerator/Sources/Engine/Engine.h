@@ -59,6 +59,8 @@ private:
 
 	unsigned long _currentTime;
 
+	float	_gravity[3];
+
 	void _processParticle(BaseParticle *particle);
 	void _createProgramForShader(Shader *shader);
 };

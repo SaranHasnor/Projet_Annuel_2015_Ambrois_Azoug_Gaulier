@@ -56,8 +56,8 @@ typedef struct list_s {
 } list_t;
 
 typedef struct checkBox_s {
-	short			*value;
-	void			(*onToggle)(short);	// Args: Value
+	byte			*value;
+	void			(*onToggle)(byte);	// Args: Value
 } checkBox_t;
 
 typedef struct radio_s {
@@ -686,7 +686,7 @@ void setTextFieldCPPString(uint menu, uint id, float min, float max, void *strin
 	field->editable = editable;
 }
 
-void setCheckBoxValue(uint menu, uint id, short *value)
+void setCheckBoxValue(uint menu, uint id, byte *value)
 {
 	checkBox_t *checkBox = _interface.menus[menu].objects[id].object.checkBox;
 	checkBox->value = value;
