@@ -333,6 +333,7 @@ void interface_saveEmitters(void)
 void interface_loadEmitters(void)
 {
 	importEmitters(emitterSavePath);
+	updateEmitterPicker();
 }
 
 void interface_saveParticles(void)
@@ -343,6 +344,7 @@ void interface_saveParticles(void)
 void interface_loadParticles(void)
 {
 	importParticles(particleSavePath);
+	updateParticlePicker();
 }
 
 // End of interface functions

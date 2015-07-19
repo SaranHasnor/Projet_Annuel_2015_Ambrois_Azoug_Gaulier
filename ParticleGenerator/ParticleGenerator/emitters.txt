@@ -1,0 +1,12 @@
+{
+	model : Default,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [1.000000, 0.000000, 0.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 150
+}

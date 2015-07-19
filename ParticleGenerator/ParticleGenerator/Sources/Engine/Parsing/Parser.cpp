@@ -104,7 +104,10 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 	std::list< BaseParticle* >* tempList = new std::list< BaseParticle* >;
 
 	if (!ifs.good())
+	{
+		delete tempList;
 		return nullptr;
+	}
 
 	while (!ifs.eof())
 	{
@@ -118,7 +121,14 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 		//New Particle to parse
 		ifs >> line;
 		if (line != "name")
+		{
+			for (std::list<BaseParticle*>::const_iterator iterator = tempList->begin(); iterator != tempList->end(); ++iterator)
+			{
+				delete *iterator;
+			}
+			delete tempList;
 			return nullptr; //Name is the first field of the particle
+		}
 		parseStringField(ifs, line);
 		tempParticle = new BaseParticle(line);//Remove the ','
 
@@ -169,7 +179,10 @@ std::list<ParticleEmitter*>* Parser::parseEmittersInFile(std::string filePath)
 	std::list< ParticleEmitter* >* tempList = new std::list< ParticleEmitter* >;
 
 	if (!ifs.good())
+	{
+		delete tempList;
 		return nullptr;
+	}
 
 	while (!ifs.eof())
 	{
