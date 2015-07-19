@@ -354,10 +354,10 @@ void createInterface(int window)
 	initInterface(window);
 
 	emitterSavePath = (char*)mem_alloc(sizeof(char) * 32);
-	strcpy(emitterSavePath, "../../Documentation/emitters.txt");
+	strcpy(emitterSavePath, "emitters.txt");
 
 	particleSavePath = (char*)mem_alloc(sizeof(char) * 32);
-	strcpy(particleSavePath, "../../Documentation/particles.txt");
+	strcpy(particleSavePath, "particles.txt");
 	
 	// Menu 0: Main menu
 	curMenu = newMenu(0, 0, NULL, NULL);
