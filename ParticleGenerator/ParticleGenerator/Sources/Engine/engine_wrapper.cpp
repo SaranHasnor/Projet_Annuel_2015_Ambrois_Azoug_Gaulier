@@ -7,6 +7,7 @@
 #include <Data Models/ParticleEmitter.h>
 #include <Data Models/Shader.h>
 #include <Data Models/ParticleState.h>
+#include <Data Models/Texture.h>
 
 static Engine* _staticEngine = NULL;
 
@@ -37,7 +38,7 @@ extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 	switch (attribute)
 	{
 	case PART_ATTR_NAME:
-		return (void*)particle->name.c_str();
+		return (void*)&particle->name;
 	case PART_ATTR_POS_X:
 		return (void*)&particle->geometry.position[0];
 	case PART_ATTR_POS_Y:
@@ -79,9 +80,9 @@ extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 	case PART_ATTR_END_SCALE:
 		return (void*)&particle->transState->scale;
 	case PART_ATTR_SHADER:
-		return (void*)particle->shaderName.c_str();
+		return (void*)&particle->shaderName;
 	case PART_ATTR_TEXTURE:
-		return (void*)particle->texturePath.c_str();
+		return (void*)&particle->texturePath;
 	default:
 		return NULL;
 	}
@@ -94,16 +95,7 @@ extern "C" short particleHasTransition(int particleID)
 
 extern "C" void toggleParticleTransition(int particleID)
 {
-	BaseParticle *particle = _staticEngine->particleWithID(particleID);
-	if (particle->transState != NULL)
-	{
-		delete particle->transState;
-		particle->transState = NULL;
-	}
-	else
-	{
-		particle->transState = new ParticleState();
-	}
+	_staticEngine->toggleTransStateInParticleWithID(particleID);
 }
 
 extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
@@ -118,7 +110,7 @@ extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
 	switch (attribute)
 	{
 	case EMIT_ATTR_PARTICLE_NAME:
-		return (void*)emitter->particleModel->name.c_str();
+		return (void*)&emitter->particleModel->name;
 	case EMIT_ATTR_POS_X:
 		return (void*)&emitter->geometry.position[0];
 	case EMIT_ATTR_POS_Y:
@@ -146,14 +138,14 @@ extern "C" void *emitterAttribute(int emitterID, emitter_attr_t attribute)
 	}
 }
 
-extern "C" const char *shaderName(int shaderID)
+extern "C" void *shaderName(int shaderID)
 {
-	return _staticEngine->shaderWithID(shaderID)->name.c_str();
+	return &_staticEngine->shaderWithID(shaderID)->name;
 }
 
-extern "C" const char *shaderPath(int shaderID)
+extern "C" void *shaderPath(int shaderID)
 {
-	return _staticEngine->shaderWithID(shaderID)->path.c_str();
+	return &_staticEngine->shaderWithID(shaderID)->path;
 }
 
 extern "C" int getActiveParticleCount()
@@ -222,4 +214,20 @@ extern "C" void destroyShader(int shaderID)
 extern "C" void reloadShader(int shaderID)
 {
 	_staticEngine->shaderWithID(shaderID)->compiled = false;
+}
+
+extern "C" void reloadParticleTexture(int particleID)
+{
+	BaseParticle *particle = _staticEngine->particleWithID(particleID);
+	particle->processed = false; // Just reprocess it, that will reload the texture
+}
+
+extern "C" void saveCurrentSession(void)
+{
+	_staticEngine->saveSession();
+}
+
+extern "C" void loadNewSession(void)
+{
+	_staticEngine->loadSession();
 }

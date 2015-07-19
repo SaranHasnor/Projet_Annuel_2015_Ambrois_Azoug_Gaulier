@@ -3,6 +3,7 @@
 #include "interface.h"
 #include "window.h"
 #include <Utils/utils.h>
+#include <Utils/cstring.h>
 
 #pragma warning (disable:4244)
 
@@ -31,6 +32,7 @@ typedef struct button_s {
 
 typedef struct textField_s {
 	void		**value;
+	void		*cppString;
 	fieldType_t	type;
 	float		min,max;
 	short		editable;
@@ -361,6 +363,7 @@ int newTextField(uint menu, uint x, uint y, uint w, uint h, fieldType_t type)
 	field->max = 0;
 	field->value = (void**)mem_alloc(sizeof(void*));
 	*field->value = NULL;
+	field->cppString = NULL;
 	field->editable = 0;
 	field->type = type;
 	
@@ -580,11 +583,18 @@ char *getFieldValue(textField_t *field)
 	}
 	else if (field->type == FIELDTYPE_BINARY)
 	{
-		res = strFromBinary((ubyte*)*field->value);
+		res = strFromBinary((byte*)*field->value);
 	}
 	else
 	{
-		res = newString((char*)(*field->value));
+		if (*field->value)
+		{
+			res = newString((char*)(*field->value));
+		}
+		else if (field->cppString)
+		{
+			res = newString(stringToCharArray(field->cppString));
+		}
 	}
 	return res;
 }
@@ -662,6 +672,15 @@ void setTextFieldValue(uint menu, uint id, float min, float max, void *value, sh
 {
 	textField_t *field = _interface.menus[menu].objects[id].object.textField;
 	*field->value = value;
+	field->min = min;
+	field->max = max;
+	field->editable = editable;
+}
+
+void setTextFieldCPPString(uint menu, uint id, float min, float max, void *string, short editable)
+{
+	textField_t *field = _interface.menus[menu].objects[id].object.textField;
+	field->cppString = string;
 	field->min = min;
 	field->max = max;
 	field->editable = editable;
@@ -752,6 +771,10 @@ void drawTextField(textField_t *field, uint x, uint y, uint w, uint h)
 		if (*field->value)
 		{
 			value = getFieldValue(field);
+		}
+		else if (field->cppString)
+		{
+			value = newString(stringToCharArray(field->cppString));
 		}
 	}
 	if (value)
@@ -1245,14 +1268,14 @@ void interfaceKeyboard(unsigned char key, int x, int y)
 			else if (field->type == FIELDTYPE_BINARY)
 			{ // Compile the binary data (we expect that the size of the container did not change...)
 				uint i = 0;
-				ubyte counter = 0;
+				byte counter = 0;
 				uint size = mem_size(*field->value);
 				if (!size) size = 1;
 				while (i < 9*size) // Make sure we don't go out of bounds
 				{
 					if (renameString[i] == ' ' || renameString[i] == '\0')
 					{
-						((ubyte*)*field->value)[i/9] = counter;
+						((byte*)*field->value)[i/9] = counter;
 						counter = 0;
 						if (renameString[i] == '\0')
 						{
@@ -1269,7 +1292,14 @@ void interfaceKeyboard(unsigned char key, int x, int y)
 			}
 			else
 			{
-				strcpy_safe((char*)(*field->value), renameString);
+				if (*field->value)
+				{
+					strcpy_safe((char*)(*field->value), renameString);
+				}
+				else if (field->cppString)
+				{
+					putCharArrayInString(renameString, field->cppString);
+				}
 			}
 			mem_free(renameString);
 			_curObject = NULL;
@@ -1333,7 +1363,7 @@ void interfaceKeyboard(unsigned char key, int x, int y)
 				return;
 			}
 
-			if (pos >= 15)
+			if (pos >= 100)
 			{
 				return;
 			}

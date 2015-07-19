@@ -7,16 +7,17 @@
 void mat_perspective(float mat[16], float fov, float width, float height, float near, float far)
 {
 	float aspect = width / height;
-	float xymax = near * tanf(fov * (3.141592f / 360.0f));
-	float ymin = -xymax;
-	float xmin = -xymax;
+	float xmax = near * tanf(fov * (3.141592f / 360.0f));
+	float ymax = xmax / aspect;
+	float ymin = -ymax;
+	float xmin = -xmax;
 	float depth = far - near;
 	float q = -(far + near) / depth;
 	float qn = -2.0f * far * near / depth;
 	float w, h;
 
-	width = xymax - xmin;
-	height = xymax - ymin;
+	width = xmax - xmin;
+	height = ymax - ymin;
 
 	w = (2.0f * near) / width;
 	h = (2.0f * near) / height;
@@ -24,8 +25,8 @@ void mat_perspective(float mat[16], float fov, float width, float height, float 
 	memset(mat, 0, sizeof(float) * 16);
 	mat[0] = w;
 	mat[5] = h;
-	mat[8] = (xmin+xymax)/(xmin-xymax);
-	mat[9] = (ymin+xymax)/(ymin-xymax);
+	mat[8] = (xmin+xmax)/(xmin-xmax);
+	mat[9] = (ymin+ymax)/(ymin-ymax);
 	mat[10] = q;
 	mat[11] = -1.0f;
 	mat[14] = qn;

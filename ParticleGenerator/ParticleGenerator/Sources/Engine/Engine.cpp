@@ -142,7 +142,7 @@ void Engine::render(float viewMatrix[16])
 
 void Engine::createEmitter()
 {
-	/*ParticleEmitter *defaultEmitter = new ParticleEmitter();
+	ParticleEmitter *defaultEmitter = new ParticleEmitter();
 
 	defaultEmitter->particleModel = _particleModels->front();
 	vectorClear(defaultEmitter->geometry.position);
@@ -152,12 +152,8 @@ void Engine::createEmitter()
 	vectorSet(defaultEmitter->geometry.velocity, 1.0f, 0.0f, 0.0f);
 	defaultEmitter->lastSpawn = 0;
 	defaultEmitter->spawnInterval = 150;
-
-	_emitters->push_back(defaultEmitter);*/
-	_emitters = _parser->parseEmittersInFile("../../Documentation/emitterModel.txt");
-	// Link particle to emiter thanks to its name
-	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
-		(*iterator)->particleModel = particleNamed((*iterator)->particleName);
+	
+	_emitters->push_back(defaultEmitter);
 }
 
 void Engine::destroyEmitter(int emitterID)
@@ -169,20 +165,15 @@ void Engine::destroyEmitter(int emitterID)
 
 void Engine::createParticle()
 {
-	/*BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
+	BaseParticle *tempParticle = new BaseParticle(std::string("Default"));
 
-	tempParticle->texturePath = std::string("../ParticleGenerator/Ressources/Textures/flare_white.jpg");
+	tempParticle->texturePath = std::string("Textures/flare_white.jpg");
 	tempParticle->shaderName = std::string("Default");
 	tempParticle->lifeTime = 1000;
 	tempParticle->defaultState = new ParticleState();
 	tempParticle->transState = new ParticleState();
-	tempParticle->transState->alpha = 0.0f;*/
-	//_particleModels->push_back(tempParticle);
-
-	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
-
-	//TEMP
-	_parser->saveParticle(*(_particleModels->front()));
+	tempParticle->transState->alpha = 0.0f;
+	_particleModels->push_back(tempParticle);
 }
 
 void Engine::destroyParticle(int particleID)
@@ -216,9 +207,27 @@ void Engine::destroyParticle(int particleID)
 
 void Engine::_processParticle(BaseParticle *particle)
 {
+	Texture *oldTexture = particle->texture;
+
 	particle->shader = shaderNamed(particle->shaderName);
-	
+
+	if (oldTexture != NULL)
+	{
+		glDeleteTextures(1, &oldTexture->textureID);
+		delete oldTexture;
+	}
+
 	particle->texture = new Texture(particle->texturePath);
+
+	for (std::list<BaseParticle*>::const_iterator iterator = _activeParticles->begin(); iterator != _activeParticles->end(); ++iterator)
+	{
+		BaseParticle *otherParticle = *iterator;
+
+		if (otherParticle->texture == oldTexture)
+		{
+			otherParticle->texture = particle->texture;
+		}
+	}
 
 	glEnable(GL_TEXTURE_2D);
 	glGenTextures(1, &particle->texture->textureID);
@@ -239,6 +248,30 @@ void Engine::_processParticle(BaseParticle *particle)
 	glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 
 	particle->processed = true;
+}
+
+void Engine::toggleTransStateInParticleWithID(int particleID)
+{
+	BaseParticle *particleModel = this->particleWithID(particleID);
+	if (particleModel->transState != NULL)
+	{
+		for (std::list<BaseParticle*>::const_iterator iterator = _activeParticles->begin(); iterator != _activeParticles->end(); ++iterator)
+		{
+			BaseParticle *particle = *iterator;
+
+			if (particle->transState == particleModel->transState)
+			{
+				particle->transState = NULL;
+			}
+		}
+
+		delete particleModel->transState;
+		particleModel->transState = NULL;
+	}
+	else
+	{
+		particleModel->transState = new ParticleState();
+	}
 }
 
 void Engine::createShader()
@@ -329,4 +362,19 @@ int Engine::getEmitterCount()
 int Engine::getShaderCount()
 {
 	return _shaders->size();
+}
+
+void Engine::saveSession()
+{
+	_parser->saveParticle(*(_particleModels->front()));
+
+	_emitters = _parser->parseEmittersInFile("../../Documentation/emitterModel.txt");
+	// Link particle to emiter thanks to its name
+	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
+		(*iterator)->particleModel = particleNamed((*iterator)->particleName);
+}
+
+void Engine::loadSession()
+{
+	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
 }

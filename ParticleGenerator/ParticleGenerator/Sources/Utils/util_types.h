@@ -4,7 +4,7 @@
 typedef unsigned int uint;
 typedef unsigned char uchar;
 
-typedef char byte;
-typedef uchar ubyte;
+typedef uchar byte;
+typedef char sbyte;
 
 #endif

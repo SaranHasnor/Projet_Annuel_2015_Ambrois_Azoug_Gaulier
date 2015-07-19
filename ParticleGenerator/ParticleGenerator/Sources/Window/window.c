@@ -72,7 +72,7 @@ void reshape(int w, int h)
 	}
 
 	glViewport(0, 0,(GLsizei) w - INTERFACE_WIDTH, (GLsizei) h);
-	setPerspective(60.0f, (float)w, (float)h, 1.0f, 200.0f);
+	setPerspective(60.0f, (float)(w - INTERFACE_WIDTH), (float)h, 1.0f, 200.0f);
 }
 
 void display(void)

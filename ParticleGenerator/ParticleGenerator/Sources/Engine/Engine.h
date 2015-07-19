@@ -23,6 +23,8 @@ public:
 	Shader* shaderWithID(int shaderID);
 	ParticleEmitter* emitterWithID(int emitterID);
 
+	void toggleTransStateInParticleWithID(int particleID);
+
 	int getParticleModelCount();
 	int getActiveParticleCount();
 	int getEmitterCount();
@@ -34,6 +36,9 @@ public:
 	void destroyParticle(int particleID);
 	void createShader();
 	void destroyShader(int shaderID);
+
+	void saveSession();
+	void loadSession();
 
 private:
 	Renderer* _renderer;

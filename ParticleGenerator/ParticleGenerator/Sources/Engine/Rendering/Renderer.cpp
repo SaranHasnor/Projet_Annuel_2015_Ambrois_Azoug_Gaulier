@@ -17,7 +17,7 @@ static const float defaultParticleCoords[] = {
 	0.5f, 0.5f, 0.0f, 1.0f, 1.0f
 };
 
-static const ubyte defaultParticleElements[] = {
+static const byte defaultParticleElements[] = {
 	0, 1, 2,
 	0, 2, 3
 };
@@ -37,7 +37,7 @@ Renderer::Renderer(void)
 
 	glGenBuffers(1, &defaultParticleEBO);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, defaultParticleEBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(ubyte), defaultParticleElements, GL_STATIC_DRAW);
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(byte), defaultParticleElements, GL_STATIC_DRAW);
 }
 
 
@@ -106,4 +106,6 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 		}
 	}
 	glUseProgram(0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, 0);
 }

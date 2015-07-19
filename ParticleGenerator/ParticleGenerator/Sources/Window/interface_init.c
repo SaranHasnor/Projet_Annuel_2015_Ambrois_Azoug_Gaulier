@@ -5,6 +5,7 @@
 #include <Utils/utils.h>
 #include "window.h"
 #include <Engine/engine_wrapper.h>
+#include <Utils/cstring.h>
 
 /*
 interface_init.c
@@ -55,7 +56,7 @@ void updateEmitterPicker()
 
 	for (i = 0; i < count; i++)
 	{
-		addListEntry(emitterPickerMenu, emitterPickerList, NULL);
+		addListEntry(emitterPickerMenu, emitterPickerList, "Emitter");
 	}
 
 	loadListSelectedIndex(emitterPickerMenu, emitterPickerList);
@@ -79,7 +80,7 @@ void updateEmitterEditor()
 	setTextFieldValue(emitterEditorMenu, emitterEditor_velY, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_VEL_Y), 1);
 	setTextFieldValue(emitterEditorMenu, emitterEditor_velZ, -1000.0f, 1000.0f, emitterAttribute(emitterID, EMIT_ATTR_VEL_Z), 1);
 
-	setTextFieldValue(emitterEditorMenu, emitterEditor_particleName, 0.0f, 0.0f, emitterAttribute(emitterID, EMIT_ATTR_PARTICLE_NAME), 0);
+	setTextFieldCPPString(emitterEditorMenu, emitterEditor_particleName, 0.0f, 0.0f, emitterAttribute(emitterID, EMIT_ATTR_PARTICLE_NAME), 0);
 
 	setTextFieldValue(emitterEditorMenu, emitterEditor_spawnInterval, 0.0f, 60000, emitterAttribute(emitterID, EMIT_ATTR_SPAWN_INTERVAL), 1);
 }
@@ -95,7 +96,7 @@ void updateParticlePicker()
 
 	for (i = 0; i < count; i++)
 	{
-		addListEntry(particlePickerMenu, particlePickerList, (char*)particleAttribute(i, PART_ATTR_NAME));
+		addListEntry(particlePickerMenu, particlePickerList, stringToCharArray(particleAttribute(i, PART_ATTR_NAME)));
 	}
 
 	loadListSelectedIndex(particlePickerMenu, particlePickerList);
@@ -105,7 +106,7 @@ void updateParticleEditor()
 {
 	uint particleID = getListSelectedIndex(particlePickerMenu, particlePickerList);
 
-	setTextFieldValue(particleEditorMenu, particleEditor_particleName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_NAME), 0);
+	setTextFieldCPPString(particleEditorMenu, particleEditor_particleName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_NAME), 1);
 
 	setTextFieldValue(particleEditorMenu, particleEditor_red, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_RED), 1);
 	setTextFieldValue(particleEditorMenu, particleEditor_green, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_GREEN), 1);
@@ -132,8 +133,8 @@ void updateParticleEditor()
 		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 1.0f, NULL, 0);
 	}
 
-	setTextFieldValue(particleEditorMenu, particleEditor_shaderName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_SHADER), 0);
-	setTextFieldValue(particleEditorMenu, particleEditor_texturePath, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_TEXTURE), 0);
+	setTextFieldCPPString(particleEditorMenu, particleEditor_shaderName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_SHADER), 0);
+	setTextFieldCPPString(particleEditorMenu, particleEditor_texturePath, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_TEXTURE), 1);
 }
 
 void particleTransitionButton(void)
@@ -155,7 +156,7 @@ void updateShaderPicker()
 
 	for (i = 0; i < count; i++)
 	{
-		addListEntry(shaderPickerMenu, shaderPickerList, shaderName(i));
+		addListEntry(shaderPickerMenu, shaderPickerList, stringToCharArray(shaderName(i)));
 	}
 
 	loadListSelectedIndex(shaderPickerMenu, shaderPickerList);
@@ -165,9 +166,9 @@ void updateShaderEditor()
 {
 	uint shaderID = getListSelectedIndex(shaderPickerMenu, shaderPickerList);
 
-	setTextFieldValue(shaderEditorMenu, shaderEditor_shaderName, 0.0f, 0.0f, shaderName(shaderID), 0);
+	setTextFieldCPPString(shaderEditorMenu, shaderEditor_shaderName, 0.0f, 0.0f, shaderName(shaderID), 1);
 
-	setTextFieldValue(shaderEditorMenu, shaderEditor_shaderPath, 0.0f, 0.0f, shaderPath(shaderID), 0);
+	setTextFieldCPPString(shaderEditorMenu, shaderEditor_shaderPath, 0.0f, 0.0f, shaderPath(shaderID), 1);
 }
 
 // Navigation
@@ -300,6 +301,22 @@ void loadShader(void)
 	reloadShader(id);
 }
 
+void loadTexture(void)
+{
+	uint particleID = getListSelectedIndex(particlePickerMenu, particlePickerList);
+	reloadParticleTexture(particleID);
+}
+
+void interface_saveSession(void)
+{
+	saveCurrentSession();
+}
+
+void interface_loadSession(void)
+{
+	loadNewSession();
+}
+
 // End of interface functions
 
 void createInterface(int window)
@@ -313,9 +330,9 @@ void createInterface(int window)
 	
 	newLabel(newString("Main menu"), curMenu, 5, 18);
 
-	newLabel(newString("Particles:"), curMenu, 5, 40);
+	/*newLabel(newString("Particles:"), curMenu, 5, 40);
 	curObj = newTextField(curMenu, 10, 55, 180, 20, FIELDTYPE_INT);
-	//setTextFieldValue(0, 2, 0, 0, scene.particleCount, 0);
+	setTextFieldValue(0, 2, 0, 0, scene.particleCount, 0);*/
 
 	newLabel(newString("Simulation running:"), curMenu, 10, 100);
 	curObj = newCheckBox(curMenu, 170, 90, 15);
@@ -323,7 +340,13 @@ void createInterface(int window)
 
 	newButton(newString("Edit emitters"), curMenu, 10, 140, 180, 100, toEmitterPicker);
 
+	newLabel(newString("Save/Load folder"), curMenu, 30, 260);
+	curObj = newTextField(curMenu, 10, 265, 180, 20, FIELDTYPE_TEXT);
+	setTextFieldValue(curMenu, curObj, 0.0f, 0.0f, "Chemin de sauvegarde", 0);
 
+	newButton(newString("Save"), curMenu, 10, 300, 180, 100, interface_saveSession);
+
+	newButton(newString("Load"), curMenu, 10, 420, 180, 100, interface_loadSession);
 
 	newButton(newString("Exit"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, quit);
 
@@ -457,12 +480,13 @@ void createInterface(int window)
 
 	baseY = 460;
 	newLabel(newString("Shader"), curMenu, 30, baseY);
-	particleEditor_shaderName = newTextField(curMenu, 10, baseY+15, 110, 20, FIELDTYPE_TEXT);
-	newButton(newString("Change"), curMenu, 130, baseY+10, 60, 30, toShaderPicker);
+	particleEditor_shaderName = newTextField(curMenu, 10, baseY+5, 110, 20, FIELDTYPE_TEXT);
+	newButton(newString("Change"), curMenu, 130, baseY, 60, 30, toShaderPicker);
 
-	baseY = 520;
+	baseY = 500;
 	newLabel(newString("Texture path"), curMenu, 30, baseY);
 	particleEditor_texturePath = newTextField(curMenu, 10, baseY+5, 180, 20, FIELDTYPE_TEXT);
+	newButton(newString("Load texture"), curMenu, 10, baseY+30, 180, 20, loadTexture); 
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toParticlePicker);
 	

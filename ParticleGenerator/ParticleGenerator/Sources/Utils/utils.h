@@ -4,13 +4,13 @@
 #include "util_types.h"
 
 int isInRange(float min, float val, float max);
-char *newString(char *s);
-char *newString2(char *s, unsigned int length);
+char *newString(const char *s);
+char *newString2(const char *s, unsigned int length);
 unsigned int nbDigits(int n);
 char *strFromInt(int n);
 char *strFromFloat(float n);
 char *strFromVec(float vec[3]);
-char *strFromBinary(ubyte *bin);
+char *strFromBinary(byte *bin);
 void strip(char *s, char c);
 void vecFromStr(float vec[3], char *str);
 

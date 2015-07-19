@@ -77,6 +77,7 @@
     <ClCompile Include="Sources\Engine\engine_wrapper.cpp" />
     <ClCompile Include="Sources\Engine\Parsing\Parser.cpp" />
     <ClCompile Include="Sources\Engine\Rendering\Renderer.cpp" />
+    <ClCompile Include="Sources\Utils\cstring.cpp" />
     <ClCompile Include="Sources\Utils\mat4.c" />
     <ClCompile Include="Sources\Utils\vec3D.c" />
     <ClCompile Include="Sources\Window\input.c" />
@@ -99,6 +100,7 @@
     <ClInclude Include="Sources\Engine\engine_wrapper.h" />
     <ClInclude Include="Sources\Engine\Parsing\Parser.h" />
     <ClInclude Include="Sources\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="Sources\Utils\cstring.h" />
     <ClInclude Include="Sources\Utils\mat4.h" />
     <ClInclude Include="Sources\Utils\util_types.h" />
     <ClInclude Include="Sources\Utils\vec3D.h" />

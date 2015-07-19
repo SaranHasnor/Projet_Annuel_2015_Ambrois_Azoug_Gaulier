@@ -1,0 +1,22 @@
+{
+	name : Sample,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : SampleShader,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [255, 255, 255, 255],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [255, 255, 255, 255],
+		light : 0,
+		scale : 1
+	}
+}

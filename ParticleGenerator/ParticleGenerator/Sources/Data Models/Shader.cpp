@@ -8,7 +8,7 @@
 Shader::Shader(void)
 { // Default shader
 	this->name = std::string("Default");
-	this->path = std::string("../ParticleGenerator/Ressources/Shaders/sample_intensityalpha_fs.glsl");
+	this->path = std::string("Shaders/default_fs.glsl");
 
 	this->program = 0;
 	this->compiled = false;
@@ -44,7 +44,7 @@ void Shader::loadFile()
 
 std::string Shader::_defaultVertShader()
 {
-	std::ifstream ifs("../ParticleGenerator/Ressources/Shaders/default_vs.glsl");
+	std::ifstream ifs("Shaders/default_vs.glsl");
 	if (ifs)
 		return std::string((std::istreambuf_iterator<char>(ifs)),
 			(std::istreambuf_iterator<char>()));

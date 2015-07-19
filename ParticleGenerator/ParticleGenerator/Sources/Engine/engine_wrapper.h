@@ -49,8 +49,8 @@ typedef enum {
 
 void *particleAttribute(int particleID, particle_attr_t attribute);
 void *emitterAttribute(int emitterID, emitter_attr_t attribute);
-const char *shaderName(int shaderID);
-const char *shaderPath(int shaderID);
+void *shaderName(int shaderID);
+void *shaderPath(int shaderID);
 
 short particleHasTransition(int particleID);
 void toggleParticleTransition(int particleID);
@@ -69,6 +69,10 @@ void setParticleShader(int particleID, int shaderID);
 void createShader();
 void destroyShader(int shaderID);
 void reloadShader(int shaderID);
+void reloadParticleTexture(int particleID);
+
+void saveCurrentSession(void);
+void loadNewSession(void);
 
 #ifdef __cplusplus
 }

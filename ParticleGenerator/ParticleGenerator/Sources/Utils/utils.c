@@ -61,7 +61,7 @@ int isInRange(float min, float val, float max)
 	return ((min <= val) && (val <= max));
 }
 
-char *newString(char *s)
+char *newString(const char *s)
 {
 	int length = strlen(s);
 	char *r = (char*)mem_alloc(sizeof(char)*(length+1));
@@ -70,7 +70,7 @@ char *newString(char *s)
 	return r;
 }
 
-char *newString2(char *s, unsigned int len)
+char *newString2(const char *s, unsigned int len)
 {
 	unsigned int sLen = strlen(s);
 	int length = (sLen<len)?sLen:len;
@@ -122,7 +122,7 @@ char *strFromVec(float vec[3])
 	return res;
 }
 
-char *strFromBinary(ubyte *bin)
+char *strFromBinary(byte *bin)
 {
 	uint len = mem_size(bin);
 	char *res;
