@@ -8,6 +8,7 @@
 
 typedef struct scene_s {
 	short running;
+	short drawEmitters;
 } scene_t;
 
 extern scene_t scene;

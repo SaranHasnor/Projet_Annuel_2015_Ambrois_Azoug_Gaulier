@@ -120,7 +120,7 @@ void updateParticleEditor()
 	setTextFieldValue(particleEditorMenu, particleEditor_green, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_GREEN), 1);
 	setTextFieldValue(particleEditorMenu, particleEditor_blue, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_BLUE), 1);
 	setTextFieldValue(particleEditorMenu, particleEditor_alpha, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_ALPHA), 1);
-	setTextFieldValue(particleEditorMenu, particleEditor_scale, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_START_SCALE), 1);
+	setTextFieldValue(particleEditorMenu, particleEditor_scale, 0.0f, 100.0f, particleAttribute(particleID, PART_ATTR_START_SCALE), 1);
 
 	setTextFieldValue(particleEditorMenu, particleEditor_lifetime, 0.0f, 60000.0f, particleAttribute(particleID, PART_ATTR_LIFETIME), 1);
 
@@ -130,7 +130,7 @@ void updateParticleEditor()
 		setTextFieldValue(particleEditorMenu, particleEditor_green2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_GREEN), 1);
 		setTextFieldValue(particleEditorMenu, particleEditor_blue2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_BLUE), 1);
 		setTextFieldValue(particleEditorMenu, particleEditor_alpha2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_ALPHA), 1);
-		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 1.0f, particleAttribute(particleID, PART_ATTR_END_SCALE), 1);
+		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 100.0f, particleAttribute(particleID, PART_ATTR_END_SCALE), 1);
 	}
 	else
 	{
@@ -138,7 +138,7 @@ void updateParticleEditor()
 		setTextFieldValue(particleEditorMenu, particleEditor_green2, 0.0f, 1.0f, NULL, 0);
 		setTextFieldValue(particleEditorMenu, particleEditor_blue2, 0.0f, 1.0f, NULL, 0);
 		setTextFieldValue(particleEditorMenu, particleEditor_alpha2, 0.0f, 1.0f, NULL, 0);
-		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 1.0f, NULL, 0);
+		setTextFieldValue(particleEditorMenu, particleEditor_scale2, 0.0f, 100.0f, NULL, 0);
 	}
 
 	setTextFieldCPPString(particleEditorMenu, particleEditor_shaderName, 0.0f, 0.0f, particleAttribute(particleID, PART_ATTR_SHADER), 0);
@@ -369,6 +369,10 @@ void createInterface(int window)
 	/*newLabel(newString("Particles:"), curMenu, 5, 40);
 	curObj = newTextField(curMenu, 10, 55, 180, 20, FIELDTYPE_INT);
 	setTextFieldValue(0, 2, 0, 0, scene.particleCount, 0);*/
+
+	newLabel(newString("Draw emitters:"), curMenu, 10, 50);
+	curObj = newCheckBox(curMenu, 170, 40, 15);
+	setCheckBoxValue(curMenu, curObj, &scene.drawEmitters);
 
 	newLabel(newString("Simulation running:"), curMenu, 10, 100);
 	curObj = newCheckBox(curMenu, 170, 90, 15);

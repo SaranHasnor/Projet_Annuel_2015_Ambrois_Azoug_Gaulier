@@ -26,6 +26,7 @@ public:
 	int					viewMatLocation;	// GLSL Uniform location
 
 	int					customRGBALocation;	// GLSL Uniform location
+	int					scaleLocation;		// GLSL Uniform location
 
 	void				loadFile();
 

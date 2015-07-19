@@ -125,19 +125,6 @@ void Engine::update(float deltaTime)
 void Engine::render(float viewMatrix[16])
 {
 	_renderer->renderParticles(_activeParticles, viewMatrix, _currentTime);
-
-	// Debug: draw emitters
-	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
-	{
-		ParticleEmitter *emitter = *iterator;
-		glPushMatrix();
-		glTranslatef(emitter->geometry.position[0], emitter->geometry.position[1], emitter->geometry.position[2]);
-		glRotatef(emitter->geometry.angle[0], 1.0f, 0.0f, 0.0f);
-		glRotatef(emitter->geometry.angle[1], 0.0f, 1.0f, 0.0f);
-		glRotatef(emitter->geometry.angle[2], 0.0f, 0.0f, 1.0f);
-		drawAxis();
-		glPopMatrix();
-	}
 }
 
 void Engine::createEmitter()

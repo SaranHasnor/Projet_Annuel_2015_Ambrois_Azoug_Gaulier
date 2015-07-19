@@ -116,6 +116,7 @@ void Shader::_createProgram()
 	this->viewMatLocation = glGetUniformLocation(this->program, "viewMatrix");
 
 	this->customRGBALocation = glGetUniformLocation(this->program, "customColor");
+	this->scaleLocation = glGetUniformLocation(this->program, "scale");
 
 	this->compiled = true;
 }
