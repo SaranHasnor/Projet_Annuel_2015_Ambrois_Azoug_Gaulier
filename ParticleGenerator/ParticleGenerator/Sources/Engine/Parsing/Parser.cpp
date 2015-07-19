@@ -55,7 +55,7 @@ ParticleState* Parser::parseParticleState(std::ifstream& ifs, std::string& line)
 			std::stringstream ss(line);
 			ss >> tempParticleState->scale;
 		}
-	} while (line != "},");
+	} while(line != "}," && line != "}");
 	return tempParticleState;
 }
 

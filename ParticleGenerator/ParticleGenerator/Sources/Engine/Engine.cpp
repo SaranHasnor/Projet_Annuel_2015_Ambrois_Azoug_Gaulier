@@ -396,11 +396,7 @@ void Engine::loadSession()
 
 	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
 		BaseParticle *particle = *iterator;
-		Shader *shader = NULL;//shaderNamed(particle->shaderName);
-		if (!shader)
-		{
-			shader = new Shader(particle->shaderName, particle->shaderPath);
-		}
+		Shader *shader = new Shader(particle->shaderName, particle->shaderPath);
 		_shaders->push_back(shader);
 	}
 
