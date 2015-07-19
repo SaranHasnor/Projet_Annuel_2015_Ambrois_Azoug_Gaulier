@@ -231,3 +231,23 @@ extern "C" void loadNewSession(void)
 {
 	_staticEngine->loadSession();
 }
+
+extern "C" void exportEmitters(char *path)
+{
+	_staticEngine->exportEmitters(std::string(path));
+}
+
+extern "C" void importEmitters(char *path)
+{
+	_staticEngine->importEmitters(std::string(path));
+}
+
+extern "C" void exportParticles(char *path)
+{
+	_staticEngine->exportParticles(std::string(path));
+}
+
+extern "C" void importParticles(char *path)
+{
+	_staticEngine->importParticles(std::string(path));
+}

@@ -74,6 +74,12 @@ void reloadParticleTexture(int particleID);
 void saveCurrentSession(void);
 void loadNewSession(void);
 
+void exportEmitters(char *path);
+void importEmitters(char *path);
+
+void exportParticles(char *path);
+void importParticles(char *path);
+
 #ifdef __cplusplus
 }
 #endif

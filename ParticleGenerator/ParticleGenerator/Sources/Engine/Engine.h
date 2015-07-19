@@ -39,6 +39,12 @@ public:
 
 	void saveSession();
 	void loadSession();
+	
+	void exportEmitters(std::string path);
+	void importEmitters(std::string path);
+	
+	void exportParticles(std::string path);
+	void importParticles(std::string path);
 
 private:
 	Renderer* _renderer;

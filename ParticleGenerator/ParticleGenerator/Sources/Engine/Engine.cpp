@@ -378,3 +378,23 @@ void Engine::loadSession()
 {
 	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
 }
+
+void Engine::exportEmitters(std::string path)
+{
+	
+}
+
+void Engine::importEmitters(std::string path)
+{
+	
+}
+
+void Engine::exportParticles(std::string path)
+{
+	
+}
+
+void Engine::importParticles(std::string path)
+{
+	
+}
