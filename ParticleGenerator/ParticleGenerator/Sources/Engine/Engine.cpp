@@ -372,18 +372,7 @@ std::string particleSessionPath = std::string("session_particles.txt");
 
 void Engine::saveSession()
 {
-	//for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
-	//	ParticleEmitter *particleEmitter = *iterator;
-	//	_parser->saveParticleEmitter(*particleEmitter, emitterSessionPath);
-	//}
-
 	_parser->saveParticleEmitters(_emitters, emitterSessionPath);
-
-	//for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
-	//	BaseParticle *particle = *iterator;
-	//	_parser->saveParticle(*particle, particleSessionPath);
-	//}
-
 	_parser->saveParticles(_particleModels, particleSessionPath);
 }
 
@@ -407,13 +396,6 @@ void Engine::loadSession()
 
 void Engine::exportEmitters(std::string path)
 {
-	//int i = 0;
-	//for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
-	//	ParticleEmitter *particleEmitter = *iterator;
-	//	_parser->saveParticleEmitter(*particleEmitter, path + std::to_string(i));
-	//	i++;
-	//}
-
 	_parser->saveParticleEmitters(_emitters, path);
 }
 
@@ -424,20 +406,18 @@ void Engine::importEmitters(std::string path)
 	for(std::list<ParticleEmitter*>::iterator iterator = newEmitters->begin(); iterator != newEmitters->end(); ++iterator) {
 		ParticleEmitter *particleEmitter = *iterator;
 		particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+		if(particleEmitter->particleModel == NULL) {
+			delete particleEmitter;
+		}
+		else {
+			_emitters->push_back(particleEmitter);
+		}
 
-		_emitters->push_back(particleEmitter);
 	}
 }
 
 void Engine::exportParticles(std::string path)
 {
-	//int i = 0;
-	//for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
-	//	BaseParticle *particle = *iterator;
-	//	_parser->saveParticle(*particle, path + std::to_string(i));
-	//	i++;
-	//}
-
 	_parser->saveParticles(_particleModels, path);
 }
 
