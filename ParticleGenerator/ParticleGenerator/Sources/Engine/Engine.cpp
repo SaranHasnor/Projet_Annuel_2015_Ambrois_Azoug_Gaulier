@@ -211,7 +211,15 @@ void Engine::_processParticle(BaseParticle *particle)
 {
 	Texture *oldTexture = particle->texture;
 
-	particle->shader = shaderNamed(particle->shaderName);
+	if (!particle->shader)
+	{
+		particle->shader = shaderNamed(particle->shaderName);
+	}
+	
+	if (particle->shader)
+	{
+		particle->shaderPath = particle->shader->path;
+	}
 
 	if (oldTexture != NULL)
 	{
@@ -366,29 +374,37 @@ int Engine::getShaderCount()
 	return _shaders->size();
 }
 
+std::string emitterSessionPath = std::string("session_emitters.txt");
+std::string particleSessionPath = std::string("session_particles.txt");
+
 void Engine::saveSession()
 {
 	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
 		ParticleEmitter *particleEmitter = *iterator;
-		_parser->saveParticleEmitter(*particleEmitter);
+		_parser->saveParticleEmitter(*particleEmitter, emitterSessionPath);
 	}
 
 	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
 		BaseParticle *particle = *iterator;
-		_parser->saveParticle(*particle);
+		_parser->saveParticle(*particle, particleSessionPath);
 	}
 }
 
 void Engine::loadSession()
 {
-	_particleModels = _parser->parseParticlesInFile("");
+	_particleModels = _parser->parseParticlesInFile(particleSessionPath);
 
 	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
 		BaseParticle *particle = *iterator;
-		_shaders->push_back(particle->shader);
+		Shader *shader = NULL;//shaderNamed(particle->shaderName);
+		if (!shader)
+		{
+			shader = new Shader(particle->shaderName, particle->shaderPath);
+		}
+		_shaders->push_back(shader);
 	}
 
-	_emitters = _parser->parseEmittersInFile();
+	_emitters = _parser->parseEmittersInFile(emitterSessionPath);
 
 	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
 		ParticleEmitter *particleEmitter = *iterator;

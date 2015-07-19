@@ -22,9 +22,9 @@ public:
 	bool parseBoolField(std::ifstream&, std::string&);
 	float* parseVectorField(std::ifstream&, std::string&);
 
-	std::list<BaseParticle*>* parseParticlesInFile(const std::string filePath = "../../Documentation/particlesSaved.txt");
-	std::list<ParticleEmitter*>* Parser::parseEmittersInFile(const std::string filePath= "../../Documentation/particleEmittersSaved.txt");
+	std::list<BaseParticle*>* parseParticlesInFile(const std::string filePath);
+	std::list<ParticleEmitter*>* Parser::parseEmittersInFile(const std::string filePath);
 
-	bool saveParticle(const BaseParticle& particle, const std::string path = "../../Documentation/particlesSaved.txt") const;
-	bool saveParticleEmitter(const ParticleEmitter& particleEmitter, const std::string path = "../../Documentation/particleEmittersSaved.txt") const;
+	bool saveParticle(const BaseParticle& particle, const std::string path) const;
+	bool saveParticleEmitter(const ParticleEmitter& particleEmitter, const std::string path) const;
 };

@@ -141,8 +141,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 			else if(line == "shaderPath") 
 			{
 				parseStringField(ifs, line);
-				Shader *tempShader = new Shader(tempParticle->shaderName, line);
-				tempParticle->shader = tempShader;
+				tempParticle->shaderPath = line;
 			}
 			else if (line == "texture")
 			{
@@ -239,7 +238,7 @@ bool Parser::saveParticle(const BaseParticle& particle, const std::string path) 
 		<< "\tlifetime : " << particle.lifeTime << "," << std::endl
 		<< std::endl
 		<< "\tshader : " << particle.shaderName << "," << std::endl
-		<< "\tshaderPath : " << particle.shader->path << "," << std::endl
+		<< "\tshaderPath : " << (particle.shader?particle.shader->path:particle.shaderPath) << "," << std::endl
 		<< std::endl
 		<< "\ttexture : " << particle.texturePath << "," << std::endl
 		<< std::endl
