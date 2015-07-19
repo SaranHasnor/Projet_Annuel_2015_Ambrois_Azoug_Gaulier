@@ -3,7 +3,7 @@
 
 	gravity : true,
 
-	lifetime : 1000,
+	lifetime : 10000,
 
 	shader : Default,
 	shaderPath : Shaders/default_fs.glsl,
@@ -19,5 +19,5 @@
 		colour : [1, 1, 1, 0],
 		light : 0,
 		scale : 1
-	}
+	},
 }

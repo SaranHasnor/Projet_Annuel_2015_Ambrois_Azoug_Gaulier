@@ -170,6 +170,7 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 
 		tempList->push_back(tempParticle);
 	}
+
 	return tempList;
 }
 
@@ -264,8 +265,8 @@ bool Parser::saveParticle(const BaseParticle& particle, const std::string path) 
 		<< "\t\tcolour : [" << particle.transState->red << ", " << particle.transState->green << ", " << particle.transState->blue << ", " << particle.transState->alpha << "]," << std::endl
 		<< "\t\tlight : " << particle.transState->lightIntensity << "," << std::endl
 		<< "\t\tscale : " << particle.transState->scale << std::endl
-		<< "\t}" << std::endl
-		<< "}" << std::endl;
+		<< "\t}," << std::endl
+		<< "}";
 
 	particleSaveFile.close();
 
