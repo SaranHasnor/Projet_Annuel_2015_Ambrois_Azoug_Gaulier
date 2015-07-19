@@ -372,15 +372,19 @@ std::string particleSessionPath = std::string("session_particles.txt");
 
 void Engine::saveSession()
 {
-	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
-		ParticleEmitter *particleEmitter = *iterator;
-		_parser->saveParticleEmitter(*particleEmitter, emitterSessionPath);
-	}
+	//for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+	//	ParticleEmitter *particleEmitter = *iterator;
+	//	_parser->saveParticleEmitter(*particleEmitter, emitterSessionPath);
+	//}
 
-	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
-		BaseParticle *particle = *iterator;
-		_parser->saveParticle(*particle, particleSessionPath);
-	}
+	_parser->saveParticleEmitters(_emitters, emitterSessionPath);
+
+	//for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+	//	BaseParticle *particle = *iterator;
+	//	_parser->saveParticle(*particle, particleSessionPath);
+	//}
+
+	_parser->saveParticles(_particleModels, particleSessionPath);
 }
 
 void Engine::loadSession()
@@ -403,10 +407,14 @@ void Engine::loadSession()
 
 void Engine::exportEmitters(std::string path)
 {
-	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
-		ParticleEmitter *particleEmitter = *iterator;
-		_parser->saveParticleEmitter(*particleEmitter, path);
-	}
+	//int i = 0;
+	//for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+	//	ParticleEmitter *particleEmitter = *iterator;
+	//	_parser->saveParticleEmitter(*particleEmitter, path + std::to_string(i));
+	//	i++;
+	//}
+
+	_parser->saveParticleEmitters(_emitters, path);
 }
 
 void Engine::importEmitters(std::string path)
@@ -423,10 +431,14 @@ void Engine::importEmitters(std::string path)
 
 void Engine::exportParticles(std::string path)
 {
-	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
-		BaseParticle *particle = *iterator;
-		_parser->saveParticle(*particle, path);
-	}
+	//int i = 0;
+	//for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+	//	BaseParticle *particle = *iterator;
+	//	_parser->saveParticle(*particle, path + std::to_string(i));
+	//	i++;
+	//}
+
+	_parser->saveParticles(_particleModels, path);
 }
 
 void Engine::importParticles(std::string path)

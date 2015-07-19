@@ -27,4 +27,7 @@ public:
 
 	bool saveParticle(const BaseParticle& particle, const std::string path) const;
 	bool saveParticleEmitter(const ParticleEmitter& particleEmitter, const std::string path) const;
+
+	bool saveParticles(const std::list<BaseParticle*>* particles, const std::string path) const;
+	bool saveParticleEmitters(const std::list<ParticleEmitter*>* emitters, const std::string path) const;
 };
