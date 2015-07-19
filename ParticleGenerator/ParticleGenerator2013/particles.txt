@@ -6,6 +6,7 @@
 	lifetime : 1000,
 
 	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
 
 	texture : Textures/flare_white.jpg,
 

@@ -85,6 +85,7 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Engine\Rendering\Renderer.h" />
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\cstring.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\mat4.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\mem.h" />
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\mem_libs.h" />
@@ -108,6 +109,7 @@
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\engine_wrapper.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\Parsing\Parser.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Engine\Rendering\Renderer.cpp" />
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\cstring.cpp" />
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\mat4.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\mem.c" />
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\render_utils.c" />

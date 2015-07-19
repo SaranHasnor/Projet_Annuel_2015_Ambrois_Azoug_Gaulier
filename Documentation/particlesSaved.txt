@@ -1,21 +1,22 @@
 {
-	name : Sample,
+	name : Default,
 
-	gravity : false,
+	gravity : true,
 
 	lifetime : 1000,
 
-	shader : SampleShader,
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
 
 	texture : Textures/flare_white.jpg,
 
 	defaultState : {
-		colour : [255, 255, 255, 255],
+		colour : [1, 1, 1, 1],
 		light : 0,
 		scale : 1
 	},
 	transState : {
-		colour : [255, 255, 255, 255],
+		colour : [1, 1, 1, 0],
 		light : 0,
 		scale : 1
 	}

@@ -1,17 +1,12 @@
-// Emitter sample
-
 {
-	model : Sample,
+	model : Default,
 	
 	randomDirection : true,
 	
 	position : [0, 0, 0],
-	
 	angle : [0, 0, 0],
-	
-	velocity : [0, 0, 0],
-	
+	velocity : [3, 3, 3],
 	acceleration : [0, 0, 0],
 	
-	spawnInterval : 150
+	spawnInterval : 1
 }

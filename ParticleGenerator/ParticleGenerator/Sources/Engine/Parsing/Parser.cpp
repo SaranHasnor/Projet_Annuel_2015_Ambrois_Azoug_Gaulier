@@ -138,6 +138,12 @@ std::list<BaseParticle*>* Parser::parseParticlesInFile(std::string filePath)
 				parseStringField(ifs, line);
 				tempParticle->shaderName = line;
 			}
+			else if(line == "shaderPath") 
+			{
+				parseStringField(ifs, line);
+				Shader *tempShader = new Shader(tempParticle->shaderName, line);
+				tempParticle->shader = tempShader;
+			}
 			else if (line == "texture")
 			{
 				parseStringField(ifs, line);
@@ -218,10 +224,9 @@ std::list<ParticleEmitter*>* Parser::parseEmittersInFile(std::string filePath)
 }
 
 
-bool Parser::saveParticle(const BaseParticle& particle) const {
-	std::string fileName = "particle_" + particle.name + ".save";
-
-	std::ofstream particleSaveFile(fileName, std::ios::out | std::ios::trunc);
+bool Parser::saveParticle(const BaseParticle& particle, const std::string path) const
+{
+	std::ofstream particleSaveFile(path, std::ios::out | std::ios::trunc);
 
 	if (!particleSaveFile.good())
 		return false;
@@ -234,6 +239,7 @@ bool Parser::saveParticle(const BaseParticle& particle) const {
 		<< "\tlifetime : " << particle.lifeTime << "," << std::endl
 		<< std::endl
 		<< "\tshader : " << particle.shaderName << "," << std::endl
+		<< "\tshaderPath : " << particle.shader->path << "," << std::endl
 		<< std::endl
 		<< "\ttexture : " << particle.texturePath << "," << std::endl
 		<< std::endl
@@ -254,27 +260,24 @@ bool Parser::saveParticle(const BaseParticle& particle) const {
 	return true;
 }
 
-bool Parser::saveParticleEmitter(const ParticleEmitter& particleEmitter) const 
+bool Parser::saveParticleEmitter(const ParticleEmitter& particleEmitter, const std::string path) const
 {
-	//TODO: ajouter la date ?
-	std::string fileName = "particleEmitter.save";
-
-	std::ofstream particleEmitterSaveFile(fileName, std::ios::out | std::ios::trunc);
+	std::ofstream particleEmitterSaveFile(path, std::ios::out | std::ios::trunc);
 
 	if(!particleEmitterSaveFile.good())
 		return false;
 
-	particleEmitterSaveFile << "{" << std::endl
+	particleEmitterSaveFile << std::fixed << "{" << std::endl
 		<< "\tmodel : " << particleEmitter.particleName << "," << std::endl
 		<< std::endl
-		<< "\trandomDirection : [" << (particleEmitter.randomFacingDirection ? "true" : "false") << ", " << std::endl
+		<< "\trandomDirection : " << (particleEmitter.randomFacingDirection ? "true" : "false") << ", " << std::endl
 		<< std::endl
 		<< "\tposition : [" << particleEmitter.geometry.position[0] << ", " << particleEmitter.geometry.position[1] << ", " << particleEmitter.geometry.position[2] << "]," << std::endl
 		<< "\tangle : [" << particleEmitter.geometry.angle[0] << ", " << particleEmitter.geometry.angle[1] << ", " << particleEmitter.geometry.angle[2] << "]," << std::endl
 		<< "\tvelocity : [" << particleEmitter.geometry.velocity[0] << ", " << particleEmitter.geometry.velocity[1] << ", " << particleEmitter.geometry.velocity[2] << "]," << std::endl
 		<< "\tacceleration : [" << particleEmitter.geometry.acceleration[0] << ", " << particleEmitter.geometry.acceleration[1] << ", " << particleEmitter.geometry.acceleration[2] << "]," << std::endl
 		<< std::endl
-		<< "\tspawnInterval" << particleEmitter.spawnInterval << std::endl
+		<< "\tspawnInterval : " << particleEmitter.spawnInterval << std::endl
 		<< "}";
 
 		particleEmitterSaveFile.close();

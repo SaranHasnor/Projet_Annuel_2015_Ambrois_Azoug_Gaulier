@@ -150,8 +150,10 @@ void Engine::createEmitter()
 	vectorSet(defaultEmitter->geometry.position, 0.0f, 0.0f, 0.0f);
 	vectorSet(defaultEmitter->geometry.angle, 0.0f, 0.0f, 0.0f);
 	vectorSet(defaultEmitter->geometry.velocity, 1.0f, 0.0f, 0.0f);
+	vectorSet(defaultEmitter->geometry.acceleration, 0.0f, 0.0f, 0.0f);
 	defaultEmitter->lastSpawn = 0;
 	defaultEmitter->spawnInterval = 150;
+	defaultEmitter->particleName = "Default";
 	
 	_emitters->push_back(defaultEmitter);
 }
@@ -366,35 +368,66 @@ int Engine::getShaderCount()
 
 void Engine::saveSession()
 {
-	_parser->saveParticle(*(_particleModels->front()));
+	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+		ParticleEmitter *particleEmitter = *iterator;
+		_parser->saveParticleEmitter(*particleEmitter);
+	}
 
-	_emitters = _parser->parseEmittersInFile("../../Documentation/emitterModel.txt");
-	// Link particle to emiter thanks to its name
-	for (std::list<ParticleEmitter*>::const_iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator)
-		(*iterator)->particleModel = particleNamed((*iterator)->particleName);
+	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+		BaseParticle *particle = *iterator;
+		_parser->saveParticle(*particle);
+	}
 }
 
 void Engine::loadSession()
 {
-	_particleModels = _parser->parseParticlesInFile("../../Documentation/model.txt");
+	_particleModels = _parser->parseParticlesInFile("");
+
+	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+		BaseParticle *particle = *iterator;
+		_shaders->push_back(particle->shader);
+	}
+
+	_emitters = _parser->parseEmittersInFile();
+
+	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+		ParticleEmitter *particleEmitter = *iterator;
+		particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+	}
 }
 
 void Engine::exportEmitters(std::string path)
 {
-	
+	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+		ParticleEmitter *particleEmitter = *iterator;
+		_parser->saveParticleEmitter(*particleEmitter, path);
+	}
 }
 
 void Engine::importEmitters(std::string path)
 {
-	
+	_emitters = _parser->parseEmittersInFile(path);
+
+	for(std::list<ParticleEmitter*>::iterator iterator = _emitters->begin(); iterator != _emitters->end(); ++iterator) {
+		ParticleEmitter *particleEmitter = *iterator;
+		particleEmitter->particleModel = particleNamed(particleEmitter->particleName);
+	}
 }
 
 void Engine::exportParticles(std::string path)
 {
-	
+	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+		BaseParticle *particle = *iterator;
+		_parser->saveParticle(*particle, path);
+	}
 }
 
 void Engine::importParticles(std::string path)
 {
-	
+	_particleModels = _parser->parseParticlesInFile(path);
+
+	for(std::list<BaseParticle*>::const_iterator iterator = _particleModels->begin(); iterator != _particleModels->end(); ++iterator) {
+		BaseParticle *particle = *iterator;
+		_shaders->push_back(particle->shader);
+	}
 }

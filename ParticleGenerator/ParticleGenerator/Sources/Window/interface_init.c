@@ -354,10 +354,10 @@ void createInterface(int window)
 	initInterface(window);
 
 	emitterSavePath = (char*)mem_alloc(sizeof(char) * 32);
-	strcpy(emitterSavePath, "emitters.txt");
+	strcpy(emitterSavePath, "../../Documentation/emitters.txt");
 
 	particleSavePath = (char*)mem_alloc(sizeof(char) * 32);
-	strcpy(particleSavePath, "particles.txt");
+	strcpy(particleSavePath, "../../Documentation/particles.txt");
 	
 	// Menu 0: Main menu
 	curMenu = newMenu(0, 0, NULL, NULL);
@@ -405,8 +405,8 @@ void createInterface(int window)
 	emitterPickerPath = newTextField(curMenu, 10, 425, 180, 20, FIELDTYPE_TEXT);
 	setTextFieldValue(curMenu, emitterPickerPath, 0.0f, 0.0f, emitterSavePath, 1);
 
-	newButton(newString("Import"), curMenu, 10, 455, 180, 45, interface_saveEmitters);
-	newButton(newString("Export"), curMenu, 10, 510, 180, 45, interface_loadEmitters);
+	newButton(newString("Export"), curMenu, 10, 455, 180, 45, interface_saveEmitters);
+	newButton(newString("Import"), curMenu, 10, 510, 180, 45, interface_loadEmitters);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toMain);
 
@@ -477,8 +477,8 @@ void createInterface(int window)
 	particlePickerPath = newTextField(curMenu, 10, 425, 180, 20, FIELDTYPE_TEXT);
 	setTextFieldValue(curMenu, particlePickerPath, 0.0f, 0.0f, particleSavePath, 1);
 
-	newButton(newString("Import"), curMenu, 10, 455, 180, 45, interface_saveParticles);
-	newButton(newString("Export"), curMenu, 10, 510, 180, 45, interface_loadParticles);
+	newButton(newString("Export"), curMenu, 10, 455, 180, 45, interface_saveParticles);
+	newButton(newString("Import"), curMenu, 10, 510, 180, 45, interface_loadParticles);
 
 	newButton(newString("Done"), curMenu, 10, DEFAULT_HEIGHT - 30, 180, 20, toEmitterEditor);
 

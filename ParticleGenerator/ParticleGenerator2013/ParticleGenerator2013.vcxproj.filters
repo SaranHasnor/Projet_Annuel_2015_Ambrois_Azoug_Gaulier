@@ -78,6 +78,9 @@
     <ClInclude Include="..\ParticleGenerator\Sources\Utils\mat4.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="..\ParticleGenerator\Sources\Utils\cstring.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\ParticleGenerator\Sources\Window\window.c">
@@ -138,6 +141,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="..\ParticleGenerator\Sources\Utils\mat4.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ParticleGenerator\Sources\Utils\cstring.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
