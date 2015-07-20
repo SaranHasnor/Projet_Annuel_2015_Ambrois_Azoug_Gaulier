@@ -8,7 +8,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -21,7 +21,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -34,7 +34,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -47,7 +47,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -60,7 +60,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -73,7 +73,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -86,7 +86,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -99,7 +99,7 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
 
 {
@@ -112,5 +112,5 @@
 	velocity : [5.000000, 5.000000, 5.000000],
 	acceleration : [0.000000, 0.000000, 0.000000],
 
-	spawnInterval : 1
+	spawnInterval : 10
 }
