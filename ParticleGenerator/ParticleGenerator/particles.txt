@@ -1,7 +1,8 @@
+
 {
 	name : Default,
 
-	gravity : true,
+	gravity : false,
 
 	lifetime : 1000,
 
@@ -19,5 +20,166 @@
 		colour : [1, 1, 1, 0],
 		light : 0,
 		scale : 1
-	}
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
+}
+{
+	name : Default,
+
+	gravity : false,
+
+	lifetime : 1000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 1, 1],
+		light : 0,
+		scale : 1
+	},
+	transState : {
+		colour : [1, 1, 1, 0],
+		light : 0,
+		scale : 1
+	},
 }

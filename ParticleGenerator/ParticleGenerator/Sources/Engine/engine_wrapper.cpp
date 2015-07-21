@@ -57,6 +57,8 @@ extern "C" void *particleAttribute(int particleID, particle_attr_t attribute)
 		return (void*)&particle->geometry.acceleration[1];
 	case PART_ATTR_ACCEL_Z:
 		return (void*)&particle->geometry.acceleration[2];
+	case PART_ATTR_USE_GRAVITY:
+		return (void*)&particle->useGravity;
 	case PART_ATTR_LIFETIME:
 		return (void*)&particle->lifeTime;
 	case PART_ATTR_START_RED:

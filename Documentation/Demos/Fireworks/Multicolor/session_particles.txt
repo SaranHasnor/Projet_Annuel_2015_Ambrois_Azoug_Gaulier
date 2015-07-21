@@ -1,0 +1,139 @@
+{
+	name : OLABELLEBLEUE,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [0, 0, 1, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [0, 0, 0, 0],
+		light : 0,
+		scale : 10
+	},
+}
+{
+	name : OLABELLEROUGE,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 0, 0, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [1, 0, 0, 0],
+		light : 0,
+		scale : 10
+	},
+}
+{
+	name : OLABELLEVERTE,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [0, 1, 0, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [0, 1, 0, 0],
+		light : 0,
+		scale : 10
+	},
+}
+{
+	name : OLABELLECYAN,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [0, 1, 1, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [0, 1, 1, 0],
+		light : 0,
+		scale : 10
+	},
+}
+{
+	name : OLABELLEJAUNE,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 1, 0, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [1, 1, 0, 0],
+		light : 0,
+		scale : 10
+	},
+}
+
+{
+	name : OLABELLEROSE,
+
+	gravity : true,
+
+	lifetime : 2000,
+
+	shader : Default,
+	shaderPath : Shaders/default_fs.glsl,
+
+	texture : Textures/flare_white.jpg,
+
+	defaultState : {
+		colour : [1, 0, 1, 1],
+		light : 0,
+		scale : 10
+	},
+	transState : {
+		colour : [1, 0, 1, 0],
+		light : 0,
+		scale : 10
+	},
+}

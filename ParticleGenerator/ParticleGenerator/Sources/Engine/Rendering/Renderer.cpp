@@ -11,10 +11,10 @@
 #include <Utils/util_types.h>
 
 static const float defaultParticleCoords[] = {
-	-0.5f, 0.5f, 0.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-	0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
-	0.5f, 0.5f, 0.0f, 1.0f, 1.0f
+	-0.5f, 0.5f, 0.0f, 0.0f, 0.0f,
+	-0.5f, -0.5f, 0.0f, 0.0f, 1.0f,
+	0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+	0.5f, 0.5f, 0.0f, 1.0f, 0.0f
 };
 
 static const byte defaultParticleElements[] = {
@@ -95,7 +95,7 @@ void Renderer::renderParticles(std::list<BaseParticle*>* particles, float viewMa
 			glUniformMatrix4fv(particle->shader->viewMatLocation, 1, GL_TRUE, viewMatrix);
 
 			glUniform4f(particle->shader->customRGBALocation, particleState->red, particleState->green, particleState->blue, particleState->alpha);
-			// TODO: Scale
+			glUniform1f(particle->shader->scaleLocation, particleState->scale);
 
 			glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, NULL);
 

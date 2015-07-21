@@ -7,6 +7,8 @@ BaseParticle::BaseParticle(std::string name)
 	this->name = name;
 	this->processed = false;
 
+	this->useGravity = false;
+
 	vectorClear(this->geometry.velocity);
 	vectorClear(this->geometry.acceleration);
 
@@ -22,6 +24,8 @@ BaseParticle::BaseParticle(BaseParticle &copy)
 {
 	this->name = copy.name;
 	this->processed = copy.processed;
+
+	this->useGravity = copy.useGravity;
 
 	vectorClear(this->geometry.velocity);
 	vectorClear(this->geometry.acceleration);

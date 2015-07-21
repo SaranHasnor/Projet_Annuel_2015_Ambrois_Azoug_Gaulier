@@ -7,7 +7,8 @@
 #define USE_NEW_CAMERA_MOVEMENT 0
 
 typedef struct scene_s {
-	short running;
+	char running;
+	char drawEmitters;
 } scene_t;
 
 extern scene_t scene;

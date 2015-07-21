@@ -1,0 +1,2168 @@
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
+{
+	model : OLABELLEROSE,
+
+	randomDirection : true, 
+
+	position : [0.000000, 0.000000, 0.000000],
+	angle : [0.000000, 0.000000, 0.000000],
+	velocity : [30.000000, 30.000000, 30.000000],
+	acceleration : [0.000000, 0.000000, 0.000000],
+
+	spawnInterval : 3000
+}
